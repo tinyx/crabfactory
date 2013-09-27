@@ -12,8 +12,7 @@ class Event(models.Model):
         (NORMAL, 'Normal'),
         (Low, 'Low'),
     )
-    user = models.ForeignKey(User)
-    eventclass = models.ForeignKey(EventClass, blank = True, null = True)
+    eventclass = models.ForeignKey(EventClass)
     order = models.IntegerField()
     priority = models.CharField(choices=EVENT_PRIORITY_LIST, default=NORMAL)
     content = models.TextField()
@@ -21,7 +20,7 @@ class Event(models.Model):
     done = models.BooleanField(default = False)
 
     def __unicode__(self):
-        return '%s:%s' % (self.user, self.content)
+        return '%s' % (self.content)
 
     def to_dict(self):
         """
