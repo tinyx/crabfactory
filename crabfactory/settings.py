@@ -1,9 +1,13 @@
 # Django settings for crabfactory project.
+import os
+
+ROOT_PATH = os.path.dirname(os.path.dirname(__file__))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
+    ('TinyX', 'hb1412@gmail.com'),
     # ('Your Name', 'your_email@example.com'),
 )
 
@@ -11,12 +15,12 @@ MANAGERS = ADMINS
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '',                      # Or path to database file if using sqlite3.
+        'ENGINE': 'django.db.backends.postgresql_psycopg2', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'crabfactory',                      # Or path to database file if using sqlite3.
         # The following settings are not used with sqlite3:
-        'USER': '',
-        'PASSWORD': '',
-        'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+        'USER': 'tinyx',
+        'PASSWORD': 'tinyx',
+        'HOST': '127.0.0.1',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
         'PORT': '',                      # Set to empty string for default.
     }
 }
@@ -69,6 +73,8 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
+    '/home/tinyx/Envs/crabfactory/lib/python2.7/site-packages/django/contrib/admin/static/admin',
+    os.path.join(ROOT_PATH, 'static/')
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -108,6 +114,7 @@ ROOT_URLCONF = 'crabfactory.urls'
 WSGI_APPLICATION = 'crabfactory.wsgi.application'
 
 TEMPLATE_DIRS = (
+    os.path.join(ROOT_PATH, 'templates')
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -121,9 +128,12 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     # Uncomment the next line to enable the admin:
-    # 'django.contrib.admin',
+    'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+    'crabfactory',
+    'todolist',
+    'south',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
