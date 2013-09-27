@@ -7,6 +7,6 @@ Also, I also have some other thoughts to be achieved after that.
 
 The todo-list for this project so far is:
 
--[x] Create initial files for the project.
--[x] Configure Apache2 to make the project reachable through the Internet
--[] Convert the 2do-list from ASP.NET to Django
+- [x] Create initial files for the project.
+- [x] Configure Apache2 to make the project reachable through the Internet
+- [] Convert the 2do-list from ASP.NET to Django
