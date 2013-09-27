@@ -13,7 +13,7 @@ class Event(models.Model):
         (Low, 'Low'),
     )
     user = models.ForeignKey(User)
-    eventclass = models.ForeignKey(EventClass)
+    eventclass = models.ForeignKey(EventClass, blank = True, null = True)
     order = models.IntegerField()
     priority = models.CharField(choices=EVENT_PRIORITY_LIST, default=NORMAL)
     content = models.TextField()
