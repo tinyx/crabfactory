@@ -1,6 +1,26 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class EventClass(models.Model):
+    user = models.ForeignKey(User)
+    name = models.CharField(max_length = 20)
+    order = models.IntegerField()
+
+    def __unicode__(self):
+        return '%s:%s' % (self.user, self.name)
+
+    @classmethod
+    def get_classes_by_user(cls, user):
+        """
+        Return a list of eventclasses based on
+        the given user id
+        """
+        return cls.objects.filter(user__pk=user)
+
+    class Meta:
+        verbose_name = 'Event Class'
+        verbose_name_plural = 'Event Classes'
+
 class Event(models.Model):
     HIGH = 'H'
     MEDIUM = 'M'
@@ -10,11 +30,12 @@ class Event(models.Model):
         (HIGH, 'High'),
         (MEDIUM, 'Medium'),
         (NORMAL, 'Normal'),
-        (Low, 'Low'),
+        (LOW, 'Low'),
     )
     eventclass = models.ForeignKey(EventClass)
     order = models.IntegerField()
-    priority = models.CharField(choices=EVENT_PRIORITY_LIST, default=NORMAL)
+    priority = models.CharField(max_length = 20, \
+                                choices = EVENT_PRIORITY_LIST, default = NORMAL)
     content = models.TextField()
     duedate = models.DateTimeField()
     done = models.BooleanField(default = False)
@@ -41,29 +62,10 @@ class Event(models.Model):
         Return a list of events based on the
         given eventclass id
         """
-        return map(lambda x: x.to_dict(), \
+        return map(lambda x: x.to_dict() \
                    for x in cls.objects.filter(eventclass__pk=eventclass))
 
     class Meta:
         verbose_name = 'Event'
         verbose_name_plural = 'Events'
 
-class EventClass(models.Model):
-    user = models.ForeignKey(User)
-    name = models.CharField(max_lengh = 20)
-    order = models.IntegerField()
-
-    def __unicode__(self):
-        return '%s:%s' % (self.user, self.name)
-
-    @classmethod
-    def get_classes_by_user(cls, user):
-        """
-        Return a list of eventclasses based on
-        the given user id
-        """
-        return cls.objects.filter(user__pk=user)
-
-    class Meta:
-        verbose_name = 'Event Class'
-        verbose_name_plural = 'Event Classes'
