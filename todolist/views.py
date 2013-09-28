@@ -1,4 +1,14 @@
 from todolist.models import Event, EventClass
+from django.views.generic.base import TemplateView
+
+class TodoIndexView(TemplateView):
+    title = None
+
+    def get_context_data(self,**kwargs):
+        context = super(TodoIndexView, self).get_context_data(**kwargs)
+        title = self.title
+        context['title'] = title
+        return context
 
 def get_event_classes(request, user_id):
     """
