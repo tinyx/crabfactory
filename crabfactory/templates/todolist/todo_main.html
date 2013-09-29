@@ -14,31 +14,62 @@
 {% endblock %}
 {% block content %}
 <div class="content">
-	<div class="panel-left">
-		<div class="classesLabel" onclick="javascript:$('#classList').slideToggle();">
-            <div id="classesIcon">
-            </div>
-            <p>Classes</p>
-        </div>
-        <ul id="classList" class="sortableClasses">
-        </ul>
-        <div id="addNewClassButton" class="addNewClass" onclick="javascript:showAddNewClassInput();">
-            <div class="leftIcons" id="addIcon">
-            </div>
-            <p>Add new class</p>
-        </div>
-        <div id="addNewClassInput" class="addNewClassInput" style="display: none">
-            <input type="text" onkeydown="javascript:classOnKeyDown();" id="newClassInput" class="newClassInput" />
-            <div class="button blue newclassbutton" onclick="javascript:addNewClass();return false;">Add</div>
-        </div>
-        <div ondrop="drop(event)" ondragenter="enterRecycle(event)" ondragleave="leaveRecycle(event)" ondragover="allowDrop(event)" class="recycleBin">
-            <div class="leftIcons" id="recycleIcon">
-            </div>
-            <p>Dustbin</p>
-        </div>
-	</div>
-	<div class="panel-right">
-		<p>hello</p>
-	</div>
+	<table id="panel" cellpadding="0" cellspacing="0">
+		<tr valign="top">
+			<td id="panel-left">
+				<div id="class-label" onclick="javascript:$('#classList').slideToggle();">
+		            <div id="class-icon" class="icons">
+		            </div>
+		            <p>Classes</p>
+		        </div>
+		        <ul id="class-list">
+		        </ul>
+		        <div id="add-new-class-label" onclick="javascript:showAddNewClassInput();">
+		            <div id="add-icon" class="icons">
+		            </div>
+		            <p>Add new class</p>
+		        </div>
+		        <div id="add-new-class-container" style="display: none">
+		            <input type="text" onkeydown="javascript:classOnKeyDown();" id="add-new-class-input"/>
+		            <div class="button blue newclassbutton" onclick="javascript:addNewClass();return false;">Add</div>
+		        </div>
+		        <div ondrop="drop(event)" ondragenter="enterRecycle(event)" ondragleave="leaveRecycle(event)" ondragover="allowDrop(event)" id="recycle-bin-label">
+		            <div id="recycle-bin-icon" class="icons">
+		            </div>
+		            <p>Dustbin</p>
+		        </div>
+			</td>
+			<td id="panel-right">
+				<div id="sorted-by">
+			        <div id="sorted-by-icons">
+		                <p>Sorted by:</p>
+		                <div title="Order" class="sorted-by-icon sorted-by-order selected" onclick="resortEvents('order')"></div>
+		                <div title="DueDate" class="sorted-by-icon sorted-by-duedate" onclick="resortEvents('duedate')"></div>
+		                <div title="Priority" class="sorted-by-icon sorted-by-priority" onclick="resortEvents('priority')"></div>
+			        </div>
+			    </div>
+			    <div id="current-class">
+			        <p>
+			        </p>
+			    </div>
+			    <ul id="event-list">
+			    </ul>
+			    <div class="add-new-event up">
+		            <div id="add-event-icon"></div>
+		            <p>Add new event</p>
+			     </div>
+			     <div class="add-new-event down">
+		            <input type="text" id="add-event-text" onkeydown="javascript:eventOnKeyDown();"/>
+		            <input type="text" readonly="readonly" id="calender" class="calender" />
+		            <div id="add-event-button" onclick="javascript:addNewEvent();return false;"></div>
+			    </div>
+			    <div id="show-done-event">
+			        <p onclick="javascript:displayDoneListStarter();return false;">Show Done Events</p>
+			    </div>
+			    <ul id="done-list">
+			    </ul>
+			</td>
+		</tr>
+	</table>
 </div>
 {% endblock %}
