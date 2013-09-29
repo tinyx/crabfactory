@@ -24,6 +24,7 @@ def todo_login(request):
                 login(request, user)
                 return HttpResponseRedirect(reverse('todo_main'))
         error_info = 'Your username and password doesn\'t match, please try again.'
+    logout(request)
     return render_to_response('todo_login.html', \
                               {'error_info': error_info, }, \
                               RequestContext(request))

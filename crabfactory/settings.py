@@ -168,3 +168,4 @@ LOGGING = {
         },
     }
 }
+LOGIN_URL = '/todo/login/'
