@@ -1,0 +1,44 @@
+{% extends "todo_frame.html" %}
+{% load static %}
+{% load url from future %}
+{% block title %}2do-List{% endblock %}
+{% block extrastyle %}
+<link rel="stylesheet/less" type="text/css" href="{% get_static_prefix %}todolist/css/main.less"/>
+{% endblock %}
+{% block header %}
+<div class="navigation">
+    <a href="{% url 'todo_login' %}" class="item">LOG IN</a>
+    <p class="item">|</p>
+    <a href="javascript:void(0)" class="item" onclick="javascript:showUserGuide();">USER GUIDE</a>
+</div>
+{% endblock %}
+{% block content %}
+<div class="content">
+	<div class="panel-left">
+		<div class="classesLabel" onclick="javascript:$('#classList').slideToggle();">
+            <div id="classesIcon">
+            </div>
+            <p>Classes</p>
+        </div>
+        <ul id="classList" class="sortableClasses">
+        </ul>
+        <div id="addNewClassButton" class="addNewClass" onclick="javascript:showAddNewClassInput();">
+            <div class="leftIcons" id="addIcon">
+            </div>
+            <p>Add new class</p>
+        </div>
+        <div id="addNewClassInput" class="addNewClassInput" style="display: none">
+            <input type="text" onkeydown="javascript:classOnKeyDown();" id="newClassInput" class="newClassInput" />
+            <div class="button blue newclassbutton" onclick="javascript:addNewClass();return false;">Add</div>
+        </div>
+        <div ondrop="drop(event)" ondragenter="enterRecycle(event)" ondragleave="leaveRecycle(event)" ondragover="allowDrop(event)" class="recycleBin">
+            <div class="leftIcons" id="recycleIcon">
+            </div>
+            <p>Dustbin</p>
+        </div>
+	</div>
+	<div class="panel-right">
+		<p>hello</p>
+	</div>
+</div>
+{% endblock %}

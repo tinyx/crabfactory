@@ -2,20 +2,22 @@
 {% load url from future %}
 <html>
 	<head>
-	<title>{{ title }}</title>
-	<link rel="stylesheet/less" type="text/css" href="{% get_static_prefix %}todolist/css/static.less"/>
+	<title>{% block title %}{% endblock %}</title>
+	<link href='http://fonts.googleapis.com/css?family=Cantora+One|Kite+One' rel='stylesheet' type='text/css'>
 	{% block extrastyle %}
 	{% endblock %}
 	</head>
 	<body>
 		<div class="headerwrapper">
 	        <div class="header">
+	        	{% block header %}
 	            <div class="navigation">
 	                <a href="{% url 'todo_login' %}" class="item">LOG IN</a>
 	                <p class="item">|</p>
 	                <a href="{% url 'todo_reg' %}" class="item">REGISTER</a>
 	            </div>
-	            <a class="logo" href="Entry"><img src="{% get_static_prefix %}todolist/img/logo.png" alt="Logo"/></a>
+	            {% endblock %}
+	            <a class="logo" href="{% url 'todo_cover' %}"><img src="{% get_static_prefix %}todolist/img/logo.png" alt="Logo"/></a>
 	        </div>
         </div>
         {% block content %}

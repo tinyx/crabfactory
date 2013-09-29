@@ -1,0 +1,30 @@
+@import "frame.less";
+@color-panel-gray: #e8e8e8;
+
+.content {
+	.centered-container(900px);
+	min-height: 400px;
+	margin-top: 30px;
+	display: table;
+}
+
+.panel-left {
+	background-color: @color-panel-gray;
+	margin: 0;
+	padding: 0;
+	overflow: visible;
+	width: 30%;
+	border-right-color: @color-panel-gray;
+	border-right-width: 1px;
+	border-right-style: solid;
+	display: table-cell;
+	z-index: 999;
+}
+
+.panel-right {
+	background-color: White;
+	margin: 0;
+	padding: 0;
+	width: 70%;
+	display: table-cell;
+}
