@@ -17,21 +17,21 @@
 	<table id="panel" cellpadding="0" cellspacing="0">
 		<tr valign="top">
 			<td id="panel-left">
-				<div id="class-label" onclick="javascript:$('#classList').slideToggle();">
+				<div id="class-label" onclick="$('#class-list').slideToggle();">
 		            <div id="class-icon" class="icons">
 		            </div>
 		            <p>Classes</p>
 		        </div>
 		        <ul id="class-list">
 		        </ul>
-		        <div id="add-new-class-label" onclick="javascript:showAddNewClassInput();">
+		        <div id="add-new-class-label" onclick="$('#add-new-class-container').slideToggle();">
 		            <div id="add-icon" class="icons">
 		            </div>
 		            <p>Add new class</p>
 		        </div>
 		        <div id="add-new-class-container" style="display: none">
 		            <input type="text" onkeydown="javascript:classOnKeyDown();" id="add-new-class-input"/>
-		            <div class="button blue newclassbutton" onclick="javascript:addNewClass();return false;">Add</div>
+		            <div id="add-new-class-button" onclick="javascript:addNewClass();return false;">Add</div>
 		        </div>
 		        <div ondrop="drop(event)" ondragenter="enterRecycle(event)" ondragleave="leaveRecycle(event)" ondragover="allowDrop(event)" id="recycle-bin-label">
 		            <div id="recycle-bin-icon" class="icons">
@@ -72,4 +72,9 @@
 		</tr>
 	</table>
 </div>
+{% endblock %}
+{% block extrajs %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="{% get_static_prefix %}todolist/js/jquery.blockUI.js"></script>
+<script src="{% get_static_prefix %}todolist/js/todo-control.js"></script>
 {% endblock %}

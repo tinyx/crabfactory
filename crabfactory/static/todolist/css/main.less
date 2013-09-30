@@ -13,51 +13,86 @@
 	min-height: 400px;
 
 	#panel-left {
-	background-color: @color-panel-gray;
-	margin: 0;
-	padding: 0;
-	overflow: visible;
-	width: 30%;
-	border-right: 1px solid @color-panel-gray;
-	z-index: 999;
-
-	#class-label, #add-new-class-label, #recycle-bin-label {
-		background-color: @color-label-gray;
-		height: 60px;
-		border-bottom: 1px solid @color-panel-gray;
-		border-top: 1px solid @color-panel-gray;
-	}
-
-	.icons {
-		width: 60px;
-		height: 60px;
-		float: left;
-	}
-	#class-icon {
-		background: url("../img/leftIcons.png") 0 0;
-	}
-	#add-icon {
-		background: url("../img/leftIcons.png") -60px 0;
-	}
-	#recycle-bin-icon {
-		background: url("../img/leftIcons.png") -120px 0;
-	}
-	p {
+		background-color: @color-panel-gray;
 		margin: 0;
-		padding-top: 15px;
-		font-family: @font-small;
-		font-size: 150%;
-		color: #0e93d5;
-		text-align: left;
-		vertical-align: middle;
-		-webkit-touch-callout: none;
-		-webkit-user-select: none;
-		-khtml-user-select: none;
-		-moz-user-select: none;
-		-ms-user-select: none;
-		user-select: none;
+		padding: 0;
+		overflow: visible;
+		width: 30%;
+		border-right: 1px solid @color-panel-gray;
+		z-index: 999;
+
+		#class-label, #add-new-class-label, #recycle-bin-label {
+			background-color: @color-label-gray;
+			height: 60px;
+			border-bottom: 1px solid @color-panel-gray;
+			border-top: 1px solid @color-panel-gray;
+
+			p {
+				cursor: default;
+			}
+		}
+		#add-new-class-container {
+			padding: 10px;
+
+			#add-new-class-input {
+				display: inline-block;
+			}
+			#add-new-class-button {
+				display: inline-block;
+				.button(50px, 20px);
+				vertical-align: middle;
+				font-size: 100%;
+				color: #d9eef7;
+				border: solid 1px #0076a3;
+				background: #0095cd;
+				background: -webkit-gradient(linear, left top, left bottom, from(#00adee), to(#0078a5));
+				background: -moz-linear-gradient(top,  #00adee,  #0078a5);
+				filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#00adee', endColorstr='#0078a5');
+
+				&:hover {
+					background: #007ead;
+					background: -webkit-gradient(linear, left top, left bottom, from(#0095cc), to(#00678e));
+					background: -moz-linear-gradient(top,  #0095cc,  #00678e);
+					filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#0095cc', endColorstr='#00678e');
+				}
+				&:active {
+					color: #80bed6;
+					background: -webkit-gradient(linear, left top, left bottom, from(#0078a5), to(#00adee));
+					background: -moz-linear-gradient(top,  #0078a5,  #00adee);
+					filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#0078a5', endColorstr='#00adee');
+				}
+			}
+		}
+		.icons {
+			width: 60px;
+			height: 60px;
+			float: left;
+		}
+		#class-icon {
+			background: url("../img/leftIcons.png") 0 0;
+		}
+		#add-icon {
+			background: url("../img/leftIcons.png") -60px 0;
+		}
+		#recycle-bin-icon {
+			background: url("../img/leftIcons.png") -120px 0;
+		}
+		p {
+			margin: 0;
+			padding-top: 15px;
+			font-family: @font-small;
+			font-size: 150%;
+			color: #0e93d5;
+			text-align: left;
+			vertical-align: middle;
+			-webkit-touch-callout: none;
+			-webkit-user-select: none;
+			-khtml-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
 	}
-}
 
 	#panel-right {
 		background-color: White;

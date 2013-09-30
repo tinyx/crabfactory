@@ -10,4 +10,8 @@ urlpatterns = patterns('',
     url(r'^reg/$', views.todo_reg, name='todo_reg'),
     url(r'^main/$', \
         login_required(TemplateView.as_view(template_name='todo_main.html')), name='todo_main'),
+    url(r'main/class/get/$', views.get_event_classes),
+    url(r'main/class/add/$', views.add_event_class),
+    url(r'main/class/update/$', views.update_event_class),
+    url(r'main/class/order/$', views.update_event_classes_order),
 )

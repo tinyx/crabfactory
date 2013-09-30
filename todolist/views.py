@@ -1,12 +1,13 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.views.generic.base import TemplateView
 from todolist.models import Event, EventClass
 from todolist.forms import TodoUserForm
+import json
 
 def todo_login(request):
     """
@@ -41,16 +42,31 @@ def todo_reg(request):
         error_info = todo_user_form.errors
         if todo_user_form.is_valid():
             new_user = todo_user_form.save()
+            # Create the 'Default' Class for the new user
+            default_class = EventClass.objects.create(name='Default', order='0', user=new_user)
+            new_user = authenticate(username=request.POST['username'],\
+                                    password=request.POST['password1'])
+            login(request, new_user)
             return HttpResponseRedirect(reverse('todo_main'))
     return render_to_response('todo_reg.html', \
                               {'error_info': error_info, }, \
                               RequestContext(request))
 
-def get_event_classes(request, user_id):
+def get_event_classes(request):
     """
     Get the classes of the given user id
     """
-    return True
+    if request.user.is_authenticated():
+        response = {}
+        response['data'] = map(lambda x: {  'id': x.id,\
+                                            'name': x.name,\
+                                            'order': x.order,},
+                               EventClass.objects.filter(user=request.user))
+        return HttpResponse(json.dumps(response),\
+                            content_type='application/json')
+    return render_to_response('todo_login.html', \
+                              {'error_info': 'Session expired, please login again.', }, \
+                              RequestContext(request))
 
 def get_events(request, user_id, class_id):
     """
