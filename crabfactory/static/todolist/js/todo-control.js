@@ -1,6 +1,6 @@
 $(document).ready(function() {
-	initial();
-	displayClasses();
+    initial();
+    displayClasses();
 });
 
 function initial() {
@@ -13,58 +13,58 @@ function initial() {
 function displayClasses() {
     $.blockUI();
     $.get("class/get", function(data) {
-    	$.unblockUI();
-    	var result = data.data;
-	    var classList = $("#class-list");
-	    for(var i = 0; i < result.length; i++) {
-	        if(0 == i)
-	            classList.append(getNewClassTable(result[i].name, result[i].id, "unclassified"));
-	        else
-	            classList.append(getNewClassTable(result[i].name, result[i].id, "classesli"));
-	    }
-	    //classes handler
-	    //$(".sortableClasses").sortable().bind('sortupdate', updateClassesOrder);
-	    //$(".unclassified").sortable("destroy");
-	    //$(".unclassified").attr("draggable", "false");
-	    //$(".unclassified").addClass("selected");
+        $.unblockUI();
+        var result = data.data;
+        var classList = $("#class-list");
+        for(var i = 0; i < result.length; i++) {
+            if(0 == i)
+                classList.append(getNewClassTable(result[i].name, result[i].id, "unclassified"));
+            else
+                classList.append(getNewClassTable(result[i].name, result[i].id, "classesli"));
+        }
+        //classes handler
+        //$(".sortableClasses").sortable().bind('sortupdate', updateClassesOrder);
+        //$(".unclassified").sortable("destroy");
+        //$(".unclassified").attr("draggable", "false");
+        //$(".unclassified").addClass("selected");
     })
 }
 
 function getNewClassTable(name, id, liCssClass) {
     var classLi = $("<li/>", {
-    	"class": liCssClass,
+        "class": liCssClass,
     });
     var classTable = $("<table/>", {
-    	"cellPadding": 0,
-    	"cellSpacing": 0,
-    	"class": "li-table",
+        "cellPadding": 0,
+        "cellSpacing": 0,
+        "class": "li-table",
     });
 
     var classTr = $("<tr/>", {
-    	"id": id,
-    	"class": "li-tr",
-    	//"onclick": clickClass,
-    	//"onmouseover": classLiMouseOver,
-    	//"onmouseout": classLiMouseOut,
+        "id": id,
+        "class": "li-tr",
+        //"onclick": clickClass,
+        //"onmouseover": classLiMouseOver,
+        //"onmouseout": classLiMouseOut,
     });
-    
+
     //name div
     var nameTd = $("<td/>", {
-    	"class": "class-name-td",
+        "class": "class-name-td",
     }).append($("<div/>", {
-    	"class": "class-name-div",
-    	"html": name,
+        "class": "class-name-div",
+        "html": name,
     }));
-    
+
     //delete icon
     var delTd = $("<td/>", {
-    	"class": "del-td",
+        "class": "del-td",
     });
     var delDiv = $("<div/>", {
-    	"id": id,
-    	"class": "del-div",
-    	//"onmouseover": classDelMouseOver,
-    	//"onmouseout": classDelMouseOut,
+        "id": id,
+        "class": "del-div",
+        //"onmouseover": classDelMouseOver,
+        //"onmouseout": classDelMouseOut,
     });
     if("classesli" == liCssClass) {
         //delDiv.onclick(clickDelClass);
