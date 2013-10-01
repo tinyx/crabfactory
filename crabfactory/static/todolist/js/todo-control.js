@@ -45,10 +45,10 @@ function displayClasses() {
             else
                 classList.append(getNewClassTable(result[i].name, result[i].id, "classesli"));
         }
-        //classes handler
-        //$(".sortableClasses").sortable().bind('sortupdate', updateClassesOrder);
-        //$(".unclassified").sortable("destroy");
-        //$(".unclassified").attr("draggable", "false");
+        $("#class-list").sortable({
+            placeholder: "sortable-placeholder",
+            items: "li:not(.unclassified)",
+        });//.bind('sortupdate', updateClassesOrder);
         $(".unclassified").addClass("selected");
     })
 }
