@@ -28,8 +28,8 @@ def todo_login(request):
                 return HttpResponseRedirect(reverse('todo_main'))
         error_info = constants.NAME_PASSWORD_DOESNT_MATCH_MSG
     logout(request)
-    return render_to_response('todo_login.html', \
-                              {'error_info': error_info, }, \
+    return render_to_response('todo_login.html',\
+                              {'error_info': error_info, },\
                               RequestContext(request))
 
 def todo_reg(request):
@@ -66,8 +66,8 @@ def get_event_classes(request):
                                EventClass.objects.filter(user=request.user))
         return HttpResponse(json.dumps(response),\
                             content_type='application/json')
-    return render_to_response('todo_login.html', \
-                              {'error_info': constants.SESSION_EXPIRED_MSG, }, \
+    return render_to_response('todo_login.html',\
+                              {'error_info': constants.SESSION_EXPIRED_MSG, },\
                               RequestContext(request))
 
 def add_event_class(request):
@@ -85,8 +85,8 @@ def add_event_class(request):
         response['data'] = new_event_class.id
         return HttpResponse(json.dumps(response),\
                             content_type='application/json')
-    return render_to_response('todo_login.html', \
-                              {'error_info': constants.SESSION_EXPIRED_MSG, }, \
+    return render_to_response('todo_login.html',\
+                              {'error_info': constants.SESSION_EXPIRED_MSG, },\
                               RequestContext(request))
 
 def update_event_classes_order(request):
@@ -103,8 +103,8 @@ def update_event_classes_order(request):
         response['data'] = new_event_class.id
         return HttpResponse(json.dumps(response),\
                             content_type='application/json')
-    return render_to_response('todo_login.html', \
-                              {'error_info': constants.SESSION_EXPIRED_MSG, }, \
+    return render_to_response('todo_login.html',\
+                              {'error_info': constants.SESSION_EXPIRED_MSG, },\
                               RequestContext(request))
 
 def remove_event_class(request):
@@ -121,8 +121,8 @@ def remove_event_class(request):
         event_class.delete()
         return HttpResponse(json.dumps({}),\
                             content_type='application/json')
-    return render_to_response('todo_login.html', \
-                              {'error_info': constants.SESSION_EXPIRED_MSG, }, \
+    return render_to_response('todo_login.html',\
+                              {'error_info': constants.SESSION_EXPIRED_MSG, },\
                               RequestContext(request))
 
 def get_events(request, user_id, class_id):
