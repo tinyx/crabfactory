@@ -8,11 +8,34 @@ function initial() {
     $.blockUI.defaults.css.background = 'rgba(0,0,0,0)';
     $.blockUI.defaults.css.border = 'rgba(0,0,0,0)';
     $.blockUI.defaults.overlayCSS.opacity = 0;
+    $.ajaxSetup({ 
+     beforeSend: function(xhr, settings) {
+         function getCookie(name) {
+             var cookieValue = null;
+             if (document.cookie && document.cookie != '') {
+                 var cookies = document.cookie.split(';');
+                 for (var i = 0; i < cookies.length; i++) {
+                     var cookie = jQuery.trim(cookies[i]);
+                     // Does this cookie string begin with the name we want?
+                 if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                     cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                     break;
+                 }
+             }
+         }
+         return cookieValue;
+         }
+         if (!(/^http:.*/.test(settings.url) || /^https:.*/.test(settings.url))) {
+             // Only send the token to relative URLs i.e. locally.
+             xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
+         }
+     } 
+});
 }
 
 function displayClasses() {
     $.blockUI();
-    $.get("class/get", function(data) {
+    $.get("class/get/", function(data) {
         $.unblockUI();
         var result = data.data;
         var classList = $("#class-list");
@@ -26,7 +49,7 @@ function displayClasses() {
         //$(".sortableClasses").sortable().bind('sortupdate', updateClassesOrder);
         //$(".unclassified").sortable("destroy");
         //$(".unclassified").attr("draggable", "false");
-        //$(".unclassified").addClass("selected");
+        $(".unclassified").addClass("selected");
     })
 }
 
@@ -68,7 +91,7 @@ function getNewClassTable(name, id, liCssClass) {
     });
     if("classesli" == liCssClass) {
         //delDiv.onclick(clickDelClass);
-        delDiv.style.visibility="hidden";
+        delDiv.css("display", "hidden");
         delTd.append(delDiv);
     }
     classTr.append(nameTd);
@@ -76,4 +99,33 @@ function getNewClassTable(name, id, liCssClass) {
     classTable.append(classTr);
     classLi.append(classTable);
     return classLi;
+}
+
+function addNewClass() {
+    $.blockUI();
+    var postData = {};
+    var className = $("#add-new-class-input").val();
+    if("" == className) {
+        alert("Class name should not be empty.");
+        $.unblockUI();
+        return;
+    }
+    postData.className = className;
+    postData.order = $(".classesliText").length + 1;
+    $.post("class/add/", postData)
+        .done(function(data) {
+            var result = data.data;
+            $("#add-new-class-input").val("");
+            $("#class-list").append(getNewClassTable(className, result, "classesli"));
+            //$(".sortableClasses").sortable('destroy');
+            //$(".sortableClasses").sortable().bind('sortupdate', updateClassesOrder);
+            //$(".unclassified").sortable("destroy");
+            $.unblockUI();
+        })
+}
+
+function classOnKeyDown() {
+    if(event.keyCode == 13)
+        addNewClass();
+    else return event.keyCode;
 }

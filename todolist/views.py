@@ -68,13 +68,27 @@ def get_event_classes(request):
                               {'error_info': 'Session expired, please login again.', }, \
                               RequestContext(request))
 
+def add_event_class(request):
+    if request.user.is_authenticated():
+        print request.POST
+        class_name = request.POST.get('className', None)
+        class_order = request.POST.get('order', None)
+        new_event_class = EventClass.objects.\
+                                create( user=request.user,
+                                        name=class_name,
+                                        order=class_order)
+        response = {}
+        response['data'] = new_event_class.id
+        return HttpResponse(json.dumps(response),\
+                            content_type='application/json')
+    return render_to_response('todo_login.html', \
+                              {'error_info': 'Session expired, please login again.', }, \
+                              RequestContext(request))
+
 def get_events(request, user_id, class_id):
     """
     Get the events of the given class id
     """
-    return True
-
-def add_event_class(request, user_id):
     return True
 
 def add_event(request, user_id, class_id):
