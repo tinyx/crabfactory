@@ -14,26 +14,26 @@
             <li>
                 <p>User Name:</p>
                 <input type="text" name="username" id="username">
-                <p>{{ form.username.errors }}</p>
+                <p>{{ error_info.username.errors }}</p>
             </li>
             <li>
                 <p>Password:</p>
                 <input type="password" name="password1" id="password1">
-                <p>{{ form.password1.errors }}</p>
+                <p>{{ error_info.password1.errors }}</p>
             </li>
             <li>
                 <p>Confirm password:</p>
                 <input type="password" name="password2" id="password2">
-                <p>{{ form.password2.errors }}</p>
+                <p>{{ error_info.password2.errors }}</p>
             </li>
             <li>
                 <p>E-mail:</p>
                 <input type="text" name="email" id="email">
-                <p>{{ form.email.errors }}</p>
+                <p>{{ error_info.email.errors }}</p>
             </li>
             </li>
         </ul>
-        <p>{{ form.non_field_errors.errors }}</p>
+        <p>{{ error_info.non_field_errors.errors }}</p>
         <input type="submit" class="create_button" value="Create!">
     </form>
 </div>

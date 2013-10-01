@@ -41,7 +41,6 @@ def todo_reg(request):
     error_info = ''
     if request.POST:
         todo_user_form = TodoUserForm(request.POST)
-        error_info = todo_user_form.errors
         if todo_user_form.is_valid():
             new_user = todo_user_form.save()
             # Create the 'Default' Class for the new user
@@ -50,6 +49,7 @@ def todo_reg(request):
                                     password=request.POST['password1'])
             login(request, new_user)
             return HttpResponseRedirect(reverse('todo_main'))
+        error_info = todo_user_form.errors
     return render_to_response('todo_reg.html', \
                               {'error_info': error_info, }, \
                               RequestContext(request))
