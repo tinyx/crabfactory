@@ -8,7 +8,7 @@ function initial() {
     $.blockUI.defaults.css.background = 'rgba(0,0,0,0)';
     $.blockUI.defaults.css.border = 'rgba(0,0,0,0)';
     $.blockUI.defaults.overlayCSS.opacity = 0;
-    $.ajaxSetup({ 
+    $.ajaxSetup({
      beforeSend: function(xhr, settings) {
          function getCookie(name) {
              var cookieValue = null;
@@ -29,7 +29,7 @@ function initial() {
              // Only send the token to relative URLs i.e. locally.
              xhr.setRequestHeader("X-CSRFToken", getCookie('csrftoken'));
          }
-     } 
+     }
 });
 }
 
@@ -56,6 +56,7 @@ function displayClasses() {
 function getNewClassTable(name, id, liCssClass) {
     var classLi = $("<li/>", {
         "class": liCssClass,
+        "id": id,
     });
     var classTable = $("<table/>", {
         "cellPadding": 0,
