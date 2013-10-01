@@ -63,7 +63,8 @@ def get_event_classes(request):
         response['data'] = map(lambda x: {  'id': x.id,\
                                             'name': x.name,\
                                             'order': x.order,},
-                               EventClass.objects.filter(user=request.user))
+                               EventClass.objects.filter(user=request.user)\
+                                                    .order_by('order'))
         return HttpResponse(json.dumps(response),\
                             content_type='application/json')
     return render_to_response('todo_login.html',\
@@ -96,12 +97,13 @@ def update_event_classes_order(request):
     containing id and order or each event class
     """
     if request.user.is_authenticated():
-        event_class_dict = request.POST.get('classOrder', None)
-        for event_class in event_class_dict:
-            EventClass.objects.get(id=event_class['id']).update(order=event_class['order'])
+        for event_class_id in request.POST:
+            print event_class_id
+            print request.POST[event_class_id]
+            EventClass.objects.filter(id=event_class_id).\
+                    update(order=request.POST[event_class_id])
         response = {}
-        response['data'] = new_event_class.id
-        return HttpResponse(json.dumps(response),\
+        return HttpResponse(json.dumps({}),\
                             content_type='application/json')
     return render_to_response('todo_login.html',\
                               {'error_info': constants.SESSION_EXPIRED_MSG, },\

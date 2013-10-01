@@ -48,9 +48,25 @@ function displayClasses() {
         $("#class-list").sortable({
             placeholder: "sortable-placeholder",
             items: "li:not(.unclassified)",
-        });//.bind('sortupdate', updateClassesOrder);
+            update: updateClassesOrder,
+        });
         $(".unclassified").addClass("selected");
     })
+}
+
+function updateClassesOrder() {
+    $.blockUI();
+    var postData = {};
+    var i = 1;
+    $("#class-list li").each(function () {
+        var id = $(this).attr("id");
+        var order = i++;
+        postData[id] = order;
+    });
+    $.post("class/order/", postData)
+        .done(function(data) {
+            $.unblockUI();
+        });
 }
 
 function getNewClassTable(name, id, liCssClass) {
