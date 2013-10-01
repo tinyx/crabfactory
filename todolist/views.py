@@ -1,12 +1,14 @@
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from django.db.models import F
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.views.generic.base import TemplateView
 from todolist.models import Event, EventClass
 from todolist.forms import TodoUserForm
+from todolist import constants
 import json
 
 def todo_login(request):
@@ -24,10 +26,10 @@ def todo_login(request):
             if user.is_active:
                 login(request, user)
                 return HttpResponseRedirect(reverse('todo_main'))
-        error_info = 'Your username and password doesn\'t match, please try again.'
+        error_info = constants.NAME_PASSWORD_DOESNT_MATCH_MSG
     logout(request)
-    return render_to_response('todo_login.html', \
-                              {'error_info': error_info, }, \
+    return render_to_response('todo_login.html',\
+                              {'error_info': error_info, },\
                               RequestContext(request))
 
 def todo_reg(request):
@@ -64,13 +66,15 @@ def get_event_classes(request):
                                EventClass.objects.filter(user=request.user))
         return HttpResponse(json.dumps(response),\
                             content_type='application/json')
-    return render_to_response('todo_login.html', \
-                              {'error_info': 'Session expired, please login again.', }, \
+    return render_to_response('todo_login.html',\
+                              {'error_info': constants.SESSION_EXPIRED_MSG, },\
                               RequestContext(request))
 
 def add_event_class(request):
+    """
+    Add a new event class to the given user
+    """
     if request.user.is_authenticated():
-        print request.POST
         class_name = request.POST.get('className', None)
         class_order = request.POST.get('order', None)
         new_event_class = EventClass.objects.\
@@ -81,8 +85,44 @@ def add_event_class(request):
         response['data'] = new_event_class.id
         return HttpResponse(json.dumps(response),\
                             content_type='application/json')
-    return render_to_response('todo_login.html', \
-                              {'error_info': 'Session expired, please login again.', }, \
+    return render_to_response('todo_login.html',\
+                              {'error_info': constants.SESSION_EXPIRED_MSG, },\
+                              RequestContext(request))
+
+def update_event_classes_order(request):
+    """
+    Update the order of the event classes of the
+    given user. There should be a dictionary in the request
+    containing id and order or each event class
+    """
+    if request.user.is_authenticated():
+        event_class_dict = request.POST.get('classOrder', None)
+        for event_class in event_class_dict:
+            EventClass.objects.get(id=event_class['id']).update(order=event_class['order'])
+        response = {}
+        response['data'] = new_event_class.id
+        return HttpResponse(json.dumps(response),\
+                            content_type='application/json')
+    return render_to_response('todo_login.html',\
+                              {'error_info': constants.SESSION_EXPIRED_MSG, },\
+                              RequestContext(request))
+
+def remove_event_class(request):
+    """
+    Remove the given event class, and update the
+    order of the rest classes
+    """
+    if request.user.is_authenticated():
+        class_id = request.POST.get('classId', None)
+        event_class = EventClass.objects.get(id=class_id)
+        EventClass.objects.filter(user=request.user).\
+                            filter(order__gt=event_class.order).\
+                            update(order=F('order')-1)
+        event_class.delete()
+        return HttpResponse(json.dumps({}),\
+                            content_type='application/json')
+    return render_to_response('todo_login.html',\
+                              {'error_info': constants.SESSION_EXPIRED_MSG, },\
                               RequestContext(request))
 
 def get_events(request, user_id, class_id):
@@ -94,19 +134,10 @@ def get_events(request, user_id, class_id):
 def add_event(request, user_id, class_id):
     return True
 
-def update_event_class(request, class_id):
-    return True
-
 def update_event(request, event_id):
     return True
 
-def remove_event_class(request, class_id):
-    return True
-
 def remove_event(request, event_id):
-    return True
-
-def update_event_classes_order(request, user_id):
     return True
 
 def update_events_order(request, user_id, class_id):
