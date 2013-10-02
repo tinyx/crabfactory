@@ -98,9 +98,7 @@ def update_event_classes_order(request):
     """
     if request.user.is_authenticated():
         for event_class_id in request.POST:
-            print event_class_id
-            print request.POST[event_class_id]
-            EventClass.objects.filter(id=event_class_id).\
+            EventClass.objects.filter(user=request.user).filter(id=event_class_id).\
                     update(order=request.POST[event_class_id])
         response = {}
         return HttpResponse(json.dumps({}),\
@@ -116,7 +114,7 @@ def remove_event_class(request):
     """
     if request.user.is_authenticated():
         class_id = request.POST.get('classId', None)
-        event_class = EventClass.objects.get(id=class_id)
+        event_class = EventClass.objects.filter(user=request.user).get(id=class_id)
         EventClass.objects.filter(user=request.user).\
                             filter(order__gt=event_class.order).\
                             update(order=F('order')-1)
