@@ -63,7 +63,7 @@ def get_event_classes(request):
         response['data'] = map(lambda x: {  'id': x.id,\
                                             'name': x.name,\
                                             'order': x.order,},
-                               EventClass.objects.filter(user=request.user)\
+                               EventClass.get_classes_by_user(request.user)\
                                                     .order_by('order'))
         return HttpResponse(json.dumps(response),\
                             content_type='application/json')
@@ -98,7 +98,7 @@ def update_event_classes_order(request):
     """
     if request.user.is_authenticated():
         for event_class_id in request.POST:
-            EventClass.objects.filter(user=request.user).filter(id=event_class_id).\
+            EventClass.get_classes_by_user(request.user).filter(id=event_class_id).\
                     update(order=request.POST[event_class_id])
         response = {}
         return HttpResponse(json.dumps({}),\
@@ -114,8 +114,8 @@ def remove_event_class(request):
     """
     if request.user.is_authenticated():
         class_id = request.POST.get('classId', None)
-        event_class = EventClass.objects.filter(user=request.user).get(id=class_id)
-        EventClass.objects.filter(user=request.user).\
+        event_class = EventClass.get_classes_by_user(request.user).get(id=class_id)
+        EventClass.get_classes_by_user(request.user).\
                             filter(order__gt=event_class.order).\
                             update(order=F('order')-1)
         event_class.delete()
