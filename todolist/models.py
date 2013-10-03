@@ -22,22 +22,11 @@ class EventClass(models.Model):
         verbose_name_plural = 'Event Classes'
 
 class Event(models.Model):
-    HIGH = 'H'
-    MEDIUM = 'M'
-    NORMAL = 'N'
-    LOW = 'L'
-    EVENT_PRIORITY_LIST = (
-        (HIGH, 'High'),
-        (MEDIUM, 'Medium'),
-        (NORMAL, 'Normal'),
-        (LOW, 'Low'),
-    )
     eventclass = models.ForeignKey(EventClass)
     order = models.IntegerField()
-    priority = models.CharField(max_length = 20, \
-                                choices = EVENT_PRIORITY_LIST, default = NORMAL)
+    priority = models.IntegerField(default = 0)
     content = models.TextField()
-    duedate = models.DateTimeField()
+    duedate = models.DateField()
     done = models.BooleanField(default = False)
 
     def __unicode__(self):
@@ -49,10 +38,11 @@ class Event(models.Model):
         in the format of dictionary
         """
         return {
+            'id': self.id,
             'order': self.order,
             'priority': self.priority,
             'content': self.content,
-            'duedate': self.duedate,
+            'duedate': str(self.duedate),
             'done': self.done,
         }
 
@@ -62,8 +52,17 @@ class Event(models.Model):
         Return a list of events based on the
         given eventclass id
         """
-        return map(lambda x: x.to_dict() \
-                   for x in cls.objects.filter(eventclass__pk=eventclass))
+        return cls.objects.filter(eventclass__pk=eventclass)
+
+    @classmethod
+    def get_events_dict_by_class(cls, eventclass):
+        """
+        Return a list of events based on the
+        given eventclass id
+        """
+        return map(lambda x: x.to_dict(),
+                    cls.objects.filter(eventclass__pk=eventclass)\
+                                .order_by('order'))
 
     class Meta:
         verbose_name = 'Event'

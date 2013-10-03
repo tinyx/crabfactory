@@ -17,20 +17,20 @@
     <table id="panel" cellpadding="0" cellspacing="0">
         <tr valign="top">
             <td id="panel-left">
-                <div id="class-label" onclick="$('#class-list').slideToggle();">
+                <div id="class-label" onclick="$('#class-list').slideToggle()">
                     <div id="class-icon" class="icons">
                     </div>
                     <p>Classes</p>
                 </div>
                 <ul id="class-list">
                 </ul>
-                <div id="add-new-class-label" onclick="$('#add-new-class-container').slideToggle();">
+                <div id="add-new-class-label" onclick="$('#add-new-class-container').slideToggle()">
                     <div id="add-icon" class="icons">
                     </div>
                     <p>Add new class</p>
                 </div>
                 <div id="add-new-class-container" style="display: none">
-                    <input type="text" onkeydown="javascript:classOnKeyDown();" id="add-new-class-input"/>
+                    <input type="text" onkeydown="classOnKeyDown()" id="add-new-class-input"/>
                     <div id="add-new-class-button" onclick="javascript:addNewClass();return false;">Add</div>
                 </div>
                 <div ondrop="drop(event)" ondragenter="enterRecycle(event)" ondragleave="leaveRecycle(event)" ondragover="allowDrop(event)" id="recycle-bin-label">
@@ -59,12 +59,12 @@
                     <p>Add new event</p>
                  </div>
                  <div class="add-new-event down">
-                    <input type="text" id="add-event-text" onkeydown="javascript:eventOnKeyDown();"/>
+                    <input type="text" id="add-event-text" onkeydown="eventOnKeyDown();"/>
                     <input type="text" readonly="readonly" id="calender" class="calender" />
-                    <div id="add-event-button" onclick="javascript:addNewEvent();return false;"></div>
+                    <div id="add-event-button" onclick="addNewEvent();"></div>
                 </div>
                 <div id="show-done-event">
-                    <p onclick="javascript:displayDoneListStarter();return false;">Show Done Events</p>
+                    <p onclick="displayDoneListStarter();">Show Done Events</p>
                 </div>
                 <ul id="done-list">
                 </ul>

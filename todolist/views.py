@@ -61,9 +61,8 @@ def get_event_classes(request):
     if request.user.is_authenticated():
         response = {}
         response['data'] = map(lambda x: {  'id': x.id,\
-                                            'name': x.name,\
-                                            'order': x.order,},
-                               EventClass.get_classes_by_user(request.user)\
+                                            'name': x.name,},
+                               EventClass.get_classes_by_user(request.user.id)\
                                                     .order_by('order'))
         return HttpResponse(json.dumps(response),\
                             content_type='application/json')
@@ -76,12 +75,12 @@ def add_event_class(request):
     Add a new event class to the given user
     """
     if request.user.is_authenticated():
-        class_name = request.POST.get('className', None)
-        class_order = request.POST.get('order', None)
-        new_event_class = EventClass.objects.\
-                                create( user=request.user,
-                                        name=class_name,
-                                        order=class_order)
+        new_event_class_dict = {
+            'user': request.user,
+            'name': request.POST.get('className', None),
+            'order': request.POST.get('order', None),
+        }
+        new_event_class = EventClass.objects.create(**new_event_class_dict)
         response = {}
         response['data'] = new_event_class.id
         return HttpResponse(json.dumps(response),\
@@ -98,9 +97,8 @@ def update_event_classes_order(request):
     """
     if request.user.is_authenticated():
         for event_class_id in request.POST:
-            EventClass.get_classes_by_user(request.user).filter(id=event_class_id).\
+            EventClass.get_classes_by_user(request.user.id).filter(id=event_class_id).\
                     update(order=request.POST[event_class_id])
-        response = {}
         return HttpResponse(json.dumps({}),\
                             content_type='application/json')
     return render_to_response('todo_login.html',\
@@ -114,10 +112,7 @@ def remove_event_class(request):
     """
     if request.user.is_authenticated():
         class_id = request.POST.get('classId', None)
-        event_class = EventClass.get_classes_by_user(request.user).get(id=class_id)
-        EventClass.get_classes_by_user(request.user).\
-                            filter(order__gt=event_class.order).\
-                            update(order=F('order')-1)
+        event_class = EventClass.get_classes_by_user(request.user.id).get(id=class_id)
         event_class.delete()
         return HttpResponse(json.dumps({}),\
                             content_type='application/json')
@@ -125,20 +120,63 @@ def remove_event_class(request):
                               {'error_info': constants.SESSION_EXPIRED_MSG, },\
                               RequestContext(request))
 
-def get_events(request, user_id, class_id):
+def get_event(request):
     """
     Get the events of the given class id
     """
+    if request.user.is_authenticated():
+        response = {}
+        class_id = request.GET.get('classId', None)
+        response['data'] = Event.get_events_dict_by_class(class_id)
+        return HttpResponse(json.dumps(response),\
+                            content_type='application/json')
+    return render_to_response('todo_login.html',\
+                              {'error_info': constants.SESSION_EXPIRED_MSG, },\
+                              RequestContext(request))
+
+def add_event(request):
+    """
+    Add a new event to the given user
+    """
+    if request.user.is_authenticated():
+        event_class = EventClass.objects.get(id=request.POST.get('classId', None))
+        new_event_dict = {
+            'eventclass': event_class,
+            'content': request.POST.get('content', None),
+            'priority': 0,
+            'done': 0,
+            'order': request.POST.get('order', None),
+            'duedate': request.POST.get('dueDate', None),
+        }
+        new_event = Event.objects.create(**new_event_dict)
+        response = {}
+        response['data'] = new_event.id
+        return HttpResponse(json.dumps(response),\
+                            content_type='application/json')
+    return render_to_response('todo_login.html',\
+                              {'error_info': constants.SESSION_EXPIRED_MSG, },\
+                              RequestContext(request))
+
+def update_event(request):
     return True
 
-def add_event(request, user_id, class_id):
+def update_events_order(request):
+    """
+    Update the order of the events of the
+    given user. There should be a dictionary in the request
+    containing id and order or each event
+    """
+    if request.user.is_authenticated():
+        class_id = request.POST.get('classId', None)
+        print request.POST
+        for event_id in request.POST:
+            Event.objects.filter(id=event_id).update(order=request.POST[event_id])
+        return HttpResponse(json.dumps({}),\
+                            content_type='application/json')
+    return render_to_response('todo_login.html',\
+                              {'error_info': constants.SESSION_EXPIRED_MSG, },\
+                              RequestContext(request))
+
+def remove_event(request):
     return True
 
-def update_event(request, event_id):
-    return True
-
-def remove_event(request, event_id):
-    return True
-
-def update_events_order(request, user_id, class_id):
-    return True

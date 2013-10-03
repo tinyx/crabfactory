@@ -13,4 +13,8 @@ urlpatterns = patterns('',
     url(r'main/class/get/$', views.get_event_classes),
     url(r'main/class/add/$', views.add_event_class),
     url(r'main/class/order/$', views.update_event_classes_order),
+    url(r'main/class/remove/$', views.remove_event_class),
+    url(r'main/event/get/$', views.get_event),
+    url(r'main/event/order/$', views.update_events_order),
+    url(r'main/event/add/$', views.add_event),
 )
