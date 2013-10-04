@@ -260,73 +260,106 @@
 
                     .event-pri-td {
                         width: 5%;
+
+                        .event-pri {
+                            .centered-container(30px);
+                            position: relative;
+                            height: 30px;
+                            background-image: url("../img/priorities.png");
+
+                            &.pri0 {
+                                background-position: 0 0,
+                            }
+                            &.pri1 {
+                                background-position: -30px 0,
+                            }
+                            &.pri2 {
+                                background-position: 0 -30px,
+                            }
+                            &.pri3 {
+                                background-position: -30px -30px,
+                            }
+                        }
+                        .pri-picker {
+                            width:30px;
+                            height:30px;
+                            background-color:White;
+                            padding: 0;
+
+                            tr {
+                                height: 50%;
+
+                                td {
+                                    width: 50%;
+
+                                    &.cell0 {
+                                        background-color: @color-due-longer;
+                                    }
+                                    &.cell1 {
+                                        background-color: @color-due-shortly;
+                                    }
+                                    &.cell2 {
+                                        background-color: @color-due-today;
+                                    }
+                                    &.cell3 {
+                                        background-color: @color-overdue;
+                                    }
+                                }
+                            }
+                        }
                     }
                     .event-check-td {
                         width: 5%;
                     }
                     .event-text-td {
                         width: 65%;
+
+                        .event-text {
+                            border-width: 0;
+                            width: 100%;
+                            height: 100%;
+                            vertical-align: bottom;
+                            font-family: @font-content;
+                        }
                     }
                     .event-due-td {
                         width: 20%;
+
+                        .event-due {
+                            width: 90px;
+                            height: 20px;
+                            text-align: center;
+                            padding-top: 5px;
+                            margin-left: 10px;
+                            font-family: @font-content;
+                            font-weight: 700;
+                            font-size: 70%;
+                            color: White;
+
+                            &.event-overdue {
+                                background-color: @color-overdue;
+                            }
+                            &.event-due-today {
+                                background-color: @color-due-today;
+                            }
+                            &.event-due-shortly {
+                                background-color: @color-due-shortly;
+                            }
+                            &.event-due-longer {
+                                background-color: @color-due-longer;
+                            }
+                            &.event-due-very-long {
+                                background-color: @color-due-very-long;
+                            }
+                        }
                     }
                     .event-del-td {
                         width: 5%;
                     }
                 }
-                .event-pri {
-                    .centered-container(30px);
-                    position: relative;
-                    height: 30px;
-                    background-image: url("../img/priorities.png");
+                
 
-                    &.pri0 {
-                        background-position: 0 0,
-                    }
-                    &.pri1 {
-                        background-position: -30px 0,
-                    }
-                    &.pri2 {
-                        background-position: 0 -30px,
-                    }
-                    &.pri3 {
-                        background-position: -30px -30px,
-                    }
-                }
-                .event-text {
-                    border-width: 0;
-                    width: 100%;
-                    height: 100%;
-                    vertical-align: bottom;
-                    font-family: @font-content;
-                }
-                .event-due {
-                    width: 90px;
-                    height: 20px;
-                    text-align: center;
-                    padding-top: 5px;
-                    margin-left: 10px;
-                    font-family: @font-content;
-                    font-weight: 700;
-                    font-size: 70%;
-                    color: White;
 
-                    &.event-overdue {
-                        background-color: @color-overdue;
-                    }
-                    &.event-due-today {
-                        background-color: @color-due-today;
-                    }
-                    &.event-due-shortly {
-                        background-color: @color-due-shortly;
-                    }
-                    &.event-due-longer {
-                        background-color: @color-due-longer;
-                    }
-                    &.event-due-very-long {
-                        background-color: @color-due-very-long;
-                    }
-                }
             }
         }
         .add-new-event {

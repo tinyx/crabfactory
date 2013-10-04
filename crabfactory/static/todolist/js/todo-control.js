@@ -208,7 +208,7 @@ var classOnKeyDown = function() {
 }
 
 var displayEvents = function() {
-    $.blockUI(); 
+    $.blockUI();
     postData = {
         "classId": $("#class-list>.selected").attr("id"),
     }
@@ -238,11 +238,11 @@ var displayEventsHelper = function(data) {
     else if(2 === sortedby) { //sorted by priority
         data.sort(function (a,b) {return a["priority"] < b["priority"] ? 1 : 0;});
     }
-    
+
     for(var i = 0; i < data.length; i++) {
         $("#event-list").append(getNewEventTable(data[i].id, data[i].priority, data[i].done, data[i].duedate, data[i].content));
     }
-    
+
     if(0 === sortedby) { //sorted by order
         $("#event-list").sortable("refresh");
         $("#event-list").removeClass("undraggable");
@@ -267,11 +267,11 @@ var getNewEventTable = function(eventid, priority, done, duedate, content) {
 
     //priority icon
     var priorityDiv = $("<div/>", {
-        "event-pri-id": eventid,
+        "id": eventid,
         "class": "event-pri pri" + priority,
         "priority": priority,
-    });//.mouseover(showPriPicker)
-        //.mouseout(removePriPicker);
+    }).mouseover(showPriPicker)
+        .mouseout(removePriPicker);
     newRow.append($("<td/>", {
         "class": "event-pri-td",
     }).append(priorityDiv));
@@ -306,7 +306,7 @@ var getNewEventTable = function(eventid, priority, done, duedate, content) {
     if(gap < 0) { //overdue
         $(dueDateDiv).addClass("event-overdue");
         if(gap === -1) {
-            dueText = "Overdue 1 day";  
+            dueText = "Overdue 1 day";
         }
         else {
             dueText = "Overdue " + gap * -1 + " days";
@@ -336,7 +336,7 @@ var getNewEventTable = function(eventid, priority, done, duedate, content) {
     newRow.append($("<td/>", {
         "class": "event-due-td",
     }).append(dueDateDiv));
-    
+
     //delete icon
     var deleteDiv = $("<div/>", {
         "id": eventid,
@@ -404,4 +404,73 @@ var getRestDays = function(dueDate) {
     var today = new Date();
     var gap = parseInt((date.getTime() - today.getTime()) / 86400000);
     return gap;
+}
+
+var showPriPicker = function(ev) {
+    if(isMouseLeaveOrEnter(ev, this)) {
+        var eventid = $(this).attr("id");
+        var priPickerTable = $("<table/>", {
+            "id": eventid,
+            "class": "pri-picker",
+            "style": "display: none",
+        }).append(
+            $("<tr/>").append($("<td/>", {
+                "class": "cell3",
+            }).click(function() {
+                //updateEventPri(eventid, 3);
+            }))
+            .append($("<td/>", {
+                "class": "cell2",
+            }).click(function() {
+                //updateEventPri(eventid, 2);
+            }))
+        ).append(
+            $("<tr/>").append($("<td/>", {
+                "class": "cell1",
+            }).click(function() {
+                //updateEventPri(eventid, 1);
+            }))
+            .append($("<td/>", {
+                "class": "cell0",
+            }).click(function() {
+                //updateEventPri(eventid, 0);
+            }))
+        );
+
+        $(this).append(priPickerTable);
+        $(priPickerTable).fadeIn("fast");
+        //showPriHintWindow();
+     }
+     else return;
+}
+
+ removePriPicker = function(ev) {
+    if(isMouseLeaveOrEnter(ev,this)) {
+        var eventid = $(this).attr("id");
+        $("#" + eventid + ".pri-picker").remove();
+        //hidePriHintWindow();
+    }
+    else return;
+}
+
+var isMouseLeaveOrEnter = function(ev, handler) {   
+    if (ev.type != 'mouseout' && ev.type != 'mouseover') return false;   
+    var reltg = ev.relatedTarget ? ev.relatedTarget : ev.type == 'mouseout' ? ev.toElement : ev.fromElement;   
+    while (reltg && reltg != handler)   
+        reltg = reltg.parentNode;   
+    return (reltg != handler);   
+}
+
+var showPriHintWindow = function() {
+    var left = document.body.clientWidth / 2 - 200;
+    $(".priHintWindow").css("left", left+"px");
+    $(".priHintWindow").stop(false, true);
+    if($(".generalHintWindow").css("display") != "none")
+        hideGeneralHintWindow();
+    $(".priHintWindow").fadeIn("fast");
+}
+
+var hidePriHintWindow = function() {
+    $(".priHintWindow").stop(false, true);
+    $(".priHintWindow").fadeOut("fast");
 }
