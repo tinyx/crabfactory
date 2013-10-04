@@ -44,6 +44,15 @@ var initial = function() {
       dateFormat: 'yy-mm-dd',
     });
     $("#calender").datepicker("setDate", "Now");
+    $("#class-list").sortable({
+        placeholder: "sortable-placeholder",
+        items: "li:not(.unclassified)",
+        update: updateClassesOrder,
+    });
+    $("#event-list").sortable({
+        placeholder: "sortable-placeholder",
+        update: updateEventsOrder,
+    });
 }
 
 var displayClasses = function (){
@@ -58,11 +67,7 @@ var displayClasses = function (){
             else
                 classList.append(getNewClassTable(result[i].name, result[i].id, "classesli"));
         }
-        $("#class-list").sortable({
-            placeholder: "sortable-placeholder",
-            items: "li:not(.unclassified)",
-            update: updateClassesOrder,
-        });
+        $("#class-list").sortable("refresh");
         $(".unclassified").addClass("selected");
         displayEvents();
     })
@@ -191,12 +196,7 @@ var addNewClass = function() {
             var result = data.data;
             $("#add-new-class-input").val("");
             $("#class-list").append(getNewClassTable(className, result, "classesli"));
-            $("#class-list").sortable("destroy");
-            $("#class-list").sortable({
-                placeholder: "sortable-placeholder",
-                items: "li:not(.unclassified)",
-                update: updateClassesOrder,
-            });
+            $("#class-list").sortable("refresh");
             $.unblockUI();
         });
 }
@@ -225,11 +225,12 @@ var displayEventsHelper = function(data) {
     $("#done-list").html("");
     if(0 === data.length) {
         $("#event-list").html("There is no item to display.");
-        //if(1 == showDoneList) displayDoneList();
         return;
     }
     if(0 === sortedby) { //sorted by order
-        
+        //   --|||
+        //  |-.-|  Nothing I can do here...
+        //   ---
     }
     else if(1 === sortedby) { //sorted by duedate
         data.sort(function (a,b) {return a["duedate"] > b["duedate"] ? 1 : 0;});
@@ -243,10 +244,7 @@ var displayEventsHelper = function(data) {
     }
     
     if(0 === sortedby) { //sorted by order
-        $("#event-list").sortable({
-            placeholder: "sortable-placeholder",
-            update: updateEventsOrder,
-        });
+        $("#event-list").sortable("refresh");
         $("#event-list").removeClass("undraggable");
     }
     else { //sorted by other ways
@@ -379,12 +377,8 @@ var addNewEvent = function() {
                 var eventList = $("#event-list");
                 if("There is no item to display." === eventList.innerHTML)
                     eventList.innerHTML = "";
-                eventList.append(getNewEventTable(result.id, 0, 0, postData.dueDate, postData.content));
-                $("#event-list").sortable("destroy");
-                $("#event-list").sortable({
-                    placeholder: "sortable-placeholder",
-                    update: updateEventsOrder,
-                });
+                eventList.append(getNewEventTable(result, 0, 0, postData.dueDate, postData.content));
+                $("#event-list").sortable("refresh");
                 $.unblockUI();
             });
     }
