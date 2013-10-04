@@ -1,6 +1,7 @@
 var dragging;
 var showDoneList = 0;
 var sortedby = 0; //0 = order, 1 = duedate, 2 = priority
+var generalHintWindowHandler = -1;
 
 $(document).ready(function() {
     initial();
@@ -448,7 +449,7 @@ var showPriPicker = function(ev) {
     if(isMouseLeaveOrEnter(ev,this)) {
         var eventid = $(this).attr("id");
         $("#" + eventid + ".pri-picker").remove();
-        //hidePriHintWindow();
+        hidePriHintWindow();
     }
     else return;
 }
@@ -461,16 +462,39 @@ var isMouseLeaveOrEnter = function(ev, handler) {
     return (reltg != handler);   
 }
 
+var showGeneralHintWindow = function(msg) {
+    var left = document.body.clientWidth / 2 - 270;
+    $("#general-hint-window>p").text(msg);
+    $("#general-hint-window").css("left", left+"px");
+    $("#general-hint-window").fadeIn("fast");
+    if(generalHintWindowHandler != -1) {
+        clearInterval(generalHintWindowHandler);
+    }
+    generalHintWindowHandler = setInterval(hideGeneralHintWindow, 5000);
+}
+
+var hideGeneralHintWindow = function() {
+    if(generalHintWindowHandler != -1) {
+        clearInterval(generalHintWindowHandler);
+        generalHintWindowHandler = -1;
+    }
+    if($("#general-hint-window").css("display") == "none") {
+        return;
+    }
+    $("#general-hint-window").fadeOut("fast");
+}
+
 var showPriHintWindow = function() {
     var left = document.body.clientWidth / 2 - 200;
-    $(".priHintWindow").css("left", left+"px");
-    $(".priHintWindow").stop(false, true);
-    if($(".generalHintWindow").css("display") != "none")
+    $("#pri-hint-window").css("left", left+"px");
+    $("#pri-hint-window").stop(false, true);
+    if($("#general-hint-window").css("display") != "none") {
         hideGeneralHintWindow();
-    $(".priHintWindow").fadeIn("fast");
+    }
+    $("#pri-hint-window").fadeIn("fast");
 }
 
 var hidePriHintWindow = function() {
-    $(".priHintWindow").stop(false, true);
-    $(".priHintWindow").fadeOut("fast");
+    $("#pri-hint-window").stop(false, true);
+    $("#pri-hint-window").fadeOut("fast");
 }
