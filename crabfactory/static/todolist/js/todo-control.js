@@ -245,10 +245,12 @@ var displayEventsHelper = function(data) {
     }
 
     if(0 === sortedby) { //sorted by order
+        $("#event-list").sortable("enable");
         $("#event-list").sortable("refresh");
         $("#event-list").removeClass("undraggable");
     }
     else { //sorted by other ways
+        $("#event-list").sortable("disable");
         $("#event-list").addClass("undraggable");
     }
     if(1 === showDoneList) displayDoneList();
@@ -440,7 +442,7 @@ var showPriPicker = function(ev) {
 
         $(this).append(priPickerTable);
         $(priPickerTable).fadeIn("fast");
-        //showPriHintWindow();
+        showPriHintWindow();
      }
      else return;
 }
@@ -497,4 +499,24 @@ var showPriHintWindow = function() {
 var hidePriHintWindow = function() {
     $("#pri-hint-window").stop(false, true);
     $("#pri-hint-window").fadeOut("fast");
+}
+
+var resortEvents = function(type) {
+    $(".sorted-by-icon").filter(".selected").removeClass("selected");
+    if("order" == type) {
+        $(".sorted-by-icon").filter(".sorted-by-order").addClass("selected");
+        sortedby = 0;
+        showGeneralHintWindow("Now the events are sorted by user order, you can rearrange or edit them now.");
+    }
+    else if("duedate" == type) {
+        $(".sorted-by-icon").filter(".sorted-by-duedate").addClass("selected");
+        sortedby = 1;
+        showGeneralHintWindow("Now the events are sorted by due date, they cannot be changed or dragged right now.");
+    }
+    else if("priority" == type) {
+        $(".sorted-by-icon").filter(".sorted-by-priority").addClass("selected");
+        sortedby = 2;
+        showGeneralHintWindow("Now the events are sorted by priority, they cannot be changed or dragged right now.");
+    }
+    displayEvents();
 }

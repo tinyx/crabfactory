@@ -7,10 +7,11 @@
 @color-due-shortly: #00b115;
 @color-due-longer: #0065ab;
 @color-due-very-long: #9c9c9c;
+@color-hint-window: #555B63;
 
 .content {
     .centered-container(900px);
-    margin-top: 30px;
+    margin-top: 50px;
 }
 
 #panel {
@@ -315,6 +316,7 @@
                         width: 65%;
 
                         .event-text {
+                            background-color: inherit;
                             border-width: 0;
                             width: 100%;
                             height: 100%;
@@ -357,9 +359,9 @@
                         width: 5%;
                     }
                 }
-                
-
-
+            }
+            &.undraggable li {
+                background-color: @color-panel-gray;
             }
         }
         .add-new-event {
@@ -422,6 +424,72 @@
                 cursor: pointer;
                 color: @color-text-gray;
             }
+        }
+    }
+}
+
+.hint-window {
+    position: absolute;
+    height: 30px;
+    top: 110px;
+    background-color: @color-hint-window;
+    cursor: default;
+    display: none;
+
+    p {
+        float: left;
+        text-align: left;
+        font-family: @font-title;
+        font-weight: 700;
+        font-size: 70%;
+        color: White;
+        margin: 0 2px;
+        padding: 7px 7px 0 7px;
+    }
+}
+#pri-hint-window {
+    .hint-window;
+    width: 400px;
+
+    div {
+        width: 20px;
+        height: 20px;
+        float: left;
+        margin-top: 5px;
+
+        &.high {
+            background-color: @color-overdue;
+        }
+        &.medium {
+            background-color: @color-due-today;
+        }
+        &.normal {
+            background-color: @color-due-shortly;
+        }
+        &.low {
+            background-color: @color-due-longer;
+        }
+    }
+}
+
+#general-hint-window {
+    .hint-window;
+    width: 600px;
+
+    .hint-window-icon {
+        width: 30px;
+        height: 30px;
+        float: left;
+        background-image: url("../img/bulb.png");
+    }
+    .close-hint-window {
+        width: 30px;
+        height: 30px;
+        float: right;
+        background-image: url("../img/closeHintWindow.png");
+
+        &:hover {
+            background-position: -30px 0;
         }
     }
 }
