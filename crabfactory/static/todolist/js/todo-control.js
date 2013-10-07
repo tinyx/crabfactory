@@ -159,9 +159,7 @@ var classDelMouseOut = function() {
 
 var clickDelClass = function() {
     event.stopPropagation();
-    //$(".sortableClasses>.selected").removeClass("selected");
     var id = $(this).attr('id');
-    //$("[classliid=" + id + "]").addClass("selected");
     var name = $("[classtextid=" + id + "]").text();
     var r=confirm("You sure you wanna delete the class " + name + "?");
     if (r==true) {
@@ -386,8 +384,8 @@ var addNewEvent = function() {
                 var result = data.data;
                 $("#add-event-text").val("");
                 var eventList = $("#event-list");
-                if("There is no item to display." === eventList.innerHTML)
-                    eventList.innerHTML = "";
+                if("There is no item to display." === eventList.html())
+                    eventList.html("");
                 eventList.append(getNewEventTable(result, 0, 0, postData.dueDate, postData.content));
                 $("#event-list").sortable("refresh");
                 $.unblockUI();
@@ -550,10 +548,10 @@ var clickDelEvent = function() {
 }
 
 var deleteEvent = function(id) {
-    if(0 == $("#event-list>li").length)
-            $("#event-list").html("There is no item to display.");
-    if(0 == $(".done-list>li").length)
-            $("#done-list").html("There is no item to display.");
+    if(0 == $("#event-list>li:not(.sortable-placeholder)").length)
+        $("#event-list").html("There is no item to display.");
+    if(0 == $("#done-list>li:not(.sortable-placeholder)").length)
+        $("#done-list").html("There is no item to display.");
     $.blockUI();
     var postData = {};
     postData.eventId = id;
@@ -583,7 +581,6 @@ var drop = function(ev, ui) {
         }
     }
     else if(dropClass.toString().indexOf("doneeventli") > -1) {
-        var id = dragging.attr('doneeventliid');
         var r=confirm("You sure you wanna delete this event?");
         if (r==true)
         {
