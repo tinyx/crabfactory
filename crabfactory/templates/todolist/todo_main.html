@@ -4,12 +4,14 @@
 {% block title %}2do-List{% endblock %}
 {% block extrastyle %}
 <link rel="stylesheet/less" type="text/css" href="{% get_static_prefix %}todolist/css/main.less"/>
+<link rel="stylesheet/less" type="text/css" href="{% get_static_prefix %}todolist/css/jquery.ui.datepicker.css"/>
+<link rel="stylesheet/less" type="text/css" href="{% get_static_prefix %}todolist/css/jquery.ui.theme.css"/>
 {% endblock %}
 {% block header %}
 <div class="navigation">
     <a href="{% url 'todo_login' %}" class="item">LOG OUT</a>
     <p class="item">|</p>
-    <a href="javascript:void(0)" class="item" onclick="javascript:showUserGuide();">USER GUIDE</a>
+    <a href="javascript:void(0)" class="item" onclick="showUserGuide()">USER GUIDE</a>
 </div>
 {% endblock %}
 {% block content %}
@@ -31,9 +33,9 @@
                 </div>
                 <div id="add-new-class-container" style="display: none">
                     <input type="text" onkeydown="classOnKeyDown()" id="add-new-class-input"/>
-                    <div id="add-new-class-button" onclick="javascript:addNewClass();return false;">ADD</div>
+                    <div id="add-new-class-button" onclick="addNewClass()">ADD</div>
                 </div>
-                <div ondrop="drop(event)" ondragenter="enterRecycle(event)" ondragleave="leaveRecycle(event)" ondragover="allowDrop(event)" id="recycle-bin-label">
+                <div id="recycle-bin-label">
                     <div id="recycle-bin-icon" class="icons">
                     </div>
                     <p>Dustbin</p>

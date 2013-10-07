@@ -8,6 +8,7 @@
 @color-due-longer: #0065ab;
 @color-due-very-long: #9c9c9c;
 @color-hint-window: #555B63;
+@color-recycle-bin-red: #c50000;
 
 .content {
     .centered-container(900px);
@@ -35,6 +36,18 @@
 
             p {
                 cursor: default;
+            }
+        }
+        #recycle-bin-label.recycle-on-drop {
+            background-color: @color-recycle-bin-red;
+            background: -webkit-gradient(linear, 0 0, 100% 0, from(#d91414), to(#e47070));
+            background: -moz-linear-gradient(left, #d91414, #e47070);
+
+            p {
+                color: White;
+            }
+            div {
+                background-position: -180px 0;
             }
         }
         #class-list {
@@ -357,11 +370,34 @@
                     }
                     .event-del-td {
                         width: 5%;
+
+                        div {
+                            width: 20px;
+                            height: 20px;
+                            visibility: hidden;
+                            background-image: url("../img/eventDel.png");
+                            background-position: 0 0;
+
+                            &:hover {
+                                background-position: -20px -20px;
+                            }
+                        }
                     }
+                }
+                &.sortable-placeholder {
+                    border: 1px dashed Black;
+                    background: none;
                 }
             }
             &.undraggable li {
                 background-color: @color-panel-gray;
+            }
+            & li:hover {
+                background-color: @color-label-gray;
+
+                .event-del {
+                    visibility: visible;
+                }
             }
         }
         .add-new-event {

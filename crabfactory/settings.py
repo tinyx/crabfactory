@@ -169,3 +169,4 @@ LOGGING = {
     }
 }
 LOGIN_URL = '/todo/login/'
+SESSION_COOKIE_AGE = 60 * 60

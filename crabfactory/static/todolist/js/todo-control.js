@@ -54,6 +54,12 @@ var initial = function() {
         placeholder: "sortable-placeholder",
         update: updateEventsOrder,
     });
+    $("#recycle-bin-label").droppable({
+        connectToSortable: "#class-list, #event-list",
+        hoverClass: "recycle-on-drop",
+        tolerance: "touch",
+        drop: drop,
+    });
 }
 
 var displayClasses = function (){
@@ -178,7 +184,7 @@ var deleteClass = function(id) {
             updateClassesOrder();
             $.unblockUI();
             $(".unclassified").trigger("click");
-        })
+        });
 }
 
 var addNewClass = function() {
@@ -344,7 +350,9 @@ var getNewEventTable = function(eventid, priority, done, duedate, content) {
     var deleteDiv = $("<div/>", {
         "id": eventid,
         "class": "event-del",
-    });//.click(clickDelEvent);
+    }).click(clickDelEvent)
+        .mouseover(classDelMouseOver)
+        .mouseout(classDelMouseOut);
     newRow.append($("<td/>", {
         "class": "event-del-td",
     }).append(deleteDiv));
@@ -447,7 +455,7 @@ var showPriPicker = function(ev) {
      else return;
 }
 
- removePriPicker = function(ev) {
+var removePriPicker = function(ev) {
     if(isMouseLeaveOrEnter(ev,this)) {
         var eventid = $(this).attr("id");
         $("#" + eventid + ".pri-picker").remove();
@@ -519,4 +527,88 @@ var resortEvents = function(type) {
         showGeneralHintWindow("Now the events are sorted by priority, they cannot be changed or dragged right now.");
     }
     displayEvents();
+}
+
+var clickDelEvent = function() {
+    if(0 != sortedby) {
+        alert("Please sort items by order first.");
+        return;
+    }
+    var id = $(this).attr('id');
+    var r=confirm("You sure you wanna delete this event?");
+    if (r==true)
+    {
+        $("#event-list>li#" + id).remove();
+        deleteEvent(id);
+    }
+    else
+    {
+        //   --|||
+        //  |-.-|  Nothing I can do here...
+        //   ---
+    }
+}
+
+var deleteEvent = function(id) {
+    if(0 == $("#event-list>li").length)
+            $("#event-list").html("There is no item to display.");
+    if(0 == $(".done-list>li").length)
+            $("#done-list").html("There is no item to display.");
+    $.blockUI();
+    var postData = {};
+    postData.eventId = id;
+    $.post("event/remove/", postData)
+        .done(function() {
+            $.unblockUI();
+            updateEventsOrder();
+        })
+}
+
+var drop = function(ev, ui) {
+    var dropClass = ui.draggable.attr("class");
+    var id = ui.draggable.attr("id");
+    if(dropClass.toString().indexOf("classesli") > -1) {
+        var name = ui.draggable.text();
+        var r=confirm("You sure you wanna delete the class " + name + "?");
+        if (r==true)
+        {
+            ui.draggable.remove();
+            deleteClass(id);
+        }
+        else
+        {
+        //   --|||
+        //  |-.-|  Nothing I can do here...
+        //   ---
+        }
+    }
+    else if(dropClass.toString().indexOf("doneeventli") > -1) {
+        var id = dragging.attr('doneeventliid');
+        var r=confirm("You sure you wanna delete this event?");
+        if (r==true)
+        {
+            ui.draggable.remove();
+            deleteEvent(id);
+        }
+        else
+        {
+        //   --|||
+        //  |-.-|  Nothing I can do here...
+        //   ---
+        }
+    }
+    else if(dropClass.toString().indexOf("event-li") > -1) {
+        var r=confirm("You sure you wanna delete this event?");
+        if (r==true)
+        {
+            ui.draggable.remove();
+            deleteEvent(id);
+        }
+        else
+        {
+        //   --|||
+        //  |-.-|  Nothing I can do here...
+        //   ---
+        }
+    }
 }

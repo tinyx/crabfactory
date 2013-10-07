@@ -168,7 +168,6 @@ def update_events_order(request):
     """
     if request.user.is_authenticated():
         class_id = request.POST.get('classId', None)
-        print request.POST
         for event_id in request.POST:
             Event.objects.filter(id=event_id).update(order=request.POST[event_id])
         return HttpResponse(json.dumps({}),\
@@ -178,5 +177,17 @@ def update_events_order(request):
                               RequestContext(request))
 
 def remove_event(request):
-    return True
+    """
+    Remove the given event, and update the
+    order of the rest events
+    """
+    if request.user.is_authenticated():
+        event_id = request.POST.get('eventId', None)
+        event = Event.objects.get(id=event_id)
+        event.delete()
+        return HttpResponse(json.dumps({}),\
+                            content_type='application/json')
+    return render_to_response('todo_login.html',\
+                              {'error_info': constants.SESSION_EXPIRED_MSG, },\
+                              RequestContext(request))
 
