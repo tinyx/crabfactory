@@ -411,6 +411,10 @@ var updateEventsOrder = function() {
 var getRestDays = function(dueDate) {
     var date = new Date(dueDate);
     var today = new Date();
+    today.setHours(0);
+    today.setMinutes(0);
+    today.setSeconds(0);
+    today.setMilliseconds(0);
     var gap = parseInt((date.getTime() - today.getTime()) / 86400000);
     return gap;
 }
@@ -462,12 +466,12 @@ var removePriPicker = function(ev) {
     else return;
 }
 
-var isMouseLeaveOrEnter = function(ev, handler) {   
-    if (ev.type != 'mouseout' && ev.type != 'mouseover') return false;   
-    var reltg = ev.relatedTarget ? ev.relatedTarget : ev.type == 'mouseout' ? ev.toElement : ev.fromElement;   
-    while (reltg && reltg != handler)   
-        reltg = reltg.parentNode;   
-    return (reltg != handler);   
+var isMouseLeaveOrEnter = function(ev, handler) {
+    if (ev.type != 'mouseout' && ev.type != 'mouseover') return false;
+    var reltg = ev.relatedTarget ? ev.relatedTarget : ev.type == 'mouseout' ? ev.toElement : ev.fromElement;
+    while (reltg && reltg != handler)
+        reltg = reltg.parentNode;
+    return (reltg != handler);
 }
 
 var showGeneralHintWindow = function(msg) {
