@@ -1,4 +1,3 @@
-var dragging;
 var showDoneList = 0;
 var sortedby = 0; //0 = order, 1 = duedate, 2 = priority
 var generalHintWindowHandler = -1;
