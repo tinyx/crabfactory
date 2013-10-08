@@ -613,6 +613,12 @@ var drop = function(ev, ui) {
     }
 }
 
+var showUserGuide = function() {
+    $("#user-guide-container").fadeIn();
+    guideStep = 0;
+    userGuideControl();
+}
+
 var userGuideControl = function() {
     $("#user-guide-container").children().css("display","none");
     if(0 == guideStep) { //display classes guide
