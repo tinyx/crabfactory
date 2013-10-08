@@ -612,3 +612,68 @@ var drop = function(ev, ui) {
         }
     }
 }
+
+var userGuideControl = function() {
+    $("#user-guide-container").children().css("display","none");
+    if(0 == guideStep) { //display classes guide
+        $("#user-guide-container").bind("click", userGuideControl);
+        var left = $("#class-label").offset().left - 5;
+        var top = $("#class-label").offset().top - 100;
+        $("#display-class-guide").css("left", left+"px");
+        $("#display-class-guide").css("top", top+"px");
+        $("#display-class-guide").fadeIn();
+        guideStep++;
+    }
+    else if(1 == guideStep) { //add class guide
+        var left = $("#add-new-class-label").offset().left - 5;
+        var top = $("#add-new-class-label").offset().top - 135;
+        $("#add-class-guide").css("left", left+"px");
+        $("#add-class-guide").css("top", top+"px");
+        $("#add-class-guide").fadeIn();
+        guideStep++;
+    }
+    else if(2 == guideStep) { //display events guide
+        var left = $("#current-class").offset().left - 100;
+        var top = $("#current-class").offset().top - 200;
+        $("#display-event-guide").css("left", left+"px");
+        $("#display-event-guide").css("top", top+"px");
+        $("#display-event-guide").fadeIn();
+        guideStep++;
+    }
+    else if(3 == guideStep) { //sort events guide
+        var left = $("#sorted-by-icons").offset().left - 130;
+        var top = $("#sorted-by-icons").offset().top - 90;
+        $("#sort-event-guide").css("left", left+"px");
+        $("#sort-event-guide").css("top", top+"px");
+        $("#sort-event-guide").fadeIn();
+        guideStep++;
+    }
+    else if(4 == guideStep) { //add event guide
+        var left = $("#add-new-event#down").offset().left - 15;
+        var top = $("#add-new-event#down").offset().top - 250;
+        $("#add-event-guide").css("left", left+"px");
+        $("#add-event-guide").css("top", top+"px");
+        $("#add-event-guide").fadeIn();
+        guideStep++;
+    }
+    else if(5 == guideStep) { //remove guide
+        var left = $("#recycle-bin-label").offset().left - 5;
+        var top = $("#recycle-bin-label").offset().top - 135;
+        $("#remove-guide").css("left", left+"px");
+        $("#remove-guide").css("top", top+"px");
+        $("#remove-guide").fadeIn();
+        guideStep++;
+    }
+    else if(6 == guideStep) { //done event guide
+        var left = $("#show-done-event").offset().left - 80;
+        var top = $("#show-done-event").offset().top - 230;
+        $("#done-event-guide").css("left", left+"px");
+        $("#done-event-guide").css("top", top+"px");
+        $("#done-event-guide").fadeIn();
+        guideStep++;
+    }
+    else {
+        $("#user-guide-container").unbind("click");
+        $("#user-guide-container").fadeOut();
+    }
+}
