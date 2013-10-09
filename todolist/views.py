@@ -129,11 +129,10 @@ def get_event(request):
         response = {}
         class_id = request.GET.get('classId', None)
         done = request.GET.get('done', None)
-        if done == 1:
+        if done == '1':
             response['data'] = Event.get_events_dict_by_class(class_id, True)
         else:
             response['data'] = Event.get_events_dict_by_class(class_id, False)
-        print response['data']
         return HttpResponse(json.dumps(response),\
                             content_type='application/json')
     return render_to_response('todo_login.html',\

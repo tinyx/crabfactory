@@ -688,7 +688,7 @@ var displayDoneList = function() {
     postData = {
         "classId": $("#class-list>.selected").attr("id"),
         "done": 1,
-    }
+    };
     $.get("event/get/", postData)
         .done(function(data) {
             displayDoneEventsHelper(data.data);
@@ -697,10 +697,11 @@ var displayDoneList = function() {
 }
 
 var displayDoneEventsHelper = function(data) {
+    console.log(data);
     var doneList = $("#done-list");
-    $("#done-list").html("");
+    doneList.html("");
     for(var i = 0; i < data.length; i++) {
-        doneList.append(getNewDoneEventsTable(data[i].id, data[i].dueDate, data[i].content));
+        doneList.append(getNewDoneEventsTable(data[i].id, data[i].duedate, data[i].content));
     }
     if(0 == i)
         $("#done-list").html("There is no item to display.");
@@ -718,7 +719,7 @@ var getNewDoneEventsTable = function(eventid, duedate, content) {
         }).html(content))
         .append($("<div/>", {
             "class": "done-event-due",
-        })).html("Done at " + duedate));
+        }).html("Done at " + duedate)));
     return newLi;
 }
 
