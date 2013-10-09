@@ -215,6 +215,7 @@ var displayEvents = function() {
     $.blockUI();
     postData = {
         "classId": $("#class-list>.selected").attr("id"),
+        "done": 0,
     }
     $("#current-class>p").text($("#class-list>.selected").find(".class-name-div").text());
     $.get("event/get/", postData)
@@ -287,7 +288,7 @@ var getNewEventTable = function(eventid, priority, done, duedate, content) {
         "id": eventid,
         "class": "event-check",
         "type": "checkBox",
-    });//.click(checkEvent);
+    }).click(checkEvent);
     newRow.append($("<td/>", {
         "class": "event-check-td",
     }).append(checkBox));
@@ -297,7 +298,7 @@ var getNewEventTable = function(eventid, priority, done, duedate, content) {
         "id": eventid,
         "class": "event-text",
         "value": content,
-    });//.onblur(editEvent);
+    }).blur(editEvent);
     newRow.append($("<td/>", {
         "class": "event-text-td",
     }).append(textInput));
@@ -407,6 +408,43 @@ var updateEventsOrder = function() {
         });
 }
 
+var editEvent = function(event) {
+    $.blockUI();
+    var id = $(this).attr("id");
+    var postData = {};
+    postData.type = "text";
+    postData.eventId = id;
+    postData.content = $(this).val();
+    
+    $.post("event/update/", postData)
+        .done(function(data) {
+            $.unblockUI();
+        });
+}
+
+var checkEvent = function() {
+    if(0 != sortedby) {
+        $(this).attr("checked", false);
+        alert("Please sort items by order first.");
+        return;
+    }
+    $.blockUI();
+    var id = $(this).attr("id");
+    var postData = {};
+    postData.type = "check"
+    postData.eventId = id;
+
+    $.post("event/update/", postData)
+        .done(function(data) {
+            $.unblockUI();
+            $("li#" + id).remove();
+            if(0 == $(".event-li").length)
+                $("#event-list").text("There is no item to display.");
+            updateEventsOrder();
+            if(1 == showDoneList) displayDoneList();
+        });
+}
+
 var getRestDays = function(dueDate) {
     var date = new Date(dueDate);
     var today = new Date();
@@ -429,23 +467,23 @@ var showPriPicker = function(ev) {
             $("<tr/>").append($("<td/>", {
                 "class": "cell3",
             }).click(function() {
-                //updateEventPri(eventid, 3);
+                updateEventPri(eventid, 3);
             }))
             .append($("<td/>", {
                 "class": "cell2",
             }).click(function() {
-                //updateEventPri(eventid, 2);
+                updateEventPri(eventid, 2);
             }))
         ).append(
             $("<tr/>").append($("<td/>", {
                 "class": "cell1",
             }).click(function() {
-                //updateEventPri(eventid, 1);
+                updateEventPri(eventid, 1);
             }))
             .append($("<td/>", {
                 "class": "cell0",
             }).click(function() {
-                //updateEventPri(eventid, 0);
+                updateEventPri(eventid, 0);
             }))
         );
 
@@ -463,6 +501,25 @@ var removePriPicker = function(ev) {
         hidePriHintWindow();
     }
     else return;
+}
+
+var updateEventPri = function(id, pri) {
+    hidePriHintWindow();
+    if(0 != sortedby) {
+        alert("Please sort items by order first.");
+        return;
+    }
+    $.blockUI();
+    var postData = {};
+    postData.type = "priority";
+    postData.eventId = id;
+    postData.priority = pri;
+
+    $.post("event/update/", postData)
+        .done(function(data) {
+            $("#" + id + ".event-pri").attr("class", "event-pri pri" + pri);
+            $.unblockUI();
+        });
 }
 
 var isMouseLeaveOrEnter = function(ev, handler) {
@@ -613,6 +670,41 @@ var drop = function(ev, ui) {
     }
 }
 
+var displayDoneListStarter = function() {
+    showDoneList = 1 ^ showDoneList;
+    if(1 == showDoneList) {
+        $("#show-done-event>p").text("Hide Done Events");
+        displayDoneList();
+    }
+    else {
+        $("#show-done-event>p").text("Show Done Events");
+        $("#done-list").html("");
+    }
+}
+
+function displayDoneList() {
+    $.blockUI();
+    postData = {
+        "classId": $("#class-list>.selected").attr("id"),
+        "done": 1,
+    }
+    $.get("event/get/", postData)
+        .done(function(data) {
+            //displayDoneEventsHelper(data.data);
+            $.unblockUI();
+        });
+}
+
+function displayDoneEventsHelper(data) {
+    $("#doneList").html("");
+    for(var i = 0; i < data.length; i++) {
+        doneList.appendChild(getNewDoneEventsTable(data[i].id, data[i].dueDate, data[i].content));
+    }
+    if(0 == i)
+        $("#done-list").html("There is no item to display.");
+    $.unblockUI();
+}
+
 var showUserGuide = function() {
     $("#user-guide-container").fadeIn();
     guideStep = 0;
@@ -655,8 +747,8 @@ var userGuideControl = function() {
         guideStep++;
     }
     else if(4 == guideStep) { //add event guide
-        var left = $("#add-new-event#down").offset().left - 15;
-        var top = $("#add-new-event#down").offset().top - 250;
+        var left = $(".add-new-event.down").offset().left - 15;
+        var top = $(".add-new-event.down").offset().top - 250;
         $("#add-event-guide").css("left", left+"px");
         $("#add-event-guide").css("top", top+"px");
         $("#add-event-guide").fadeIn();

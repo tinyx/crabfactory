@@ -18,4 +18,5 @@ urlpatterns = patterns('',
     url(r'main/event/order/$', views.update_events_order),
     url(r'main/event/add/$', views.add_event),
     url(r'main/event/remove/$', views.remove_event),
+    url(r'main/event/update/$', views.update_event),
 )

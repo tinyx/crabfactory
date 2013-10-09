@@ -55,13 +55,14 @@ class Event(models.Model):
         return cls.objects.filter(eventclass__pk=eventclass)
 
     @classmethod
-    def get_events_dict_by_class(cls, eventclass):
+    def get_events_dict_by_class(cls, eventclass, done):
         """
         Return a list of events based on the
         given eventclass id
         """
         return map(lambda x: x.to_dict(),
                     cls.objects.filter(eventclass__pk=eventclass)\
+                                .filter(done=done)
                                 .order_by('order'))
 
     class Meta:

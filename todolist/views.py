@@ -127,7 +127,11 @@ def get_event(request):
     if request.user.is_authenticated():
         response = {}
         class_id = request.GET.get('classId', None)
-        response['data'] = Event.get_events_dict_by_class(class_id)
+        done = request.GET.get('done', None)
+        if done == 1:
+            response['data'] = Event.get_events_dict_by_class(class_id, True)
+        else:
+            response['data'] = Event.get_events_dict_by_class(class_id, False)
         return HttpResponse(json.dumps(response),\
                             content_type='application/json')
     return render_to_response('todo_login.html',\
@@ -158,7 +162,26 @@ def add_event(request):
                               RequestContext(request))
 
 def update_event(request):
-    return True
+    """
+    Update the event, possible activities are:
+    1. Text edit
+    2. Check the event
+    3. Priority edit
+    """
+    if request.user.is_authenticated():
+        update_type = request.POST.get('type', None)
+        event_id = request.POST.get('eventId', None)
+        if update_type == 'text':
+            Event.objects.filter(id=event_id).update(content=request.POST['content'])
+        elif update_type == 'check':
+            Event.objects.filter(id=event_id).update(done=True)
+        elif update_type == 'priority':
+            Event.objects.filter(id=event_id).update(priority=request.POST['priority'])
+        return HttpResponse(json.dumps({}),\
+                            content_type='application/json')
+    return render_to_response('todo_login.html',\
+                              {'error_info': constants.SESSION_EXPIRED_MSG, },\
+                              RequestContext(request))
 
 def update_events_order(request):
     """
