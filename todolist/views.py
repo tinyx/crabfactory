@@ -9,6 +9,7 @@ from django.views.generic.base import TemplateView
 from todolist.models import Event, EventClass
 from todolist.forms import TodoUserForm
 from todolist import constants
+from datetime import date
 import json
 
 def todo_login(request):
@@ -132,6 +133,7 @@ def get_event(request):
             response['data'] = Event.get_events_dict_by_class(class_id, True)
         else:
             response['data'] = Event.get_events_dict_by_class(class_id, False)
+        print response['data']
         return HttpResponse(json.dumps(response),\
                             content_type='application/json')
     return render_to_response('todo_login.html',\
@@ -174,7 +176,7 @@ def update_event(request):
         if update_type == 'text':
             Event.objects.filter(id=event_id).update(content=request.POST['content'])
         elif update_type == 'check':
-            Event.objects.filter(id=event_id).update(done=True)
+            Event.objects.filter(id=event_id).update(done=True, duedate=date.today())
         elif update_type == 'priority':
             Event.objects.filter(id=event_id).update(priority=request.POST['priority'])
         return HttpResponse(json.dumps({}),\

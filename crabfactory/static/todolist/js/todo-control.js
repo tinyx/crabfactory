@@ -53,8 +53,9 @@ var initial = function() {
         placeholder: "sortable-placeholder",
         update: updateEventsOrder,
     });
+    $("#done-list").draggable();
     $("#recycle-bin-label").droppable({
-        connectToSortable: "#class-list, #event-list",
+        connectToSortable: "#class-list, #event-list, #dont-list",
         hoverClass: "recycle-on-drop",
         tolerance: "touch",
         drop: drop,
@@ -640,7 +641,7 @@ var drop = function(ev, ui) {
         //   ---
         }
     }
-    else if(dropClass.toString().indexOf("doneeventli") > -1) {
+    else if(dropClass.toString().indexOf("done-event-li") > -1) {
         var r=confirm("You sure you wanna delete this event?");
         if (r==true)
         {
@@ -682,7 +683,7 @@ var displayDoneListStarter = function() {
     }
 }
 
-function displayDoneList() {
+var displayDoneList = function() {
     $.blockUI();
     postData = {
         "classId": $("#class-list>.selected").attr("id"),
@@ -690,19 +691,35 @@ function displayDoneList() {
     }
     $.get("event/get/", postData)
         .done(function(data) {
-            //displayDoneEventsHelper(data.data);
+            displayDoneEventsHelper(data.data);
             $.unblockUI();
         });
 }
 
-function displayDoneEventsHelper(data) {
-    $("#doneList").html("");
+var displayDoneEventsHelper = function(data) {
+    var doneList = $("#done-list");
+    $("#done-list").html("");
     for(var i = 0; i < data.length; i++) {
-        doneList.appendChild(getNewDoneEventsTable(data[i].id, data[i].dueDate, data[i].content));
+        doneList.append(getNewDoneEventsTable(data[i].id, data[i].dueDate, data[i].content));
     }
     if(0 == i)
         $("#done-list").html("There is no item to display.");
     $.unblockUI();
+}
+
+var getNewDoneEventsTable = function(eventid, duedate, content) {
+    var newLi = $("<li/>", {
+        "id": eventid,
+        "class": "done-event-li",
+    }).append($("<div/>", {
+            "class": "done-event-div",
+        }).append($("<div/>", {
+            "class": "done-event-text",
+        }).html(content))
+        .append($("<div/>", {
+            "class": "done-event-due",
+        })).html("Done at " + duedate));
+    return newLi;
 }
 
 var showUserGuide = function() {
