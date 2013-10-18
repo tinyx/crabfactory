@@ -85,7 +85,7 @@ var updateClassesOrder = function() {
     var postData = {};
     var i = 1;
     $("#class-list li").each(function () {
-        var id = $(this).attr("id");
+        var id = $(this).data("class-li-id");
         var order = i++;
         postData[id] = order;
     });
@@ -98,7 +98,7 @@ var updateClassesOrder = function() {
 var getNewClassTable = function(name, id, liCssClass) {
     var classLi = $("<li/>", {
         "class": liCssClass,
-        "id": id,
+        "data-class-li-id": id,
     }).click(clickClass)
         .mouseover(classLiMouseOver)
         .mouseout(classLiMouseOut);
@@ -119,7 +119,7 @@ var getNewClassTable = function(name, id, liCssClass) {
         "class": "del-td",
     });
     var delDiv = $("<div/>", {
-        "id": id,
+        "data-class-del-id": id,
         "class": "del-div",
     }).mouseover(classDelMouseOver)
         .mouseout(classDelMouseOut);
@@ -150,20 +150,20 @@ var classLiMouseOut = function() {
 }
 
 var classDelMouseOver = function() {
-    $("#class-list").find("li#" + $(this).attr("id") + " .class-name-div").css("text-decoration","line-through");
+    $("#class-list").find("li[data-class-li-id=" + $(this).data("class-del-id") + "]").css("text-decoration","line-through");
 }
 
 var classDelMouseOut = function() {
-    $("#class-list").find("li#" + $(this).attr("id") + " .class-name-div").css("text-decoration","none");
+    $("#class-list").find("li[data-class-li-id=" + $(this).data("class-del-id") + "]").css("text-decoration","none");
 }
 
 var clickDelClass = function() {
     event.stopPropagation();
-    var id = $(this).attr('id');
+    var id = $(this).data('class-del-id');
     var name = $("[classtextid=" + id + "]").text();
     var r=confirm("You sure you wanna delete the class " + name + "?");
     if (r==true) {
-        $("#class-list>#" + id).remove();
+        $("#class-list>li[data-class-li-id=" + id + "]").remove();
         deleteClass(id);
     }
     else {
@@ -215,7 +215,7 @@ var classOnKeyDown = function() {
 var displayEvents = function() {
     $.blockUI();
     postData = {
-        "classId": $("#class-list>.selected").attr("id"),
+        "classId": $("#class-list>.selected").data("class-li-id"),
         "done": 0,
     }
     $("#current-class>p").text($("#class-list>.selected").find(".class-name-div").text());
@@ -416,7 +416,7 @@ var editEvent = function(event) {
     postData.type = "text";
     postData.eventId = id;
     postData.content = $(this).val();
-    
+
     $.post("event/update/", postData)
         .done(function(data) {
             $.unblockUI();
