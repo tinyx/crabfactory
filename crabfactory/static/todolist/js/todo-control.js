@@ -263,7 +263,7 @@ var displayEventsHelper = function(data) {
 
 var getNewEventTable = function(eventid, priority, done, duedate, content) {
     var newLi = $("<li/>", {
-        "id": eventid,
+        "data-event-li-id": eventid,
         "class": "event-li",
     });
     var newTable = $("<table/>", {
@@ -275,7 +275,7 @@ var getNewEventTable = function(eventid, priority, done, duedate, content) {
 
     //priority icon
     var priorityDiv = $("<div/>", {
-        "id": eventid,
+        "data-event-pri-id": eventid,
         "class": "event-pri pri" + priority,
         "priority": priority,
     }).mouseover(showPriPicker)
@@ -286,7 +286,7 @@ var getNewEventTable = function(eventid, priority, done, duedate, content) {
 
     //checkbox
     var checkBox = $("<input/>", {
-        "id": eventid,
+        "data-event-check-id": eventid,
         "class": "event-check",
         "type": "checkBox",
     }).click(checkEvent);
@@ -296,7 +296,7 @@ var getNewEventTable = function(eventid, priority, done, duedate, content) {
 
     //text div
     var textInput = $("<input/>", {
-        "id": eventid,
+        "data-event-text-id": eventid,
         "class": "event-text",
         "value": content,
     }).blur(editEvent);
@@ -306,7 +306,7 @@ var getNewEventTable = function(eventid, priority, done, duedate, content) {
 
     //duedate icon
     var dueDateDiv = $("<div/>", {
-        "id": eventid,
+        "data-event-due-id": eventid,
         "class": "event-due",
     });
     var gap = getRestDays(duedate);
@@ -347,7 +347,7 @@ var getNewEventTable = function(eventid, priority, done, duedate, content) {
 
     //delete icon
     var deleteDiv = $("<div/>", {
-        "id": eventid,
+        "data-event-del-id": eventid,
         "class": "event-del",
     }).click(clickDelEvent)
         .mouseover(classDelMouseOver)
@@ -375,7 +375,7 @@ var addNewEvent = function() {
     }
     else {
         var postData = {};
-        postData.classId = selectedClass.attr("id");
+        postData.classId = selectedClass.data("class-li-id");
         postData.order = $("#event-list li").length + 1;
         postData.dueDate = $("#calender").val();
         postData.content = $("#add-event-text").val();
@@ -399,7 +399,7 @@ var updateEventsOrder = function() {
     var postData = {};
     var i = 1;
     $("#event-list li").each(function () {
-        var id = $(this).attr("id");
+        var id = $(this).data("event-li-id");
         var order = i++;
         postData[id] = order;
     });
@@ -411,7 +411,7 @@ var updateEventsOrder = function() {
 
 var editEvent = function(event) {
     $.blockUI();
-    var id = $(this).attr("id");
+    var id = $(this).data("event-text-id");
     var postData = {};
     postData.type = "text";
     postData.eventId = id;
@@ -430,7 +430,7 @@ var checkEvent = function() {
         return;
     }
     $.blockUI();
-    var id = $(this).attr("id");
+    var id = $(this).data("event-check-id");
     var postData = {};
     postData.type = "check"
     postData.eventId = id;
@@ -438,7 +438,7 @@ var checkEvent = function() {
     $.post("event/update/", postData)
         .done(function(data) {
             $.unblockUI();
-            $("li#" + id).remove();
+            $("li[data-event-li-id=" + id + "]").remove();
             if(0 == $(".event-li").length)
                 $("#event-list").text("There is no item to display.");
             updateEventsOrder();
@@ -459,9 +459,9 @@ var getRestDays = function(dueDate) {
 
 var showPriPicker = function(ev) {
     if(isMouseLeaveOrEnter(ev, this)) {
-        var eventid = $(this).attr("id");
+        var eventid = $(this).data("event-pri-id");
         var priPickerTable = $("<table/>", {
-            "id": eventid,
+            "data-pri-table-id": eventid,
             "class": "pri-picker",
             "style": "display: none",
         }).append(
@@ -497,8 +497,8 @@ var showPriPicker = function(ev) {
 
 var removePriPicker = function(ev) {
     if(isMouseLeaveOrEnter(ev,this)) {
-        var eventid = $(this).attr("id");
-        $("#" + eventid + ".pri-picker").remove();
+        var eventid = $(this).data("event-pri-id");
+        $("table[data-event-pri-table-id=" + eventid + "]").remove();
         hidePriHintWindow();
     }
     else return;
@@ -518,7 +518,7 @@ var updateEventPri = function(id, pri) {
 
     $.post("event/update/", postData)
         .done(function(data) {
-            $("#" + id + ".event-pri").attr("class", "event-pri pri" + pri);
+            $("div[data-event-pri-id=" + id + "]").attr("class", "event-pri pri" + pri);
             $.unblockUI();
         });
 }
@@ -593,11 +593,11 @@ var clickDelEvent = function() {
         alert("Please sort items by order first.");
         return;
     }
-    var id = $(this).attr('id');
+    var id = $(this).data('event-del-id');
     var r=confirm("You sure you wanna delete this event?");
     if (r==true)
     {
-        $("#event-list>li#" + id).remove();
+        $("#event-list>li[data-event-li-id=" + id + "]").remove();
         deleteEvent(id);
     }
     else
@@ -625,8 +625,8 @@ var deleteEvent = function(id) {
 
 var drop = function(ev, ui) {
     var dropClass = ui.draggable.attr("class");
-    var id = ui.draggable.attr("id");
     if(dropClass.toString().indexOf("classesli") > -1) {
+        var id = ui.draggable.data("event-li-id");
         var name = ui.draggable.text();
         var r=confirm("You sure you wanna delete the class " + name + "?");
         if (r==true)
@@ -642,6 +642,7 @@ var drop = function(ev, ui) {
         }
     }
     else if(dropClass.toString().indexOf("done-event-li") > -1) {
+        var id = ui.draggable.data("done-li-id");
         var r=confirm("You sure you wanna delete this event?");
         if (r==true)
         {
@@ -656,6 +657,7 @@ var drop = function(ev, ui) {
         }
     }
     else if(dropClass.toString().indexOf("event-li") > -1) {
+        var id = ui.draggable.data("class-li-id");
         var r=confirm("You sure you wanna delete this event?");
         if (r==true)
         {
@@ -686,7 +688,7 @@ var displayDoneListStarter = function() {
 var displayDoneList = function() {
     $.blockUI();
     postData = {
-        "classId": $("#class-list>.selected").attr("id"),
+        "classId": $("#class-list>.selected").data("class-li-id"),
         "done": 1,
     };
     $.get("event/get/", postData)
@@ -710,7 +712,7 @@ var displayDoneEventsHelper = function(data) {
 
 var getNewDoneEventsTable = function(eventid, duedate, content) {
     var newLi = $("<li/>", {
-        "id": eventid,
+        "data-done-id": eventid,
         "class": "done-event-li",
     }).append($("<div/>", {
             "class": "done-event-div",
