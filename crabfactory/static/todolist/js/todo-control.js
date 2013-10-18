@@ -498,7 +498,7 @@ var showPriPicker = function(ev) {
 var removePriPicker = function(ev) {
     if(isMouseLeaveOrEnter(ev,this)) {
         var eventid = $(this).data("event-pri-id");
-        $("table[data-event-pri-table-id=" + eventid + "]").remove();
+        $("table[data-pri-table-id=" + eventid + "]").remove();
         hidePriHintWindow();
     }
     else return;
