@@ -53,7 +53,9 @@ var initial = function() {
         placeholder: "sortable-placeholder",
         update: updateEventsOrder,
     });
-    $("#done-list").draggable();
+    $("#done-list").sortable({
+        placeholder: "sortable-placeholder",
+    });
     $("#recycle-bin-label").droppable({
         connectToSortable: "#class-list, #event-list, #dont-list",
         hoverClass: "recycle-on-drop",
