@@ -231,6 +231,7 @@ var displayEvents = function() {
 var displayEventsHelper = function(data) {
     $("#event-list").html("");
     $("#done-list").html("");
+    if(1 === showDoneList) displayDoneList();
     if(0 === data.length) {
         $("#event-list").html("There is no item to display.");
         return;
@@ -260,7 +261,6 @@ var displayEventsHelper = function(data) {
         $("#event-list").sortable("disable");
         $("#event-list").addClass("undraggable");
     }
-    if(1 === showDoneList) displayDoneList();
 }
 
 var getNewEventTable = function(eventid, priority, done, duedate, content) {
