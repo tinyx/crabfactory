@@ -164,7 +164,7 @@ var clickDelClass = function() {
     var id = $(this).data('class-del-id');
     var name = $("[classtextid=" + id + "]").text();
     var r=confirm("You sure you wanna delete the class " + name + "?");
-    if (r==true) {
+    if (r === true) {
         $("#class-list>li[data-class-li-id=" + id + "]").remove();
         deleteClass(id);
     }
@@ -363,7 +363,7 @@ var getNewEventTable = function(eventid, priority, done, duedate, content) {
 }
 
 var eventOnKeyDown = function() {
-    if(event.keyCode == 13)
+    if(event.keyCode === 13)
         addNewEvent();
     else return event.keyCode;
 }
@@ -441,10 +441,10 @@ var checkEvent = function() {
         .done(function(data) {
             $.unblockUI();
             $("li[data-event-li-id=" + id + "]").remove();
-            if(0 == $(".event-li").length)
+            if(0 === $(".event-li").length)
                 $("#event-list").text("There is no item to display.");
             updateEventsOrder();
-            if(1 == showDoneList) displayDoneList();
+            if(1 === showDoneList) displayDoneList();
         });
 }
 
@@ -527,7 +527,7 @@ var updateEventPri = function(id, pri) {
 
 var isMouseLeaveOrEnter = function(ev, handler) {
     if (ev.type != 'mouseout' && ev.type != 'mouseover') return false;
-    var reltg = ev.relatedTarget ? ev.relatedTarget : ev.type == 'mouseout' ? ev.toElement : ev.fromElement;
+    var reltg = ev.relatedTarget ? ev.relatedTarget : ev.type === 'mouseout' ? ev.toElement : ev.fromElement;
     while (reltg && reltg != handler)
         reltg = reltg.parentNode;
     return (reltg != handler);
@@ -549,7 +549,7 @@ var hideGeneralHintWindow = function() {
         clearInterval(generalHintWindowHandler);
         generalHintWindowHandler = -1;
     }
-    if($("#general-hint-window").css("display") == "none") {
+    if($("#general-hint-window").css("display") === "none") {
         return;
     }
     $("#general-hint-window").fadeOut("fast");
@@ -572,17 +572,17 @@ var hidePriHintWindow = function() {
 
 var resortEvents = function(type) {
     $(".sorted-by-icon").filter(".selected").removeClass("selected");
-    if("order" == type) {
+    if("order" === type) {
         $(".sorted-by-icon").filter(".sorted-by-order").addClass("selected");
         sortedby = 0;
         showGeneralHintWindow("Now the events are sorted by user order, you can rearrange or edit them now.");
     }
-    else if("duedate" == type) {
+    else if("duedate" === type) {
         $(".sorted-by-icon").filter(".sorted-by-duedate").addClass("selected");
         sortedby = 1;
         showGeneralHintWindow("Now the events are sorted by due date, they cannot be changed or dragged right now.");
     }
-    else if("priority" == type) {
+    else if("priority" === type) {
         $(".sorted-by-icon").filter(".sorted-by-priority").addClass("selected");
         sortedby = 2;
         showGeneralHintWindow("Now the events are sorted by priority, they cannot be changed or dragged right now.");
@@ -597,7 +597,7 @@ var clickDelEvent = function() {
     }
     var id = $(this).data('event-del-id');
     var r=confirm("You sure you wanna delete this event?");
-    if (r==true)
+    if (r === true)
     {
         $("#event-list>li[data-event-li-id=" + id + "]").remove();
         deleteEvent(id);
@@ -611,9 +611,9 @@ var clickDelEvent = function() {
 }
 
 var deleteEvent = function(id) {
-    if(0 == $("#event-list>li:not(.sortable-placeholder)").length)
+    if(0 === $("#event-list>li:not(.sortable-placeholder)").length)
         $("#event-list").html("There is no item to display.");
-    if(0 == $("#done-list>li:not(.sortable-placeholder)").length)
+    if(0 === $("#done-list>li:not(.sortable-placeholder)").length)
         $("#done-list").html("There is no item to display.");
     $.blockUI();
     var postData = {};
@@ -631,7 +631,7 @@ var drop = function(ev, ui) {
         var id = ui.draggable.data("event-li-id");
         var name = ui.draggable.text();
         var r=confirm("You sure you wanna delete the class " + name + "?");
-        if (r==true)
+        if (r === true)
         {
             ui.draggable.remove();
             deleteClass(id);
@@ -646,7 +646,7 @@ var drop = function(ev, ui) {
     else if(dropClass.toString().indexOf("done-event-li") > -1) {
         var id = ui.draggable.data("done-id");
         var r=confirm("You sure you wanna delete this event?");
-        if (r==true)
+        if (r === true)
         {
             ui.draggable.remove();
             deleteEvent(id);
@@ -661,7 +661,7 @@ var drop = function(ev, ui) {
     else if(dropClass.toString().indexOf("event-li") > -1) {
         var id = ui.draggable.data("class-li-id");
         var r=confirm("You sure you wanna delete this event?");
-        if (r==true)
+        if (r === true)
         {
             ui.draggable.remove();
             deleteEvent(id);
@@ -677,7 +677,7 @@ var drop = function(ev, ui) {
 
 var displayDoneListStarter = function() {
     showDoneList = 1 ^ showDoneList;
-    if(1 == showDoneList) {
+    if(1 === showDoneList) {
         $("#show-done-event>p").text("Hide Done Events");
         displayDoneList();
     }
@@ -707,7 +707,7 @@ var displayDoneEventsHelper = function(data) {
     for(var i = 0; i < data.length; i++) {
         doneList.append(getNewDoneEventsTable(data[i].id, data[i].duedate, data[i].content));
     }
-    if(0 == i)
+    if(0 === i)
         $("#done-list").html("There is no item to display.");
     $.unblockUI();
 }
@@ -735,7 +735,7 @@ var showUserGuide = function() {
 
 var userGuideControl = function() {
     $("#user-guide-container").children().css("display","none");
-    if(0 == guideStep) { //display classes guide
+    if(0 === guideStep) { //display classes guide
         $("#user-guide-container").bind("click", userGuideControl);
         var left = $("#class-label").offset().left - 5;
         var top = $("#class-label").offset().top - 100;
@@ -744,7 +744,7 @@ var userGuideControl = function() {
         $("#display-class-guide").fadeIn();
         guideStep++;
     }
-    else if(1 == guideStep) { //add class guide
+    else if(1 === guideStep) { //add class guide
         var left = $("#add-new-class-label").offset().left - 5;
         var top = $("#add-new-class-label").offset().top - 135;
         $("#add-class-guide").css("left", left+"px");
@@ -752,7 +752,7 @@ var userGuideControl = function() {
         $("#add-class-guide").fadeIn();
         guideStep++;
     }
-    else if(2 == guideStep) { //display events guide
+    else if(2 === guideStep) { //display events guide
         var left = $("#current-class").offset().left - 100;
         var top = $("#current-class").offset().top - 200;
         $("#display-event-guide").css("left", left+"px");
@@ -760,7 +760,7 @@ var userGuideControl = function() {
         $("#display-event-guide").fadeIn();
         guideStep++;
     }
-    else if(3 == guideStep) { //sort events guide
+    else if(3 === guideStep) { //sort events guide
         var left = $("#sorted-by-icons").offset().left - 130;
         var top = $("#sorted-by-icons").offset().top - 90;
         $("#sort-event-guide").css("left", left+"px");
@@ -768,7 +768,7 @@ var userGuideControl = function() {
         $("#sort-event-guide").fadeIn();
         guideStep++;
     }
-    else if(4 == guideStep) { //add event guide
+    else if(4 === guideStep) { //add event guide
         var left = $(".add-new-event.down").offset().left - 15;
         var top = $(".add-new-event.down").offset().top - 250;
         $("#add-event-guide").css("left", left+"px");
@@ -776,7 +776,7 @@ var userGuideControl = function() {
         $("#add-event-guide").fadeIn();
         guideStep++;
     }
-    else if(5 == guideStep) { //remove guide
+    else if(5 === guideStep) { //remove guide
         var left = $("#recycle-bin-label").offset().left - 5;
         var top = $("#recycle-bin-label").offset().top - 135;
         $("#remove-guide").css("left", left+"px");
@@ -784,7 +784,7 @@ var userGuideControl = function() {
         $("#remove-guide").fadeIn();
         guideStep++;
     }
-    else if(6 == guideStep) { //done event guide
+    else if(6 === guideStep) { //done event guide
         var left = $("#show-done-event").offset().left - 80;
         var top = $("#show-done-event").offset().top - 230;
         $("#done-event-guide").css("left", left+"px");
