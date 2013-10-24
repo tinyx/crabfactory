@@ -12,6 +12,8 @@ from todolist import constants
 from datetime import date
 import json
 
+DONE_EVENTS_LIMIT = 10
+
 def todo_login(request):
     """
     If this is a POST request, try to login
@@ -130,7 +132,7 @@ def get_event(request):
         class_id = request.GET.get('classId', None)
         done = request.GET.get('done', None)
         if done == '1':
-            response['data'] = Event.get_events_dict_by_class(class_id, True)
+            response['data'] = Event.get_events_dict_by_class(class_id, True)[:DONE_EVENTS_LIMIT]
         else:
             response['data'] = Event.get_events_dict_by_class(class_id, False)
         return HttpResponse(json.dumps(response),\
