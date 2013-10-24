@@ -644,7 +644,7 @@ var drop = function(ev, ui) {
         }
     }
     else if(dropClass.toString().indexOf("done-event-li") > -1) {
-        var id = ui.draggable.data("done-li-id");
+        var id = ui.draggable.data("done-id");
         var r=confirm("You sure you wanna delete this event?");
         if (r==true)
         {
