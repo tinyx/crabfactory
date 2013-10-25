@@ -349,6 +349,7 @@
                             font-family: @font-content;
                             font-weight: 700;
                             font-size: 70%;
+                            cursor: default;
                             color: White;
 
                             &.event-overdue {
@@ -459,6 +460,27 @@
                 text-decoration: underline;
                 cursor: pointer;
                 color: @color-text-gray;
+            }
+        }
+        #done-list {
+            font-family: @font-content;
+            font-size: 80%;
+            padding-left: 15px;
+            padding-right: 10px;
+            margin-top: 5px;
+            list-style: none;
+
+            li {
+                color: @color-text-gray;
+                cursor: default;
+
+                .done-event-text {
+                    float: left;
+                    text-decoration: line-through;
+                }
+                .done-event-due {
+                    float: right;
+                }
             }
         }
     }
