@@ -4,6 +4,7 @@ from django.views.generic import TemplateView
 from todolist import views
 
 urlpatterns = patterns('',
+    url(r'^$', login_required(TemplateView.as_view(template_name='todo_main.html')), name='todo'),
     url(r'^cover/$', TemplateView.as_view(template_name='todo_cover.html'), name='todo_cover'),
     url(r'^login/$', views.todo_login, name='todo_login'),
     url(r'^reg/$', views.todo_reg, name='todo_reg'),
