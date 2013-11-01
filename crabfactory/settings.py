@@ -168,5 +168,5 @@ LOGGING = {
         },
     }
 }
-LOGIN_URL = '/login/'
+LOGIN_URL = '/todo/login/'
 SESSION_COOKIE_AGE = 60 * 60
