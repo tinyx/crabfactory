@@ -1,0 +1,32 @@
+
+#!/bin/bash
+
+NAME="crabfactory"
+DJANGODIR=/home/tinyx/crabfactory/
+SOCKFILE=/home/tinyx/crabfactory/run/gunicorn.sock
+VIRTUAL_ENV=/home/tinyx/Envs/crabfactory/bin/
+USER=tinyx
+GROUP=tinyx
+NUM_WORKERS=3
+DJANGO_SETTINGS_MODULE=settings.py
+DJANGO_WSGI_MODULE=crabfactory.wsgi
+
+echo "Starting $NAME as $USER"
+
+# Activate the virtual environment
+cd $VIRTUAL_ENV
+. activate
+export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
+export PYTHONPATH=$DJANGODIR:$PYTHONPATH
+
+# Create the run directory if it doesn't exist
+RUNDIR=$(dirname $SOCKFILE)
+test -d $RUNDIR || mkdir -p $RUNDIR
+
+# Start the project
+exec gunicorn ${DJANGO_WSGI_MODULE}:application \
+    --name $NAME \
+    --workers $NUM_WORKERS \
+    --user=$USER --group=$GROUP \
+    --log-level=debug \
+    --bind=unix:$SOCKFILE
