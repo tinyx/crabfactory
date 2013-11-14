@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 NAME="crabfactory"
@@ -8,7 +7,7 @@ VIRTUAL_ENV=/home/tinyx/Envs/crabfactory/bin/
 USER=tinyx
 GROUP=tinyx
 NUM_WORKERS=3
-DJANGO_SETTINGS_MODULE=settings.py
+DJANGO_SETTINGS_MODULE=crabfactory.settings
 DJANGO_WSGI_MODULE=crabfactory.wsgi
 
 echo "Starting $NAME as $USER"

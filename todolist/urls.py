@@ -1,10 +1,10 @@
 from django.conf.urls import patterns, include, url
 from django.contrib.auth.decorators import login_required
-from django.views.generic import TemplateView
+from django.core.urlresolvers import reverse_lazy
+from django.views.generic import TemplateView, RedirectView
 from todolist import views
 
 urlpatterns = patterns('',
-    url(r'^$', login_required(TemplateView.as_view(template_name='todo_main.html')), name='todo'),
     url(r'^cover/$', TemplateView.as_view(template_name='todo_cover.html'), name='todo_cover'),
     url(r'^login/$', views.todo_login, name='todo_login'),
     url(r'^reg/$', views.todo_reg, name='todo_reg'),
@@ -18,4 +18,5 @@ urlpatterns = patterns('',
     url(r'main/event/add/$', views.add_event),
     url(r'main/event/remove/$', views.remove_event),
     url(r'main/event/update/$', views.update_event),
+    url(r'^$', RedirectView.as_view(url='main/'), name='todo'),
 )
