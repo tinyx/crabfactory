@@ -2,6 +2,7 @@ from django.core.management.base import BaseCommand
 from django.contrib.auth.models import User
 from todolist.models import Event
 from datetime import date, timedelta
+from django.core.mail import EmailMessage
 ALERT_DAYS = [timedelta(-1), timedelta(0), timedelta(1), timedelta(7), timedelta(30)]
 
 class Command(BaseCommand):
@@ -10,7 +11,14 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         for user in User.objects.all():
             for event in Event.objects.filter(eventclass__user=user):
-                if event.duedate - date.today() in ALERT_DAYS:
-                    print event
-                    # Here is where should send the email
+                time_delta = event.duedate - date.today()
+                if time_delta in ALERT_DAYS:
+                    if time_delta < timedelta(0):
+                        title = 'Event dued'
+                        message = 'Your event %s dued at %s.' % (event.content, event.duedate)
+                    else:
+                        title = 'Event will due soon'
+                        message = 'Your event %s will due at %s' % (event.content, event.duedate)
+                    email = EmailMessage(title, message, to=[user.email])
+                    email.send()
         return
