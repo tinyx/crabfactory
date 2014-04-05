@@ -135,7 +135,9 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     'crabfactory',
     'todolist',
+    'webresume',
     'south',
+    'rest_framework',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'

@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from todolist.urls import urlpatterns as todolist_url
+from webresume.urls import urlpatterns as webresume_url
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -17,5 +18,6 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
     url(r'^todo/', include(todolist_url)),
+    url(r'^webresume/', include(webresume_url)),
 )
 urlpatterns += staticfiles_urlpatterns()
