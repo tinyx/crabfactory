@@ -10,5 +10,5 @@ The todo-list for this project so far is:
 - [x] Create initial files for the project.
 - [x] Configure Apache2 to make the project reachable through the Internet
 - [x] Convert the 2do-list from ASP.NET to Django
-- [x] Review all the js code and do a cleanup of them
-- [x] Re-write all the CSS codes with LESS
+- [ ] Review all the js code and do a cleanup of them
+- [ ] Re-write all the CSS codes with LESS

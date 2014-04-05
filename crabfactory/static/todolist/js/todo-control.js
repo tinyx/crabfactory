@@ -53,7 +53,9 @@ var initial = function() {
         placeholder: "sortable-placeholder",
         update: updateEventsOrder,
     });
-    $("#done-list").sortable();
+    $("#done-list").sortable({
+        placeholder: "sortable-placeholder",
+    });
     $("#recycle-bin-label").droppable({
         connectToSortable: "#class-list, #event-list, #dont-list",
         hoverClass: "recycle-on-drop",
@@ -150,11 +152,11 @@ var classLiMouseOut = function() {
 }
 
 var classDelMouseOver = function() {
-    $("#class-list").find("li[data-class-li-id=" + $(this).data("class-del-id") + "]").find(".class-name-div").css("text-decoration","line-through");
+    $("#class-list").find("li[data-class-li-id=" + $(this).data("class-del-id") + "]").css("text-decoration","line-through");
 }
 
 var classDelMouseOut = function() {
-    $("#class-list").find("li[data-class-li-id=" + $(this).data("class-del-id") + "]").find(".class-name-div").css("text-decoration","none");
+    $("#class-list").find("li[data-class-li-id=" + $(this).data("class-del-id") + "]").css("text-decoration","none");
 }
 
 var clickDelClass = function() {
@@ -195,7 +197,7 @@ var addNewClass = function() {
         return;
     }
     postData.className = className;
-    postData.order = $(".class-name-div").length + 1;
+    postData.order = $(".classesliText").length + 1;
     $.post("class/add/", postData)
         .done(function(data) {
             var result = data.data;
@@ -611,7 +613,7 @@ var clickDelEvent = function() {
 var deleteEvent = function(id) {
     if(0 === $("#event-list>li:not(.sortable-placeholder)").length)
         $("#event-list").html("There is no item to display.");
-    if(0 === $("#done-list>li:not(.ui-sortable-placeholder)").length)
+    if(0 === $("#done-list>li:not(.sortable-placeholder)").length)
         $("#done-list").html("There is no item to display.");
     $.blockUI();
     var postData = {};
@@ -626,7 +628,7 @@ var deleteEvent = function(id) {
 var drop = function(ev, ui) {
     var dropClass = ui.draggable.attr("class");
     if(dropClass.toString().indexOf("classesli") > -1) {
-        var id = ui.draggable.data("class-li-id");
+        var id = ui.draggable.data("event-li-id");
         var name = ui.draggable.text();
         var r=confirm("You sure you wanna delete the class " + name + "?");
         if (r === true)
@@ -657,7 +659,7 @@ var drop = function(ev, ui) {
         }
     }
     else if(dropClass.toString().indexOf("event-li") > -1) {
-        var id = ui.draggable.data("event-li-id");
+        var id = ui.draggable.data("class-li-id");
         var r=confirm("You sure you wanna delete this event?");
         if (r === true)
         {
@@ -699,6 +701,7 @@ var displayDoneList = function() {
 }
 
 var displayDoneEventsHelper = function(data) {
+    console.log(data);
     var doneList = $("#done-list");
     doneList.html("");
     for(var i = 0; i < data.length; i++) {
