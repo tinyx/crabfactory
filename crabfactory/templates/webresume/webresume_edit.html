@@ -13,6 +13,7 @@
         }
     </script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="{% get_static_prefix %}library/underscore-min.js"/></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-route.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-resource.min.js"></script>
@@ -45,9 +46,13 @@
 
     <div>
         <form ng-controller="PersonCtrl">
+            <label>First Name</label>
             <input type="text" ng-model="person.first_name" required>
+            <label>Last Name</label>
             <input type="text" ng-model="person.last_name" required>
+            <label>Email</label>
             <input type="text" ng-model="person.email" required>
+            <button ng-click="save(person)">Save</button>
         </form>
         <span>Skills</span>
         <ul ng-controller="SkillCtrl">

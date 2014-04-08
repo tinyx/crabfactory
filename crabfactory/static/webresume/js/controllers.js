@@ -104,23 +104,34 @@ app.controller('ProjectCtrl',
 
 app.controller('PersonCtrl',
     function($scope, $resource, $rootScope) {
-        var Person = $resource( urls.person,
-            { user_id: user_id },
-            { 'get': { method: 'GET', isArray: true }}
+        var Person = $resource( urls.person + '/:id',
+            { id: '@id' },
+            {
+                'post': { method: 'POST' },
+                'put': { method: 'PUT' },
+                'get': { method: 'GET', isArray: true },
+            }
         );
+        $scope.save = function(person) {
+            if(person.id) {
+                Person.put(person, function() {
+                    console.log("Succeed");
+                });
+            }
+            else {
+                Person.post(person, function() {
+                    console.log("Succeed");
+                });
+            }
+        }
 
         // Get the person object first, then initialize all the resources
         var person = Person.get({ user_id: user_id }, function() {
-            $scope.person = person[0];
-            person = person[0].id;
-            $rootScope.$broadcast('got_person', { person: person });
-                /*
-                var neu = educations[0];
-                neu.name = 'NEU';
-                Education.put({
-                    'id': neu.id,
-                }, neu);
-                */
+            if(!_.isEmpty(person)) {
+                $scope.person = person[0];
+                person = person[0].id;
+                $rootScope.$broadcast('got_person', { person: person });
+            }
         });
     }
 );
