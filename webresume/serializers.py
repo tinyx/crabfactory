@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from webresume.models import Person, Education, WorkExperience,\
-        Skill, ProjectInEducation, ProjectInExperience
+        Skill, Project
 
 class PersonSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,7 +11,7 @@ class PersonSerializer(serializers.ModelSerializer):
 class EducationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Education
-        fields = ('id', 'name', 'start_date', 'end_date', 'major', 'degree')
+        fields = ('id', 'person', 'name', 'start_date', 'end_date', 'major', 'degree')
 
 
 class WorkExperienceSerializer(serializers.ModelSerializer):
@@ -26,14 +26,7 @@ class SkillSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'rank')
 
 
-class ProjectInEducationSerializer(serializers.ModelSerializer):
+class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
-        model = ProjectInEducation
-        fields = ('id', 'name', 'website', 'start_date', 'end_date', 'description', 'education')
-
-
-class ProjectInExperienceSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = ProjectInExperience
-        fields = ('id', 'name', 'website', 'start_date', 'end_date', 'description', 'work_experience')
-
+        model = Project
+        fields = ('id', 'name', 'website', 'start_date', 'end_date', 'description')

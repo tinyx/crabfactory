@@ -85,19 +85,3 @@ class Project(models.Model):
     def __unicode__(self):
         return '%s' % self.name
 
-    class Meta:
-        abstract = True
-
-
-class ProjectInEducation(Project):
-    """
-    Projects done in education time
-    """
-    education = models.ForeignKey(Education)
-
-
-class ProjectInExperience(Project):
-    """
-    Projects done in experience time
-    """
-    work_experience = models.ForeignKey(WorkExperience)

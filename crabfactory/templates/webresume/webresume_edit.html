@@ -1,10 +1,102 @@
+{% load static %}
+{% load url from future %}
 <!DOCTYPE html>
-<html>
+<html ng-app="webresumeApp">
 <head>
-
+    <script>
+        urls = {
+            person: '{% url "person_list" %}',
+            education: '{% url "education_list" %}',
+            work_experience: '{% url "work_experience_list" %}',
+            skill: '{% url "skill_list" %}',
+            project: '{% url "project_list" %}',
+        }
+    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-route.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-resource.min.js"></script>
 </head>
 
+{% verbatim %}
 <body>
+    <div>
+        <span>Intro</span>
+        <span>Skills</span>
+        <span>Educations</span>
+        <ul ng-controller="EducationCtrl">
+            <li ng-repeat="education in educations">
+                {{ education.name }}
+            </li>
+        </ul>
+        <span>Work Experiences</span>
+        <ul ng-controller="WorkExperienceCtrl">
+            <li ng-repeat="work_experience in work_experiences">
+                {{ work_experience.name }}
+            </li>
+        </ul>
+        <span>Projects</span>
+        <ul ng-controller="ProjectCtrl">
+            <li ng-repeat="project in projects">
+                {{ project.name }}
+            </li>
+        </ul>
+    </div>
 
+    <div>
+        <form ng-controller="PersonCtrl">
+            <input type="text" ng-model="person.first_name" required>
+            <input type="text" ng-model="person.last_name" required>
+            <input type="text" ng-model="person.email" required>
+        </form>
+        <span>Skills</span>
+        <ul ng-controller="SkillCtrl">
+            <li ng-repeat="skill in skills">
+                <span>{{ skill.name }}</span>
+                <div>{{ skill.rank }}</div>
+            </li>
+        </ul>
+        <span>Education</span>
+        <ul ng-controller="EducationCtrl">
+            <li ng-repeat="education in educations">
+                <input type="text" ng-model="education.name" required>
+                <span>({{ education.start_date }} - {{ education.end_date }})</span>
+                <span>{{ education.major }}</span>
+                <span>{{ education.degree }}</span>
+                <button ng-click="save($index)">Save</button>
+                <button ng-click="remove($index)">Remove</button>
+            </li>
+            <li>
+                <input type="text" ng-model="new_education.name" required>
+                <input type="text" ng-model="new_education.start_date" required>
+                <input type="text" ng-model="new_education.end_date" required>
+                <input type="text" ng-model="new_education.major" required>
+                <input type="text" ng-model="new_education.degree" required>
+                <button ng-click="add(new_education)">Save</button>
+            </li>
+        </ul>
+        <ul ng-controller="WorkExperienceCtrl">
+            <li ng-repeat="work_experience in work_experiences">
+                <span>{{ work_experience.name }}</span>
+                <span>({{ work_experience.start_date }} - {{ work_experience.end_date }})</span>
+                <span>{{ work_experience.title }}</span>
+            </li>
+        </ul>
+        <ul ng-controller="ProjectCtrl">
+            <li ng-repeat="project in projects">
+                <span>{{ project.name }}</span>
+                <span>({{ project.start_date }} - {{ project.end_date }})</span>
+            </li>
+        </ul>
+    </div>
 </body>
+{% endverbatim %}
+<script>
+var app = angular.module('webresumeApp', ['ngResource', 'ngRoute']);
+app.config(['$httpProvider', function($httpProvider) {
+    $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token|escapejs }}';
+}]);
+var user_id = '{{ user.id }}';
+</script>
+<script src="{% get_static_prefix %}webresume/js/controllers.js"></script>
 </html>

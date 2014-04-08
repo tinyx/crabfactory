@@ -1,8 +1,7 @@
 from webresume.models import Person, Education, WorkExperience,\
-        Skill, ProjectInEducation, ProjectInExperience
+        Skill, Project
 from webresume.serializers import PersonSerializer, EducationSerializer,\
-        WorkExperienceSerializer, SkillSerializer, ProjectInEducationSerializer,\
-        ProjectInExperienceSerializer
+        WorkExperienceSerializer, SkillSerializer, ProjectSerializer
 from webresume.permissions import IsOwnerOrReadOnly, PersonIsOwnerOrReadOnly
 from rest_framework import generics, permissions
 
@@ -19,10 +18,10 @@ class CustomedPermissionModelForPerson():
 
 class SharedMethodMixin():
     def get_queryset(self):
-        user = self.request.QUERY_PARAMS.get('username', None)
+        user_id = self.request.QUERY_PARAMS.get('user_id', None)
         queryset = self.queryset
-        if user is not None:
-            queryset = queryset.filter(person__username=user)
+        if user_id is not None:
+            queryset = queryset.filter(person__user__id=user_id)
         return queryset
 
     def pre_save(self, obj):
@@ -32,6 +31,13 @@ class SharedMethodMixin():
 class PersonList(CustomedPermissionModelForPerson, generics.ListCreateAPIView):
     queryset = Person.objects.all()
     serializer_class = PersonSerializer
+
+    def get_queryset(self):
+        user_id = self.request.QUERY_PARAMS.get('user_id', None)
+        queryset = self.queryset
+        if user_id is not None:
+            queryset = queryset.filter(user__id=user_id)
+        return queryset
 
     def pre_save(self, obj):
         obj.user = self.request.user
@@ -72,21 +78,11 @@ class SkillDetail(CustomedPermissionModel, generics.RetrieveUpdateDestroyAPIView
     serializer_class = SkillSerializer
 
 
-class ProjectInEducationList(CustomedPermissionModel, generics.ListCreateAPIView, SharedMethodMixin):
-    queryset = ProjectInEducation.objects.all()
-    serializer_class = ProjectInEducationSerializer
+class ProjectList(CustomedPermissionModel, generics.ListCreateAPIView, SharedMethodMixin):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
 
 
-class ProjectInEducationDetail(CustomedPermissionModel, generics.RetrieveUpdateDestroyAPIView):
-    queryset = ProjectInEducation.objects.all()
-    serializer_class = ProjectInEducationSerializer
-
-
-class ProjectInExperienceList(CustomedPermissionModel, generics.ListCreateAPIView, SharedMethodMixin):
-    queryset = ProjectInExperience.objects.all()
-    serializer_class = ProjectInExperienceSerializer
-
-
-class ProjectInExperienceDetail(CustomedPermissionModel, generics.RetrieveUpdateDestroyAPIView):
-    queryset = ProjectInExperience.objects.all()
-    serializer_class = ProjectInExperienceSerializer
+class ProjectDetail(CustomedPermissionModel, generics.RetrieveUpdateDestroyAPIView):
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
