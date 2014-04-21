@@ -1,5 +1,6 @@
 crabfactory
 ===========
+Todo-list
 This is my personal website based on Django.
 
 I've already done a todo-list app based on ASP.NET, so the first thing is to convert it into Django.
@@ -12,3 +13,7 @@ The todo-list for this project so far is:
 - [x] Convert the 2do-list from ASP.NET to Django
 - [ ] Review all the js code and do a cleanup of them
 - [ ] Re-write all the CSS codes with LESS
+
+===========
+Web resume
+Still working on
