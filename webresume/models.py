@@ -21,7 +21,7 @@ class Education(models.Model):
     """
     Information of education
     """
-    person = models.ForeignKey(Person)
+    user = models.ForeignKey(User)
     name = models.CharField(max_length=100)
     start_date = models.DateField()
     end_date = models.DateField(null=True)
@@ -38,7 +38,7 @@ class WorkExperience(models.Model):
     Like companies user stayed
     Or organizations user worked for
     """
-    person = models.ForeignKey(Person)
+    user = models.ForeignKey(User)
     name = models.CharField(max_length=100)
     title = models.CharField(max_length=100)
     website = models.TextField(null=True, blank=True)
@@ -61,7 +61,7 @@ class Skill(models.Model):
         (3, 'Experienced'),
         (4, 'Mastered'),
     ) # Ranks for the level of mastering
-    person = models.ForeignKey(Person)
+    user = models.ForeignKey(User)
     name = models.CharField(max_length=100)
     rank = models.IntegerField(choices=AVAILABLE_RANK, default=0)
 
@@ -75,7 +75,7 @@ class Project(models.Model):
     Could be done in education
     Or in experience
     """
-    person = models.ForeignKey(Person)
+    user = models.ForeignKey(User)
     name = models.CharField(max_length=100)
     website = models.TextField(null=True, blank=True)
     start_date = models.DateField()

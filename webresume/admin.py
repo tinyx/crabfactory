@@ -10,23 +10,23 @@ class PersonAdmin(admin.ModelAdmin):
 
 
 class EducationAdmin(admin.ModelAdmin):
-    list_display = ('name', 'person', 'start_date', 'end_date', 'major', 'degree')
+    list_display = ('name', 'user', 'start_date', 'end_date', 'major', 'degree')
     search_fields = ('name',)
     list_filter = ('major', 'degree',)
 
 
 class WorkExperienceAdmin(admin.ModelAdmin):
-    list_display = ('name', 'person', 'title', 'start_date', 'end_date')
+    list_display = ('name', 'user', 'title', 'start_date', 'end_date')
     search_fields = ('name',)
 
 
 class SkillAdmin(admin.ModelAdmin):
-    list_display = ('name', 'person', 'rank')
+    list_display = ('name', 'user', 'rank')
     search_fields = ('name',)
 
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('name', 'person', 'start_date', 'end_date')
+    list_display = ('name', 'user', 'start_date', 'end_date')
     search_fields = ('name',)
 
 

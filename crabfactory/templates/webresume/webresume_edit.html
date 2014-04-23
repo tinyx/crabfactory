@@ -30,37 +30,9 @@
                 {{ education.name }}
             </li>
         </ul>
-        <span>Work Experiences</span>
-        <ul ng-controller="WorkExperienceCtrl">
-            <li ng-repeat="work_experience in work_experiences">
-                {{ work_experience.name }}
-            </li>
-        </ul>
-        <span>Projects</span>
-        <ul ng-controller="ProjectCtrl">
-            <li ng-repeat="project in projects">
-                {{ project.name }}
-            </li>
-        </ul>
     </div>
 
     <div>
-        <form ng-controller="PersonCtrl">
-            <label>First Name</label>
-            <input type="text" ng-model="person.first_name" required>
-            <label>Last Name</label>
-            <input type="text" ng-model="person.last_name" required>
-            <label>Email</label>
-            <input type="text" ng-model="person.email" required>
-            <button ng-click="save(person)">Save</button>
-        </form>
-        <span>Skills</span>
-        <ul ng-controller="SkillCtrl">
-            <li ng-repeat="skill in skills">
-                <span>{{ skill.name }}</span>
-                <div>{{ skill.rank }}</div>
-            </li>
-        </ul>
         <span>Education</span>
         <ul ng-controller="EducationCtrl">
             <li ng-repeat="education in educations">
@@ -72,25 +44,14 @@
                 <button ng-click="remove($index)">Remove</button>
             </li>
             <li>
-                <input type="text" ng-model="new_education.name" required>
-                <input type="text" ng-model="new_education.start_date" required>
-                <input type="text" ng-model="new_education.end_date" required>
-                <input type="text" ng-model="new_education.major" required>
-                <input type="text" ng-model="new_education.degree" required>
-                <button ng-click="add(new_education)">Save</button>
-            </li>
-        </ul>
-        <ul ng-controller="WorkExperienceCtrl">
-            <li ng-repeat="work_experience in work_experiences">
-                <span>{{ work_experience.name }}</span>
-                <span>({{ work_experience.start_date }} - {{ work_experience.end_date }})</span>
-                <span>{{ work_experience.title }}</span>
-            </li>
-        </ul>
-        <ul ng-controller="ProjectCtrl">
-            <li ng-repeat="project in projects">
-                <span>{{ project.name }}</span>
-                <span>({{ project.start_date }} - {{ project.end_date }})</span>
+                <form ng-submit="add(new_education)">
+                    <input type="text" ng-model="new_education.name" required>
+                    <input type="text" ng-model="new_education.start_date" required>
+                    <input type="text" ng-model="new_education.end_date" required>
+                    <input type="text" ng-model="new_education.major" required>
+                    <input type="text" ng-model="new_education.degree" required>
+                    <button type="submit">Save</button>
+                </form>
             </li>
         </ul>
     </div>
@@ -101,7 +62,6 @@ var app = angular.module('webresumeApp', ['ngResource', 'ngRoute']);
 app.config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token|escapejs }}';
 }]);
-var user_id = '{{ user.id }}';
 </script>
 <script src="{% get_static_prefix %}webresume/js/controllers.js"></script>
 </html>
