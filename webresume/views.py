@@ -38,11 +38,11 @@ class PersonDetail(SharedMethodMixin, CustomedPermissionModel, generics.Retrieve
 
 class EducationList(SharedMethodMixin, CustomedPermissionModel, generics.ListCreateAPIView):
     serializer_class = EducationSerializer
-    queryset = Education.objects.all()
+    queryset = Education.objects.all().order_by('start_date')
 
 
 class EducationDetail(SharedMethodMixin, CustomedPermissionModel, generics.RetrieveUpdateDestroyAPIView):
-    queryset = Education.objects.all()
+    queryset = Education.objects.all().order_by('start_date')
     serializer_class = EducationSerializer
 
 

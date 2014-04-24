@@ -61,7 +61,10 @@ app.controller('EducationCtrl',
         };
 
         $scope.remove = function(index) {
-            Education.remove(index);
+            var r = confirm("You sure you want to remove this education?");
+            if(r == true) {
+                Education.remove(index);
+            };
         };
 
         $scope.edit = function(index) {
