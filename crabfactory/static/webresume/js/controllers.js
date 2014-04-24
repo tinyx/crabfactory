@@ -16,13 +16,13 @@ app.factory('Resource', ['$resource', function($resource) {
                 resource_instance.data.push(object_with_id);
             });
         };
-        resource_instance.remove = function(index) {
-            resource.remove(resource_instance.data[index], function() {
-                resource_instance.data.splice(index, 1);
+        resource_instance.remove = function(object) {
+            resource.remove(object, function() {
+                resource_instance.data.splice(resource_instance.data.indexOf(object), 1);
             });
         };
-        resource_instance.update = function(index) {
-            resource.update(resource_instance.data[index]);
+        resource_instance.update = function(education) {
+            resource.update(education);
         };
         resource_instance.get = function() {
             var result = resource.list(function() {
@@ -56,23 +56,23 @@ app.controller('EducationCtrl',
             $scope.new_education = {};
         };
 
-        $scope.save = function(index) {
-            Education.update(index);
+        $scope.save = function(education) {
+            Education.update(education);
         };
 
-        $scope.remove = function(index) {
+        $scope.remove = function(education) {
             var r = confirm("You sure you want to remove this education?");
             if(r == true) {
-                Education.remove(index);
+                Education.remove(education);
             };
         };
 
-        $scope.edit = function(index) {
-            $scope.backup[index] = angular.copy($scope.educations[index]);
+        $scope.edit = function(education) {
+            $scope.backup[education.id] = angular.copy(education);
         };
 
-        $scope.cancel = function(index) {
-            $scope.educations[index] = $scope.backup[index];
+        $scope.cancel = function(education) {
+            $scope.educations[$scope.educations.indexOf(education)] = $scope.backup[education.id];
         };
     });
 
