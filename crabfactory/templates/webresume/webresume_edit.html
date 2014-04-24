@@ -36,12 +36,14 @@
         <span>Education</span>
         <ul ng-controller="EducationCtrl">
             <li ng-repeat="education in educations">
-                <input type="text" ng-model="education.name" required>
-                <span>({{ education.start_date }} - {{ education.end_date }})</span>
-                <span>{{ education.major }}</span>
-                <span>{{ education.degree }}</span>
-                <button ng-click="save($index)">Save</button>
-                <button ng-click="remove($index)">Remove</button>
+                <form ng-submit="save($index)">
+                    <input type="text" ng-model="education.name" required>
+                    <span>({{ education.start_date }} - {{ education.end_date }})</span>
+                    <span>{{ education.major }}</span>
+                    <span>{{ education.degree }}</span>
+                    <button type="submit">Save</button>
+                    <button type="button" ng-click="remove($index)">Remove</button>
+                </form>
             </li>
             <li>
                 <form ng-submit="add(new_education)">

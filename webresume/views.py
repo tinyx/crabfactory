@@ -12,11 +12,14 @@ class CustomedPermissionModel():
 
 
 class SharedMethodMixin():
+    paginate_by = None
     def get_queryset(self):
         user_id = self.request.QUERY_PARAMS.get('user_id', None)
         queryset = self.queryset
         if user_id is not None:
             queryset = queryset.filter(user__id=user_id)
+        else:
+            queryset = queryset.filter(user=self.request.user)
         return queryset
 
     def pre_save(self, obj):
@@ -38,7 +41,7 @@ class EducationList(SharedMethodMixin, CustomedPermissionModel, generics.ListCre
     queryset = Education.objects.all()
 
 
-class EducationDetail(SharedMethodMixin, CustomedPermissionModel, generics.ListCreateAPIView):
+class EducationDetail(SharedMethodMixin, CustomedPermissionModel, generics.RetrieveUpdateDestroyAPIView):
     queryset = Education.objects.all()
     serializer_class = EducationSerializer
 

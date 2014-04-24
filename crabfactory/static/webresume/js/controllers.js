@@ -9,31 +9,31 @@ app.factory('Resource', ['$resource', function($resource) {
 
         methods = angular.extend(defaults, methods);
         var resource = $resource(url, params, methods);
-        return {
-            data: [],
-            create: function(object) {
-                //object.user = null;
-                resource.create(object, function(object_with_id) {
-                    this.data.push(object_with_id);
-                });
-            },
-            remove: function(index) {
-                resource.remove(data[index], function() {
-                    this.data.splice(index, 1);
-                });
-            },
-            update: function(index) {
-                resource.update(object[index]);
-            },
-            get: function() {
-                var result = resource.list(function() {
-                    this.data = result;
-                });
-            },
-            list: function() {
-                return this.data;
-            },
+        var resource_instance = {};
+        resource_instance.data = [];
+        resource_instance.create = function(object) {
+            resource.create(object, function(object_with_id) {
+                resource_instance.data.push(object_with_id);
+            });
         };
+        resource_instance.remove = function(index) {
+            resource.remove(resource_instance.data[index], function() {
+                resource_instance.data.splice(index, 1);
+            });
+        };
+        resource_instance.update = function(index) {
+            resource.update(resource_instance.data[index]);
+        };
+        resource_instance.get = function() {
+            var result = resource.list(function() {
+                resource_instance.data = result;
+                console.log(resource_instance.data);
+            });
+        };
+        resource_instance.list = function() {
+            return resource_instance.data;
+        };
+        return resource_instance;
     }
 }]);
 
@@ -45,15 +45,23 @@ app.service('Education', ['Resource', function(Resource) {
 
 app.controller('EducationCtrl',
     function($scope, Education) {
-        $scope.educations = [];
-
         $scope.$watch(Education.list, function() {
             $scope.educations = Education.list();
         });
-        $scope.add = function(education) {
-            Education.create(education, function(education_with_id) {
-                console.log("Create education succeed.");
-            });
+
+        Education.get();
+
+        $scope.add = function(new_education) {
+            Education.create(new_education);
+            $scope.new_education = {};
+        };
+
+        $scope.save = function(index) {
+            Education.update(index);
+        };
+
+        $scope.remove = function(index) {
+            Education.remove(index);
         };
     });
 
