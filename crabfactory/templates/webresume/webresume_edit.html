@@ -36,22 +36,25 @@
         <span>Education</span>
         <ul ng-controller="EducationCtrl">
             <li ng-repeat="education in educations">
-                <form ng-submit="save($index)">
-                    <input type="text" ng-model="education.name" required>
-                    <span>({{ education.start_date }} - {{ education.end_date }})</span>
-                    <span>{{ education.major }}</span>
-                    <span>{{ education.degree }}</span>
-                    <button type="submit">Save</button>
-                    <button type="button" ng-click="remove($index)">Remove</button>
+                <form name="education_form" ng-submit="save($index)">
+                    <input type="text" ng-model="education.name" ng-readonly="!editing" required>
+                    <input type="date" ng-model="education.start_date" name="start_date" ng-readonly="!editing" required>
+                    <input type="date" ng-model="education.end_date" name="end_date" ng-readonly="!editing" required>
+                    <input type="text" ng-model="education.major" name="major" ng-readonly="!editing" required>
+                    <input type="text" ng-model="education.degree" name="degree" ng-readonly="!editing" required>
+                    <button type="button" ng-hide="editing" ng-click="editing=true;edit($index)">Edit</button>
+                    <button type="submit" ng-hide="!editing" ng-click="editing=false">Save</button>
+                    <button type="button" ng-hide="!editing" ng-click="editing=false;cancel($index)">Cancel</button>
+                    <button type="button" ng-hide="editing" ng-click="remove($index)">Remove</button>
                 </form>
             </li>
             <li>
-                <form ng-submit="add(new_education)">
-                    <input type="text" ng-model="new_education.name" required>
-                    <input type="text" ng-model="new_education.start_date" required>
-                    <input type="text" ng-model="new_education.end_date" required>
-                    <input type="text" ng-model="new_education.major" required>
-                    <input type="text" ng-model="new_education.degree" required>
+                <form name="new_education_form" ng-submit="add(new_education)">
+                    <input type="text" ng-model="new_education.name" name="name" required>
+                    <input type="date" ng-model="new_education.start_date" name="start_date" required>
+                    <input type="date" ng-model="new_education.end_date" name="end_date" required>
+                    <input type="text" ng-model="new_education.major" name="major" required>
+                    <input type="text" ng-model="new_education.degree" name="degree" required>
                     <button type="submit">Save</button>
                 </form>
             </li>

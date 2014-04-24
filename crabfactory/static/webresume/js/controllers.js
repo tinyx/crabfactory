@@ -27,7 +27,6 @@ app.factory('Resource', ['$resource', function($resource) {
         resource_instance.get = function() {
             var result = resource.list(function() {
                 resource_instance.data = result;
-                console.log(resource_instance.data);
             });
         };
         resource_instance.list = function() {
@@ -45,6 +44,7 @@ app.service('Education', ['Resource', function(Resource) {
 
 app.controller('EducationCtrl',
     function($scope, Education) {
+        $scope.backup = [];
         $scope.$watch(Education.list, function() {
             $scope.educations = Education.list();
         });
@@ -62,6 +62,14 @@ app.controller('EducationCtrl',
 
         $scope.remove = function(index) {
             Education.remove(index);
+        };
+
+        $scope.edit = function(index) {
+            $scope.backup[index] = angular.copy($scope.educations[index]);
+        };
+
+        $scope.cancel = function(index) {
+            $scope.educations[index] = $scope.backup[index];
         };
     });
 
