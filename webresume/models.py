@@ -6,7 +6,7 @@ class Person(models.Model):
     """
     Information of the user itself
     """
-    user = models.ForeignKey(User)
+    user = models.OneToOneField(User)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     email = models.CharField(max_length=256, unique=True)

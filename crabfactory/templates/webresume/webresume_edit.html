@@ -12,7 +12,6 @@
             project: '{% url "project_list" %}',
         }
     </script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="{% get_static_prefix %}library/underscore-min.js"/></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular-route.min.js"></script>
@@ -30,16 +29,45 @@
                 {{ education.name }}
             </li>
         </ul>
+        <span>Work Experience</span>
+        <ul ng-controller="WorkExperienceCtrl">
+            <li ng-repeat="work_experience in work_experiences">
+                {{ work_experience.name }}
+            </li>
+        </ul>
+        <span>Projects</span>
+        <ul ng-controller="ProjectCtrl">
+            <li ng-repeat="project in projects">
+                {{ project.name }}
+            </li>
+        </ul>
     </div>
 
     <div>
+        <span>Person</span>
+        <div ng-controller="PersonCtrl">
+            <form name="person_form" ng-submit="save(person)" novalidate>
+                <input type="text" ng-model="person.first_name" name="first_name" ng-readonly="!editing" required>
+                <span ng-show="person_form.first_name.$dirty && person_form.first_name.$error.required">This field is required.</span>
+                <input type="text" ng-model="person.last_name" name="last_name" ng-readonly="!editing" required>
+                <span ng-show="person_form.last_name.$dirty && person_form.last_name.$error.required">This field is required.</span>
+                <input type="text" ng-model="person.email" name="email" ng-readonly="!editing" required>
+                <span ng-show="person_form.email.$dirty && person_form.email.$error.required">This field is required.</span>
+                <span ng-show="person_form.email.$dirty && person_form.email.$error.email">This is not a valid email.</span>
+                <input type="text" ng-model="person.description" name="description" ng-readonly="!editing">
+                <input type="checkbox" ng-model="person.public" name="public" ng-disabled="!editing">
+                <button type="button" ng-hide="editing" ng-click="editing=true;edit(person)">Edit</button>
+                <button type="submit" ng-hide="!editing">Save</button>
+                <button type="button" ng-hide="!editing" ng-click="editing=false;cancel()">Cancel</button>
+            </form>
+        </div>
         <span>Education</span>
         <ul ng-controller="EducationCtrl">
             <li ng-repeat="education in educations | orderBy:'start_date'">
                 <form name="education_form" ng-submit="save(education)">
                     <input type="text" ng-model="education.name" ng-readonly="!editing" required>
                     <input type="date" ng-model="education.start_date" name="start_date" ng-readonly="!editing" required>
-                    <input type="date" ng-model="education.end_date" name="end_date" ng-readonly="!editing" required>
+                    <input type="date" ng-model="education.end_date" name="end_date" ng-readonly="!editing">
                     <input type="text" ng-model="education.major" name="major" ng-readonly="!editing" required>
                     <input type="text" ng-model="education.degree" name="degree" ng-readonly="!editing" required>
                     <button type="button" ng-hide="editing" ng-click="editing=true;edit(education)">Edit</button>
@@ -55,6 +83,60 @@
                     <input type="date" ng-model="new_education.end_date" name="end_date">
                     <input type="text" ng-model="new_education.major" name="major" required>
                     <input type="text" ng-model="new_education.degree" name="degree" required>
+                    <button type="submit">Save</button>
+                </form>
+            </li>
+        </ul>
+        <span>Work Experience</span>
+        <ul ng-controller="WorkExperienceCtrl">
+            <li ng-repeat="work_experience in work_experiences | orderBy:'start_date'">
+                <form name="work_experience_form" ng-submit="save(work_experience)">
+                    <input type="text" ng-model="work_experience.name" name="name" ng-readonly="!editing" required>
+                    <input type="text" ng-model="work_experience.title" name="title" ng-readonly="!editing" required>
+                    <input type="text" ng-model="work_experience.website" name="website" ng-readonly="!editing">
+                    <input type="date" ng-model="work_experience.start_date" name="start_date" ng-readonly="!editing" required>
+                    <input type="date" ng-model="work_experience.end_date" name="end_date" ng-readonly="!editing">
+                    <input type="text" ng-model="work_experience.description" name="description" ng-readonly="!editing">
+                    <button type="button" ng-hide="editing" ng-click="editing=true;edit(work_experience)">Edit</button>
+                    <button type="submit" ng-hide="!editing" ng-click="editing=false">Save</button>
+                    <button type="button" ng-hide="!editing" ng-click="editing=false;cancel(work_experience)">Cancel</button>
+                    <button type="button" ng-hide="editing" ng-click="remove(work_experience)">Remove</button>
+                </form>
+            </li>
+            <li>
+                <form name="new_work_experience_form" ng-submit="add(new_work_experience)">
+                    <input type="text" ng-model="new_work_experience.name" name="name" required>
+                    <input type="text" ng-model="new_work_experience.title" name="title" required>
+                    <input type="text" ng-model="new_work_experience.website" name="website">
+                    <input type="date" ng-model="new_work_experience.start_date" name="start_date" required>
+                    <input type="date" ng-model="new_work_experience.end_date" name="end_date">
+                    <input type="text" ng-model="new_work_experience.description" name="description">
+                    <button type="submit">Save</button>
+                </form>
+            </li>
+        </ul>
+        <span>Project</span>
+        <ul ng-controller="ProjectCtrl">
+            <li ng-repeat="project in projects | orderBy:'start_date'">
+                <form name="project_form" ng-submit="save(project)">
+                    <input type="text" ng-model="project.name" name="name" ng-readonly="!editing" required>
+                    <input type="text" ng-model="project.website" name="website" ng-readonly="!editing">
+                    <input type="date" ng-model="project.start_date" name="start_date" ng-readonly="!editing" required>
+                    <input type="date" ng-model="project.end_date" name="end_date" ng-readonly="!editing" required>
+                    <input type="text" ng-model="project.description" name="description" ng-readonly="!editing">
+                    <button type="button" ng-hide="editing" ng-click="editing=true;edit(project)">Edit</button>
+                    <button type="submit" ng-hide="!editing" ng-click="editing=false">Save</button>
+                    <button type="button" ng-hide="!editing" ng-click="editing=false;cancel(project)">Cancel</button>
+                    <button type="button" ng-hide="editing" ng-click="remove(project)">Remove</button>
+                </form>
+            </li>
+            <li>
+                <form name="new_project_form" ng-submit="add(new_project)">
+                    <input type="text" ng-model="new_project.name" name="name" required>
+                    <input type="text" ng-model="new_project.website" name="website">
+                    <input type="date" ng-model="new_project.start_date" name="start_date" required>
+                    <input type="date" ng-model="new_project.end_date" name="end_date" required>
+                    <input type="text" ng-model="new_project.description" name="description">
                     <button type="submit">Save</button>
                 </form>
             </li>

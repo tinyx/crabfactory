@@ -6,7 +6,7 @@ from webresume.models import Person, Education, WorkExperience,\
 class PersonSerializer(serializers.ModelSerializer):
     class Meta:
         model = Person
-        fields = ('id', 'first_name', 'last_name', 'email', 'description')
+        fields = ('id', 'first_name', 'last_name', 'email', 'description', 'public')
 
 
 class EducationSerializer(serializers.ModelSerializer):
