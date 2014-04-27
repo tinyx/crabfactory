@@ -55,30 +55,21 @@ app.controller('PersonCtrl',
                    });
 
                    $scope.save = function(person) {
-                       if($scope.person_form.$valid) {
-                           if(_.isUndefined(person.id)) {
-                               Person.create(person);
-                           }
-                           else {
-                               Person.update(person);
-                           }
-                           $scope.editing = false;
+                       if(_.isUndefined(person.id)) {
+                           Person.create(person);
                        }
                        else {
-                           alert("Please check the information.");
+                           Person.update(person);
                        }
+                       $scope.editing = false;
                    };
 
                    $scope.edit = function(person) {
                        $scope.backup = angular.copy(person);
-                       console.log(person);
                    };
 
                    $scope.cancel = function() {
                        $scope.person = $scope.backup;
-                       $scope.person_form.first_name.$dirty = false;
-                       $scope.person_form.last_name.$dirty = false;
-                       $scope.person_form.email.$dirty = false;
                    };
                });
 

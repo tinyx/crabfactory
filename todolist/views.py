@@ -1,11 +1,8 @@
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-from django.db.models import F
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.views.generic.base import TemplateView
 from todolist.models import Event, EventClass
 from todolist.forms import TodoUserForm
 from todolist import constants
@@ -28,7 +25,7 @@ def todo_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse('todo_main'))
+                return HttpResponseRedirect(reverse('webresume_edit'))
         error_info = constants.NAME_PASSWORD_DOESNT_MATCH_MSG
     logout(request)
     return render_to_response('todo_login.html',\
@@ -47,7 +44,7 @@ def todo_reg(request):
         if todo_user_form.is_valid():
             new_user = todo_user_form.save()
             # Create the 'Default' Class for the new user
-            default_class = EventClass.objects.create(name='Default', order='0', user=new_user)
+            EventClass.objects.create(name='Default', order='0', user=new_user)
             new_user = authenticate(username=request.POST['username'],\
                                     password=request.POST['password1'])
             login(request, new_user)

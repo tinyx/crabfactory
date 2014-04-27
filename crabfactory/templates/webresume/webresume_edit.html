@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html ng-app="webresumeApp">
 <head>
+    <link rel="stylesheet" href="{% get_static_prefix %}webresume/css/edit.css" type="text/css"/>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:600|Nunito:700|Oswald:700' rel='stylesheet' type='text/css'>
     <script>
         urls = {
             person: '{% url "person_list" %}',
@@ -20,56 +22,54 @@
 
 {% verbatim %}
 <body>
-    <div>
-        <span>Intro</span>
-        <span>Skills</span>
-        <span>Educations</span>
+    <div id="sidebar">
+        <a class="side_title" href="#person">Introduction</a>
+        <a class="side_title">Skills</a>
+        <a class="side_title" href="#education_title">Educations</a>
         <ul ng-controller="EducationCtrl">
             <li ng-repeat="education in educations">
-                {{ education.name }}
+                <a href="#education_{{ education.id }}">{{ education.name }}</a>
             </li>
         </ul>
-        <span>Work Experience</span>
+        <a class="side_title" href="#work_experience_title">Work Experience</a>
         <ul ng-controller="WorkExperienceCtrl">
             <li ng-repeat="work_experience in work_experiences">
-                {{ work_experience.name }}
+                <a href="#work_experience_{{ work_experience.id }}">{{ work_experience.name }}</a>
             </li>
         </ul>
-        <span>Projects</span>
+        <a class="side_title" href="#project_title">Projects</a>
         <ul ng-controller="ProjectCtrl">
             <li ng-repeat="project in projects">
-                {{ project.name }}
+                <a href="#project_{{ project.id }}">{{ project.name }}</a>
             </li>
         </ul>
     </div>
 
-    <div>
-        <span>Person</span>
-        <div ng-controller="PersonCtrl">
-            <form name="person_form" ng-submit="save(person)" novalidate>
-                <input type="text" ng-model="person.first_name" name="first_name" ng-readonly="!editing" required>
-                <span ng-show="person_form.first_name.$dirty && person_form.first_name.$error.required">This field is required.</span>
-                <input type="text" ng-model="person.last_name" name="last_name" ng-readonly="!editing" required>
-                <span ng-show="person_form.last_name.$dirty && person_form.last_name.$error.required">This field is required.</span>
-                <input type="text" ng-model="person.email" name="email" ng-readonly="!editing" required>
-                <span ng-show="person_form.email.$dirty && person_form.email.$error.required">This field is required.</span>
-                <span ng-show="person_form.email.$dirty && person_form.email.$error.email">This is not a valid email.</span>
-                <input type="text" ng-model="person.description" name="description" ng-readonly="!editing">
-                <input type="checkbox" ng-model="person.public" name="public" ng-disabled="!editing">
+    <div id="container">
+        <div id="person" ng-controller="PersonCtrl">
+            <form name="person_form" id="person" ng-submit="save(person)">
+                <input type="text" ng-model="person.first_name" ng-hide="!editing" ng-class="{ editing: editing }" class="person_name" name="first_name" ng-readonly="!editing" required>
+                <input type="text" ng-model="person.last_name" ng-hide="!editing" ng-class="{ editing: editing }" class="person_name" name="last_name" ng-readonly="!editing" required>
+                <p ng-hide="editing" class="person_name">{{ person.first_name }} {{ person.last_name }}</p>
+                <input type="email" ng-model="person.email" ng-class="{ editing: editing }" class="person_email" name="email" ng-readonly="!editing" required>
+                <textarea type="text" ng-model="person.description" ng-class="{ editing: editing }" class="person_description" name="description" ng-readonly="!editing"></textarea>
+                <p id="public_label">Public:</p>
+                <input type="checkbox" ng-model="person.public" ng-class="{ editing: editing }" class="person_public" name="public" ng-disabled="!editing">
                 <button type="button" ng-hide="editing" ng-click="editing=true;edit(person)">Edit</button>
                 <button type="submit" ng-hide="!editing">Save</button>
                 <button type="button" ng-hide="!editing" ng-click="editing=false;cancel()">Cancel</button>
             </form>
         </div>
-        <span>Education</span>
+        <p id="education_title" class="ctn_title">Education</p>
         <ul ng-controller="EducationCtrl">
             <li ng-repeat="education in educations | orderBy:'start_date'">
-                <form name="education_form" ng-submit="save(education)">
-                    <input type="text" ng-model="education.name" ng-readonly="!editing" required>
-                    <input type="date" ng-model="education.start_date" name="start_date" ng-readonly="!editing" required>
-                    <input type="date" ng-model="education.end_date" name="end_date" ng-readonly="!editing">
-                    <input type="text" ng-model="education.major" name="major" ng-readonly="!editing" required>
-                    <input type="text" ng-model="education.degree" name="degree" ng-readonly="!editing" required>
+                <form name="education_form" id="education_{{ education.id}}" ng-submit="save(education)">
+                    <input type="text" ng-model="education.name" ng-class="{ editing: editing }" class="education_name" name="name" ng-readonly="!editing" required>
+                    <input type="date" ng-model="education.start_date" ng-hide="!editing" ng-class="{ editing: editing }" class="education_start_date" name="start_date" ng-readonly="!editing" required>
+                    <input type="date" ng-model="education.end_date" ng-hide="!editing" ng-class="{ editing: editing }" class="education_end_date" name="end_date" ng-readonly="!editing">
+                    <p ng-hide="editing" class="education_time">{{ education.start_date }} - {{ education.end_date }}</p>
+                    <input type="text" ng-model="education.major" ng-class="{ editing: editing }" class="education_major" name="major" ng-readonly="!editing" required>
+                    <input type="text" ng-model="education.degree" ng-class="{ editing: editing }" class="education_degree" name="degree" ng-readonly="!editing" required>
                     <button type="button" ng-hide="editing" ng-click="editing=true;edit(education)">Edit</button>
                     <button type="submit" ng-hide="!editing" ng-click="editing=false">Save</button>
                     <button type="button" ng-hide="!editing" ng-click="editing=false;cancel(education)">Cancel</button>
@@ -83,14 +83,14 @@
                     <input type="date" ng-model="new_education.end_date" name="end_date">
                     <input type="text" ng-model="new_education.major" name="major" required>
                     <input type="text" ng-model="new_education.degree" name="degree" required>
-                    <button type="submit">Save</button>
+                    <button type="submit">Add</button>
                 </form>
             </li>
         </ul>
-        <span>Work Experience</span>
+        <p id="work_experience_title" class="ctn_title">Work Experience</p>
         <ul ng-controller="WorkExperienceCtrl">
             <li ng-repeat="work_experience in work_experiences | orderBy:'start_date'">
-                <form name="work_experience_form" ng-submit="save(work_experience)">
+                <form name="work_experience_form" id="work_experience_{{ work_experience.id }}" ng-submit="save(work_experience)">
                     <input type="text" ng-model="work_experience.name" name="name" ng-readonly="!editing" required>
                     <input type="text" ng-model="work_experience.title" name="title" ng-readonly="!editing" required>
                     <input type="text" ng-model="work_experience.website" name="website" ng-readonly="!editing">
@@ -111,14 +111,14 @@
                     <input type="date" ng-model="new_work_experience.start_date" name="start_date" required>
                     <input type="date" ng-model="new_work_experience.end_date" name="end_date">
                     <input type="text" ng-model="new_work_experience.description" name="description">
-                    <button type="submit">Save</button>
+                    <button type="submit">Add</button>
                 </form>
             </li>
         </ul>
-        <span>Project</span>
+        <p id="project_title" class="ctn_title">Project</p>
         <ul ng-controller="ProjectCtrl">
             <li ng-repeat="project in projects | orderBy:'start_date'">
-                <form name="project_form" ng-submit="save(project)">
+                <form name="project_form" id="project_{{ project.id }}" ng-submit="save(project)">
                     <input type="text" ng-model="project.name" name="name" ng-readonly="!editing" required>
                     <input type="text" ng-model="project.website" name="website" ng-readonly="!editing">
                     <input type="date" ng-model="project.start_date" name="start_date" ng-readonly="!editing" required>
@@ -137,7 +137,7 @@
                     <input type="date" ng-model="new_project.start_date" name="start_date" required>
                     <input type="date" ng-model="new_project.end_date" name="end_date" required>
                     <input type="text" ng-model="new_project.description" name="description">
-                    <button type="submit">Save</button>
+                    <button type="submit">Add</button>
                 </form>
             </li>
         </ul>
@@ -150,5 +150,5 @@ app.config(['$httpProvider', function($httpProvider) {
     $httpProvider.defaults.headers.common['X-CSRFToken'] = '{{ csrf_token|escapejs }}';
 }]);
 </script>
-<script src="{% get_static_prefix %}webresume/js/controllers.js"></script>
+<script src="{% get_static_prefix %}webresume/js/edit_ctrl.js"></script>
 </html>
