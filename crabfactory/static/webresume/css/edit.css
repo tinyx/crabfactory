@@ -1,4 +1,10 @@
+body {
+    margin: 0;
+    border-top: 20px solid #2E6EB4;
+}
+
 div#sidebar {
+    background-color: white;
     position: fixed;
     top: 0;
     left: 0;
@@ -82,11 +88,38 @@ p#public_label {
     font-family: 'Raleway', 'sans-serif';
 }
 
+form.education_form {
+    margin-top: 15px;
+}
+
 input.education_name {
     width: 200px;
 }
 
-p.education_time {
+p.education_name {
     display: inline;
+    font-family: 'Raleway', 'sans-serif';
+    font-size: 15px;
+    margin-right: 20px;
+}
+
+p.education_time, p.education_major, p.education_degree {
+    display: inline;
+    font-family: 'Raleway', 'sans-serif';
     font-size: 12px;
+    color: white;
+    padding: 3px 5px;
+    margin: 0 5px;
+}
+
+p.education_time {
+    background-color: #2E6EB4;
+}
+
+p.education_major {
+    background-color: #2E6EB4;
+}
+
+p.education_degree {
+    background-color: #2E6EB4;
 }
