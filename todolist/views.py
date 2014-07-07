@@ -25,7 +25,7 @@ def todo_login(request):
         if user:
             if user.is_active:
                 login(request, user)
-                return HttpResponseRedirect(reverse('webresume_edit'))
+                return HttpResponseRedirect(reverse('todo_main'))
         error_info = constants.NAME_PASSWORD_DOESNT_MATCH_MSG
     logout(request)
     return render_to_response('todo_login.html',\
