@@ -1,5 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.views.generic import TemplateView
 from todolist.urls import urlpatterns as todolist_url
 from webresume.urls import urlpatterns as webresume_url
 
@@ -16,6 +17,7 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
+    url(r'^$', TemplateView.as_view(template_name='index.html'), name='home'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^todo/', include(todolist_url)),
     url(r'^webresume/', include(webresume_url)),
