@@ -4,6 +4,7 @@
     <head>
         <title>Crabfactory</title>
         <link rel="stylesheet" type="text/css" href="{% get_static_prefix %}home/css/background.css"/>
+        <link rel="shortcut icon" href="{% get_static_prefix %}home/img/crab_logo.ico" >
     </head>
     <body class="preload">
         <div id="menu_bar">
@@ -12,11 +13,13 @@
             </div>
             <div id="center_icon_shadow" class="circle"></div>
             <div id="intro_icon" class="normal_icon circle">
+                <img class="img_in_circle" src="{% get_static_prefix %}home/img/intro_icon.png"></img>
                 <div class="cn_in_circle">简介</div>
                 <div class="line_in_circle"></div>
                 <div class="en_in_circle">Intro</div>
             </div>
             <div id="skill_icon" class="normal_icon circle">
+                <img class="img_in_circle" src="{% get_static_prefix %}home/img/skill_icon.png"></img>
                 <div class="cn_in_circle">技能</div>
                 <div class="line_in_circle"></div>
                 <div class="en_in_circle">Skill</div>
@@ -43,5 +46,5 @@
             </div>
         </div>
     </body>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="{% get_static_prefix %}library/jquery.min.js"></script>
 </html>
