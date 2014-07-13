@@ -85,7 +85,7 @@ body {
 @-webkit-keyframes animation_shadow {
     from {
         -webkit-transform: scale(1);
-        opacity: 1;
+        opacity: .5;
     }
     to {
         -webkit-transform: scale(1.3);
