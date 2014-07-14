@@ -228,3 +228,13 @@ body {
     height: 100%;
     min-height: 600px;
 }
+
+#content_idle_container {
+    margin: auto;
+    width: 68%;
+    height: 51%;
+}
+
+#content_idle {
+    width: 100%;
+}
