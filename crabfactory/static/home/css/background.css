@@ -13,10 +13,21 @@ body {
 #menu_bar {
     margin: auto;
     width: 100%;
-    height: 125px;
     background-color: WHITESMOKE;
     position: fixed;
     bottom: 0;
+}
+
+@media screen and (max-height: 2000px) and (min-height: 400px) {
+    #menu_bar {
+        height: 125px;
+    }
+}
+
+@media screen and (max-height: 400px) and (min-height: 100px) {
+    #menu_bar {
+        height: 110px;
+    }
 }
 
 .circle {
