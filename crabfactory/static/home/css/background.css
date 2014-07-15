@@ -157,7 +157,7 @@ body {
 .en_in_circle {
     cursor: default;
     font-size: 1.1vw;
-    font-family: 'Raleway', sans-serif;
+    font-family: Raleway;
     color: WHITE;
     position: absolute;
     top: 55%;
@@ -166,6 +166,15 @@ body {
     -webkit-transition: all .5s ease-in-out;
     -moz-transition: all .5s ease-in-out;
     transition: all .5s ease-in-out;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('../font/Raleway/raleway-regular-webfont.eot');
+    src: local('☺'),
+         url('../font/Raleway/raleway-regular-webfont.woff') format('woff'),
+         url('../font/Raleway/raleway-regular-webfont.ttf') format('truetype'),
+         url('../font/Raleway/raleway-regular-webfont.svg#Raleway') format('svg');
 }
 
 .img_in_circle {
