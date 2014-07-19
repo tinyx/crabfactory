@@ -121,7 +121,7 @@ body {
 
 .cn_in_circle {
     cursor: default;
-    font-family: CaiYunHanMaoBi;
+    font-family: Mini;
     font-size: 1.6vw;
     color: WHITE;
     position: absolute;
@@ -134,12 +134,12 @@ body {
 }
 
 @font-face {
-    font-family: 'CaiYunHanMaoBi';
-    src: url('../font/CaiYunHanMaoBi/CaiYunHanMaoBi-Xing.eot');
+    font-family: 'Mini';
+    src: url('../font/Mini/minijianyaya.eot');
     src: local('☺'),
-         url('../font/CaiYunHanMaoBi/CaiYunHanMaoBi-Xing.woff') format('woff'),
-         url('../font/CaiYunHanMaoBi/CaiYunHanMaoBi-Xing.ttf') format('truetype'),
-         url('../font/CaiYunHanMaoBi/CaiYunHanMaoBi-Xing.svg#CaiYunHanMaoBi') format('svg');
+         url('../font/Mini/minijianyaya.woff') format('woff'),
+         url('../font/Mini/minijianyaya.ttf') format('truetype'),
+         url('../font/Mini/minijianyaya.svg#Mini') format('svg');
 }
 
 .line_in_circle {
@@ -188,7 +188,7 @@ body {
 }
 
 .normal_icon:hover > .cn_in_circle {
-    right: 30%;
+    right: 28%;
     opacity: 1;
 }
 
@@ -220,7 +220,7 @@ body {
     left: 35%;
 }
 
-#social_icon {
+#contact_icon {
     background-color: rgba(215, 133, 165, 1);
     left: 59%;
 }
@@ -251,8 +251,8 @@ body {
 
 #content_idle_container {
     margin: auto;
-    width: 68%;
-    height: 51%;
+    width: 60%;
+    height: 45%;
 }
 
 #content_idle {
