@@ -7,47 +7,65 @@
         <link rel="shortcut icon" href="{% get_static_prefix %}home/img/crab_logo.ico" >
     </head>
     <body class="preload">
-        <div id="content_container">
-            <div id="content_idle_container">
-                <img id="content_idle" src="{% get_static_prefix %}home/img/crabfactory_huge.png"></img>
+        <section id="slide-1" class="slide">
+            <div class="content_background"
+                data-anchor-target="#slide-1" >
+                <div class="content_container">
+                    <div class="content"
+                        data-bottom="opacity: 1; position: fixed; top: 0px;"
+                        data-400-end="opacity: 1; transform: scale(1)"
+                        data-50-end="opacity: 0; transform: sclae(.9);"
+                        data-anchor-target="#slide-1 img">
+                        <a href="#slide-1"></a>
+                        <img id="content_idle" src="{% get_static_prefix %}home/img/crabfactory_huge.png"></img>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
+        <section id="slide-2">
+            <div class="content_background">
+                <div class="content_container">
+                    <a href="#slide-2"></a>
+                    <h2>Hello</h>
+                </div>
+            </div>
+        </section>
         <div id="menu_bar">
             <div id="center_icon" class="circle">
                 <img id="center_img" src="{% get_static_prefix %}home/img/crab_logo.png"></img>
             </div>
-            <div id="center_icon_shadow" class="circle"></div>
-            <div id="intro_icon" class="normal_icon circle" onclick="display_intro">
+            <div id="center_icon_shadow" class="circle" onclick="scroll_to('#slide-1')"></div>
+            <div id="intro_icon" class="normal_icon circle" onclick="scroll_to('#slide-2')">
                 <img class="img_in_circle" src="{% get_static_prefix %}home/img/intro_icon.png"></img>
                 <div class="cn_in_circle">简介</div>
                 <div class="line_in_circle"></div>
                 <div class="en_in_circle">Intro</div>
             </div>
-            <div id="skill_icon" class="normal_icon circle" onclick="display_skill">
+            <div id="skill_icon" class="normal_icon circle">
                 <img class="img_in_circle" src="{% get_static_prefix %}home/img/skill_icon.png"></img>
                 <div class="cn_in_circle">技能</div>
                 <div class="line_in_circle"></div>
                 <div class="en_in_circle">Skill</div>
             </div>
-            <div id="project_icon" class="normal_icon circle" onclick="display_project">
+            <div id="project_icon" class="normal_icon circle">
                 <img class="img_in_circle" src="{% get_static_prefix %}home/img/project_icon.png"></img>
                 <div class="cn_in_circle">项目</div>
                 <div class="line_in_circle"></div>
                 <div class="en_in_circle">Project</div>
             </div>
-            <div id="contact_icon" class="normal_icon circle" onclick="display_contact">
+            <div id="contact_icon" class="normal_icon circle">
                 <img class="img_in_circle" src="{% get_static_prefix %}home/img/contact_icon.png"></img>
                 <div class="cn_in_circle">联系</div>
                 <div class="line_in_circle"></div>
                 <div class="en_in_circle">Contact</div>
             </div>
-            <div id="resume_icon" class="normal_icon circle" onclick="display_resume">
+            <div id="resume_icon" class="normal_icon circle">
                 <img class="img_in_circle" src="{% get_static_prefix %}home/img/resume_icon.png"></img>
                 <div class="cn_in_circle">简历</div>
                 <div class="line_in_circle"></div>
                 <div class="en_in_circle">Resume</div>
             </div>
-            <div id="about_icon" class="normal_icon circle" onclick="display_about">
+            <div id="about_icon" class="normal_icon circle">
                 <img class="img_in_circle" src="{% get_static_prefix %}home/img/about_icon.png"></img>
                 <div class="cn_in_circle">关于</div>
                 <div class="line_in_circle"></div>
@@ -56,4 +74,7 @@
         </div>
     </body>
     <script src="{% get_static_prefix %}library/jquery.min.js"></script>
+	<script src="{% get_static_prefix %}library/skrollr.js"></script>
+	<script src="{% get_static_prefix %}library/jquery.scrollTo.min.js"></script>
+    <script src="{% get_static_prefix %}home/js/background.js"></script>
 </html>
