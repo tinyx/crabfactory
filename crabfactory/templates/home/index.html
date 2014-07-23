@@ -13,10 +13,10 @@
                 data-anchor-target="#slide-1" >
                 <div class="content_container">
                     <div class="content"
-                        data-bottom="opacity: 1; position: fixed; top: 0px;"
-                        data-400-end="opacity: 1; transform: scale(1)"
-                        data-50-end="opacity: 0; transform: sclae(.9);"
-                        data-anchor-target="#slide-1 img">
+                        data-bottom-top="opacity: 1; position: fixed; top: 0px;"
+                        data--50p-top="opacity: 1; transform: scale(1);"
+                        data--70p-top="opacity: 0; transform: sclae(.9);"
+                        data-anchor-target="#slide-1 a">
                         <a href="#slide-1"></a>
                         <img id="content_idle" src="{% get_static_prefix %}home/img/crabfactory_huge.png"></img>
                     </div>
@@ -25,7 +25,10 @@
         </section>
         <section id="slide-2">
             <div class="content_background">
-                <div class="content_container">
+                <div class="content_container"
+                    data--50p-top="opacity: 1; transform: scale(1);"
+                    data--70p-top="opacity: 0; transform: scale(.9);"
+                    data-anchor-target="#slide-2 a">
                     <a href="#slide-2"></a>
                     <h2>Hello</h>
                 </div>
