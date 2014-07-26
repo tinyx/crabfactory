@@ -15,22 +15,26 @@
                     <div class="content"
                         data-bottom-top="opacity: 1; position: fixed; top: 0px;"
                         data--50p-top="opacity: 1; transform: scale(1);"
-                        data--70p-top="opacity: 0; transform: sclae(.9);"
-                        data-anchor-target="#slide-1 a">
-                        <a href="#slide-1"></a>
+                        data--70p-top="opacity: 0; transform: sclae(.9);">
                         <img id="content_idle" src="{% get_static_prefix %}home/img/crabfactory_huge.png"></img>
                     </div>
                 </div>
             </div>
         </section>
-        <section id="slide-2">
+        <div class="border_connector">
+            <img id="connector_1_and_2" class="connector_img" src="{% get_static_prefix %}home/img/connector_1_and_2.png"></img>
+        </div>
+        <section id="slide-2" class="slide">
             <div class="content_background">
-                <div class="content_container"
-                    data--50p-top="opacity: 1; transform: scale(1);"
-                    data--70p-top="opacity: 0; transform: scale(.9);"
-                    data-anchor-target="#slide-2 a">
-                    <a href="#slide-2"></a>
-                    <h2>Hello</h>
+                <div class="content_container">
+                    <div></div>
+                </div>
+            </div>
+        </section>
+        <section id="slide-3" class="slide">
+            <div class="content_background">
+                <div class="content_container">
+                    <a href="#slide-3"></a>
                 </div>
             </div>
         </section>
@@ -39,7 +43,7 @@
                 <img id="center_img" src="{% get_static_prefix %}home/img/crab_logo.png"></img>
             </div>
             <div id="center_icon_shadow" class="circle" onclick="scroll_to('#slide-1')"></div>
-            <div id="intro_icon" class="normal_icon circle" onclick="scroll_to('#slide-2')">
+            <div id="intro_icon" class="normal_icon circle" onclick="scroll_to('#connector_1_and_2')">
                 <img class="img_in_circle" src="{% get_static_prefix %}home/img/intro_icon.png"></img>
                 <div class="cn_in_circle">简介</div>
                 <div class="line_in_circle"></div>
