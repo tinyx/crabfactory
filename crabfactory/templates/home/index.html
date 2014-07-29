@@ -3,8 +3,8 @@
 <html>
     <head>
         <title>Crabfactory</title>
-        <link rel="stylesheet" type="text/css" href="{% get_static_prefix %}home/css/background.css"/>
-        <link rel="shortcut icon" href="{% get_static_prefix %}home/img/crab_logo.ico" >
+        <link rel="stylesheet" type="text/css" href="{% get_static_prefix %}home/css/background.css">
+        <link rel="shortcut icon" href="{% get_static_prefix %}home/img/crab_logo.ico">
     </head>
     <body class="preload">
         <div id="skrollr-body"></div>
@@ -12,10 +12,11 @@
             <div class="content_background"
                 data-anchor-target="#slide-1" >
                 <div class="content_container">
-                    <div class="content"
+                    <div id="content_1" class="content invisible"
                         data-bottom-top="opacity: 1; position: fixed; top: 0px;"
                         data--50p-top="opacity: 1; transform: scale(1);"
-                        data--70p-top="opacity: 0; transform: sclae(.9);">
+                        data--70p-top="opacity: 0; transform: sclae(.9);"
+                        data-anchor-target="#slide-1">
                         <img id="content_idle" src="{% get_static_prefix %}home/img/crabfactory_huge.png"></img>
                     </div>
                 </div>
@@ -27,10 +28,33 @@
         <section id="slide-2" class="slide">
             <div class="content_background">
                 <div class="content_container">
-                    <div></div>
+                    <div id="content_2" class="content invisible"
+                        data-bottom-top="opacity: 1;"
+                        data--40p-top="opacity: 1;"
+                        data--60p-top="opacity: 0;"
+                        data-anchor-target="#slide-2">
+                        <div id="photo_container">
+                            <img id="photo_of_me" src="{% get_static_prefix %}home/img/photo_of_me.png"></img>
+                        </div>
+                        <div id="intro_tip_container">
+                            <div id="intro_tip_1">
+                                <p>Hi there, this is Yitao, from Chongqing, China.</p>
+                                <p>I'm majoring in Computer Science.</p>
+                                <p>I'll get my master degree in the end of this year from Northeastern University.</p>
+                            </div>
+                            <div id="intro_tip_2">
+                                <p>I used Java a lot before.</p>
+                                <p>But now I'm so interested in Web Developping!</p>
+                                <p>I kept practicing Django since I used it, Django rocks!</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
+       <div class="border_connector">
+            <img id="connector_2_and_3" class="connector_img" src="{% get_static_prefix %}home/img/connector_2_and_3.png"></img>
+        </div>
         <section id="slide-3" class="slide">
             <div class="content_background">
                 <div class="content_container">
@@ -49,7 +73,7 @@
                 <div class="line_in_circle"></div>
                 <div class="en_in_circle">Intro</div>
             </div>
-            <div id="skill_icon" class="normal_icon circle">
+            <div id="skill_icon" class="normal_icon circle" onclick="scroll_to('#connector_2_and_3')">
                 <img class="img_in_circle" src="{% get_static_prefix %}home/img/skill_icon.png"></img>
                 <div class="cn_in_circle">技能</div>
                 <div class="line_in_circle"></div>

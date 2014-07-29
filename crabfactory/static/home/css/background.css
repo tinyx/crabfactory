@@ -16,6 +16,7 @@ body {
     background-color: WHITESMOKE;
     position: fixed;
     bottom: 0;
+    z-index: 1000;
 }
 
 @media screen and (max-height: 2000px) and (min-height: 400px) {
@@ -68,7 +69,7 @@ body {
     height: 100%;
 }
 
-#center_icon_shadow {
+#center_icon_shadow_lalala {
     -webkit-animation-name: animation_shadow;
     -webkit-animation-duration: 2s;
     -webkit-animation-iteration-count: infinite;
@@ -240,7 +241,7 @@ body {
 
 
 .slide {
-    height: 50%;
+    height: 35%;
     min-height: 400px;
 }
 
@@ -254,6 +255,12 @@ body {
     background: linear-gradient(#fff, #a8dfff);
     background: -webkit-linear-gradient(#fff, #a8dfff);
     background: -moz-linear-gradient(#fff, #a8dfff);
+}
+
+#slide-3 {
+    background: linear-gradient(#607ba0, #69b6e4);
+    background: -webkit-linear-gradient(#607ba0, #69b6e4);
+    background: -moz-linear-gradient(#607ba0, #69b6e4);
 }
 
 .border_connector {
@@ -295,9 +302,84 @@ body {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
+    position: relative;
+}
+
+#content_1 {
+    z-index: 10
+}
+
+.invisible {
     opacity: 0;
 }
 
 #content_idle {
     width: 60%;
+}
+
+#photo_container {
+    width: 55%;
+    position: absolute;
+    left: 8%;
+    top: 0%;
+    background-image: url("../img/photo_container.png");
+    background-size: contain;
+}
+
+#photo_of_me {
+    width: 40%;
+    margin-top: 4%;
+    margin-bottom: 3%;
+    -webkit-box-shadow: 2px 2px 15px BLACK;
+    -moz-box-shadow: 2px 2px 15px BLACK;
+    box-shadow: 2px 2px 15px BLACK;
+}
+
+#intro_tip_container {
+    width: 20%;
+    padding-bottom: 35%;
+    position: absolute;
+    right: 16%;
+    top: 0%;
+}
+
+#intro_tip_1, #intro_tip_2 {
+    background-color: WHITE;
+    width: 80%;
+    padding: 5%;
+    font-size: 1.1vw;
+    font-family: Raleway-Bold;
+    color: #1274ac;
+    text-align: left;
+    position: relative;
+    -webkit-box-shadow: 2px 2px 6px BLACK;
+    -moz-box-shadow: 2px 2px 6px BLACK;
+    box-shadow: 2px 2px 6px BLACK;
+}
+    
+#intro_tip_1 {
+    -webkit-transform: rotate(7deg);
+    -moz-transform: rotate(7deg);
+    transform: rotate(7deg);
+    top: 50px;
+}
+
+#intro_tip_1 > p, #intro_tip_2 > p {
+    margin: 3px;
+}
+    
+@font-face {
+    font-family: 'Raleway-Bold';
+    src: url('../font/Raleway-Bold/raleway-bold-webfont.eot');
+    src: local('☺'),
+         url('../font/Raleway-Bold/raleway-bold-webfont.woff') format('woff'),
+         url('../font/Raleway-Bold/raleway-bold-webfont.ttf') format('truetype'),
+         url('../font/Raleway-Bold/raleway-bold-webfont.svg#Raleway') format('svg');
+}
+
+#intro_tip_2 {
+    margin-top: 50%;
+    -webkit-transform: rotate(-4deg);
+    -moz-transform: rotate(-4deg);
+    transform: rotate(-4deg);
 }
