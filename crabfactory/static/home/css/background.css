@@ -306,7 +306,7 @@ body {
 }
 
 #content_1 {
-    z-index: 10
+    z-index: 10;
 }
 
 .invisible {
@@ -382,4 +382,56 @@ body {
     -webkit-transform: rotate(-4deg);
     -moz-transform: rotate(-4deg);
     transform: rotate(-4deg);
+}
+
+.skill_container {
+    width: 424px;
+    height: 485px;
+    position: absolute;
+    top: 0;
+}
+
+#front_end_skill {
+    left: 13%;
+}
+
+#back_end_skill {
+    right: 13%;
+}
+
+.knob_container {
+    width: 100%;
+    position: absolute;
+}
+
+#front_end_icon, #back_end_icon {
+    width: 130px;
+    padding-bottom: 130px;
+    position: absolute;
+    top: 110px;
+    left: 147px;
+}
+
+#front_end_icon > img, #back_end_icon > img {
+    width: 100%;
+}
+
+#html5_container {
+    top: 90px;
+}
+
+#css3_container {
+    top: 70px;
+}
+
+#javascript_container {
+    top: 50px;
+}
+
+#angularjs_container {
+    top: 30px;
+}
+
+#ui_design_container {
+    top: 10px;
 }
