@@ -21,6 +21,16 @@ var on_resize = function() {
         '-moz-transform': 'scale(' + scale_factor + ')',
         '-webkit-transform': 'scale(' + scale_factor + ')',
     });
+    
+    $('#front_end_skill').css({
+        'left': 5 * scale_factor + '%',
+        'top': 5 * scale_factor + '%',
+    });
+    
+    $('#back_end_skill').css({
+        'right': 5 * scale_factor + '%',
+        'top': 5 * scale_factor + '%',
+    });
 }
 
 $(document).ready(on_resize);

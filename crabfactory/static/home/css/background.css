@@ -394,15 +394,15 @@ body {
     width: 424px;
     height: 485px;
     position: absolute;
-    top: 20%;
+    top: 5%;
 }
 
 #front_end_skill {
-    left: 15%;
+    left: 5%;
 }
 
 #back_end_skill {
-    right: 15%;
+    right: 5%;
 }
 
 .knob_container {
