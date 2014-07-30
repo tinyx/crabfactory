@@ -19,13 +19,13 @@ body {
     z-index: 1000;
 }
 
-@media screen and (min-height: 2000px) {
+@media screen and (max-height: 4000px) and (min-height: 1800px) {
     #menu_bar {
         height: 180px;
     }
 }
 
-@media screen and (max-height: 2000px) and (min-height: 400px) {
+@media screen and (max-height: 1800px) and (min-height: 400px) {
     #menu_bar {
         height: 125px;
     }

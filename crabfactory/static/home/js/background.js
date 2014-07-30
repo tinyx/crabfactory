@@ -16,20 +16,10 @@ $(function() {
 var on_resize = function() {
     var win_width = $(window).width();
     var scale_factor = win_width / 1213; //'1213' is the width on my screen
-    $('#content_3').css({
+    $('#front_end_skill, #back_end_skill').css({
         'transform': 'scale(' + scale_factor + ')',
         '-moz-transform': 'scale(' + scale_factor + ')',
         '-webkit-transform': 'scale(' + scale_factor + ')',
-    });
-    
-    $('#front_end_skill').css({
-        'left': 5 * scale_factor + '%',
-        'top': 5 * scale_factor + '%',
-    });
-    
-    $('#back_end_skill').css({
-        'right': 5 * scale_factor + '%',
-        'top': 5 * scale_factor + '%',
     });
 }
 
