@@ -21,7 +21,7 @@ body {
 
 @media screen and (min-height: 2000px) {
     #menu_bar {
-        height: 150px;
+        height: 180px;
     }
 }
 
@@ -394,15 +394,15 @@ body {
     width: 424px;
     height: 485px;
     position: absolute;
-    top: 0;
+    top: 20%;
 }
 
 #front_end_skill {
-    left: 50px;
+    left: 15%;
 }
 
 #back_end_skill {
-    right: 50px;
+    right: 15%;
 }
 
 .knob_container {
