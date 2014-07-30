@@ -17,24 +17,7 @@ body {
     position: fixed;
     bottom: 0;
     z-index: 1000;
-}
-
-@media screen and (max-height: 4000px) and (min-height: 1800px) {
-    #menu_bar {
-        height: 180px;
-    }
-}
-
-@media screen and (max-height: 1800px) and (min-height: 400px) {
-    #menu_bar {
-        height: 125px;
-    }
-}
-
-@media screen and (max-height: 400px) and (min-height: 100px) {
-    #menu_bar {
-        height: 110px;
-    }
+    height: 125px;
 }
 
 .circle {
@@ -48,7 +31,7 @@ body {
     width: 6%;
     padding-bottom: 6%;
     position: absolute;
-    bottom: 20px;
+    bottom: 20%;
     -webkit-transition: box-shadow .5s;
     -moz-transition: box-shadow .5s;
     transition: box-shadow .5s;
@@ -57,7 +40,7 @@ body {
 #center_icon, #center_icon_shadow {
     margin: auto;
     position: absolute;
-    bottom: 10px;
+    bottom: 10%;
     left: 46%;
     width: 8%;
     padding-bottom: 8%;
@@ -394,7 +377,7 @@ body {
     width: 424px;
     height: 485px;
     position: absolute;
-    top: 15%;
+    bottom: 0%;
 }
 
 #front_end_skill {

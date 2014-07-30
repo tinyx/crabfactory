@@ -21,6 +21,9 @@ var on_resize = function() {
         '-moz-transform': 'scale(' + scale_factor + ')',
         '-webkit-transform': 'scale(' + scale_factor + ')',
     });
+    
+    var normal_icon_height = $('#intro_icon').width();
+    $('#menu_bar').height(normal_icon_height * 1.7); //'1.7' is calculated by 125px / 74px
 }
 
 $(document).ready(on_resize);
