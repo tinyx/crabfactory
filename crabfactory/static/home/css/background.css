@@ -376,9 +376,16 @@ body {
 .skill_container {
     width: 424px;
     height: 485px;
-    display: inline-block;
-    position: relative;
+    position: absolute;
     bottom: 0%;
+}
+
+#front_end_skill {
+    left: 13%;
+}
+
+#back_end_skill {
+    right: 13%;
 }
 
 .knob_container {
