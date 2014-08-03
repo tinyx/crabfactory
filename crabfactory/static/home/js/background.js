@@ -44,7 +44,8 @@ var circle_chart_content = $('#content_3');
                     //display circle chart
                     display_all_circle_charts();
                     circle_chart_displayed = true;
-                    $('.skill_background').delay(1000).fadeIn('slow');
+                    $('#front_end_skill_background').delay(1000).fadeIn('slow');
+                    $('#back_end_skill_background').delay(2000).fadeIn('slow');
                 }
             }
         }
@@ -62,12 +63,16 @@ var display_circle_chart = function(skill_id, skill_value) {
 };
 
 var display_all_circle_charts = function() {
+    //Frontend skills
     display_circle_chart('#html5', 75);
     display_circle_chart('#css3', 65);
     display_circle_chart('#javascript', 60);
     display_circle_chart('#ui_design', 50);
     display_circle_chart('#angularjs', 30);
-    display_circle_chart('#django', 75);
-    display_circle_chart('#postgres', 55);
-    display_circle_chart('#asp_dot_net', 40);
+    //Backend skills
+    setTimeout(function() {
+        display_circle_chart('#django', 75);
+        display_circle_chart('#postgres', 55);
+        display_circle_chart('#asp_dot_net', 40);
+    }, 1000);
 }
