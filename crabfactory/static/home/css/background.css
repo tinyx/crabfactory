@@ -405,6 +405,10 @@ body {
     width: 100%;
 }
 
+.skill_background {
+    display: none;
+}
+
 #html5_container {
     top: 90px;
 }
@@ -423,4 +427,16 @@ body {
 
 #ui_design_container {
     top: 10px;
+}
+
+#django_container {
+    top: 80px;
+}
+    
+#postgres_container {
+    top: 50px;
+}
+
+#asp_dot_net_container {
+    top: 20px;
 }

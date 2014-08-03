@@ -35,7 +35,7 @@ var scroll_to = function(anchor) {
     $.scrollTo(anchor, 500);
 };
 
-var circle_chart_content = $("#content_3");
+var circle_chart_content = $('#content_3');
 (function($) {
     var s = skrollr.init({
         render: function(data) {
@@ -44,6 +44,7 @@ var circle_chart_content = $("#content_3");
                     //display circle chart
                     display_all_circle_charts();
                     circle_chart_displayed = true;
+                    $('.skill_background').delay(1000).fadeIn('slow');
                 }
             }
         }
@@ -66,4 +67,7 @@ var display_all_circle_charts = function() {
     display_circle_chart('#javascript', 60);
     display_circle_chart('#ui_design', 50);
     display_circle_chart('#angularjs', 30);
+    display_circle_chart('#django', 75);
+    display_circle_chart('#postgres', 55);
+    display_circle_chart('#asp_dot_net', 40);
 }
