@@ -125,7 +125,6 @@
                 </div>
             </div>
         </section>
-<!--
         <div class="border_connector">
             <img id="connector_3_and_4" class="connector_img" src="{% get_static_prefix %}home/img/connector_3_and_4.png"></img>
         </div>
@@ -133,11 +132,32 @@
             <div class="content_background">
                 <div class="content_container">
                     <div id="content_4" class="content">
+                        <div id="project_menu">
+                            <div id="crabfactory_icon">
+                                Crabfactory
+                            </div>
+                            <div id="todo_list_icon">
+                                2-Do List
+                            </div>
+                            <div id="web_resume_icon">
+                                Web Resume
+                            </div>
+                        </div>
+                        <div id="project_content">
+                            <div id="project_intro">
+                                <img id="project_locator" src="{% get_static_prefix %}home/img/project_locator.png"></img>
+                                <div id="project_logo"></div>
+                                <div id="project_locator_background"></div>
+                            </div>
+                            <div id="project_snap">
+                            </div>
+                            <div id="project_description">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
--->
         <div id="menu_bar">
             <div id="center_icon" class="circle">
                 <img id="center_img" src="{% get_static_prefix %}home/img/crab_logo.png"></img>
@@ -155,7 +175,7 @@
                 <div class="line_in_circle"></div>
                 <div class="en_in_circle">Skill</div>
             </div>
-            <div id="project_icon" class="normal_icon circle">
+            <div id="project_icon" class="normal_icon circle" onclick="scroll_to('#connector_3_and_4')">
                 <img class="img_in_circle" src="{% get_static_prefix %}home/img/project_icon.png"></img>
                 <div class="cn_in_circle">项目</div>
                 <div class="line_in_circle"></div>

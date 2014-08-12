@@ -1,10 +1,11 @@
 var circle_chart_displayed = false;
 
+//disable css animation before page loaded
 $(window).load(function() {
     $("body").removeClass("preload");
-
 });
 
+//initialize jquery.knob
 $(function() {
     $(".knob").knob({
         'displayInput': false,
@@ -13,6 +14,7 @@ $(function() {
     });
 });
 
+//resize knob objects while resizing the window
 var on_resize = function() {
     var win_width = $(window).width();
     var scale_factor = win_width / 1213; //'1213' is the width on my screen
@@ -31,10 +33,10 @@ $(document).ready(on_resize);
 $(window).bind('resize', on_resize);
 
 var scroll_to = function(anchor) {
-    console.log(anchor);
     $.scrollTo(anchor, 500);
 };
 
+//play animation when the page is located in slide-3
 var circle_chart_content = $('#content_3');
 (function($) {
     var s = skrollr.init({
@@ -76,3 +78,45 @@ var display_all_circle_charts = function() {
         display_circle_chart('#asp_dot_net', 40);
     }, 1000);
 }
+
+var projects_info = {
+    '2-do_list': ['0 0', //project_info_background position
+                  '0 0', //project_snap position
+                  ['A website managing things to do', //project description
+                   'Using Django in the backend',
+                   'First time trying LESS',
+                   'Design and drawing all images by myself',
+                  ]
+                 ],
+};
+
+var display_project = function(project_name) {
+    var project_info = projects_info[project_name];
+
+    //pre-calc
+    var project_locator_background = $('#project_locator_background');
+    project_locator_background.css({
+        'background-position': project_info[0],
+    });
+    var project_snap = $('#project_snap');
+    project_snap.css({
+        'background-position': project_info[1],
+    });
+
+    //display_locator
+    /*
+        The chain 'addClass().delay().queue()' is used because
+        'addClass().delay().removeClass()' is not working
+        In this way, the animation class would be removed after the animation finished
+    */
+    $('#project_locator').addClass('project_locator_focus').delay(1000).queue(function() {
+        $(this).removeClass('project_locator_focus');
+        //display_background
+        project_locator_background.fadeTo('slow', 1, function() {
+            //display_snap
+            project_snap.fadeTo('slow', 1);
+        });
+    });
+}
+
+display_project('2-do_list');
