@@ -36,24 +36,6 @@ var scroll_to = function(anchor) {
     $.scrollTo(anchor, 500);
 };
 
-//play animation when the page is located in slide-3
-var circle_chart_content = $('#content_3');
-(function($) {
-    var s = skrollr.init({
-        render: function(data) {
-            if(!circle_chart_displayed) {
-                if(circle_chart_content.hasClass('skrollable-after')) {
-                    //display circle chart
-                    display_all_circle_charts();
-                    circle_chart_displayed = true;
-                    $('#front_end_skill_background').delay(1000).fadeIn('slow');
-                    $('#back_end_skill_background').delay(2000).fadeIn('slow');
-                }
-            }
-        }
-    });
-})(jQuery)
-
 var display_circle_chart = function(skill_id, skill_value) {
     $(skill_id).animate({value: skill_value}, {
         duration: 1000,
@@ -79,6 +61,24 @@ var display_all_circle_charts = function() {
     }, 1000);
 }
 
+//play animation when the page is located in slide-3
+var circle_chart_content = $('#content_3');
+(function($) {
+    var s = skrollr.init({
+        render: function(data) {
+            if(!circle_chart_displayed) {
+                if(circle_chart_content.hasClass('skrollable-after')) {
+                    //display circle chart
+                    display_all_circle_charts();
+                    circle_chart_displayed = true;
+                    $('#front_end_skill_background').delay(1000).fadeIn('slow');
+                    $('#back_end_skill_background').delay(2000).fadeIn('slow');
+                }
+            }
+        }
+    });
+})(jQuery)
+
 var projects_info = {
     '2-do_list': ['0 0', //project_info_background position
                   '0 0', //project_snap position
@@ -98,6 +98,10 @@ var display_project = function(project_name) {
     project_locator_background.css({
         'background-position': project_info[0],
     });
+    var project_description = $('#project_description');
+    for(var index in project_info[2]) {
+        project_description.append($('<p/>').text(project_info[2][index]).addClass('animation_stand_by'));
+    }
     var project_snap = $('#project_snap');
     project_snap.css({
         'background-position': project_info[1],
@@ -109,14 +113,7 @@ var display_project = function(project_name) {
         'addClass().delay().removeClass()' is not working
         In this way, the animation class would be removed after the animation finished
     */
-    $('#project_locator').addClass('project_locator_focus').delay(1000).queue(function() {
-        $(this).removeClass('project_locator_focus');
-        //display_background
-        project_locator_background.fadeTo('slow', 1, function() {
-            //display_snap
-            project_snap.fadeTo('slow', 1);
-        });
-    });
+    $('#project_content').addClass('project_animation_play');
 }
 
 display_project('2-do_list');
