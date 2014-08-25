@@ -356,7 +356,7 @@ body {
     -webkit-transform: rotate(7deg);
     -moz-transform: rotate(7deg);
     transform: rotate(7deg);
-    top: 20px;
+    top: 30px;
 }
 
 #intro_tip_1 > p, #intro_tip_2 > p {
