@@ -313,7 +313,7 @@ body {
 }
 
 #photo_container {
-    width: 50%;
+    width: 45%;
     position: absolute;
     left: 8%;
     top: 0%;
@@ -331,8 +331,8 @@ body {
 }
 
 #intro_tip_container {
-    width: 20%;
-    padding-bottom: 35%;
+    width: 24%;
+    padding-bottom: 30%;
     position: absolute;
     right: 16%;
     top: 0%;
@@ -356,7 +356,7 @@ body {
     -webkit-transform: rotate(7deg);
     -moz-transform: rotate(7deg);
     transform: rotate(7deg);
-    top: 50px;
+    top: 20px;
 }
 
 #intro_tip_1 > p, #intro_tip_2 > p {
@@ -373,7 +373,7 @@ body {
 }
 
 #intro_tip_2 {
-    margin-top: 50%;
+    margin-top: 30%;
     -webkit-transform: rotate(-4deg);
     -moz-transform: rotate(-4deg);
     transform: rotate(-4deg);
