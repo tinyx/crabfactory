@@ -17,13 +17,14 @@ $(function() {
 //resize knob objects while resizing the window
 var on_resize = function() {
     var win_width = $(window).width();
-    var scale_factor = win_width / 1213; //'1213' is the width on my screen
+    var scale_factor = win_width / 1413; //'1213' is the width on my screen
+                                         //but the factor seems to be a little to small
     $('#front_end_skill, #back_end_skill').css({
         'transform': 'scale(' + scale_factor + ')',
         '-moz-transform': 'scale(' + scale_factor + ')',
         '-webkit-transform': 'scale(' + scale_factor + ')',
     });
-    
+
     var normal_icon_height = $('#intro_icon').width();
     $('#menu_bar').height(normal_icon_height * 1.7); //'1.7' is calculated by 125px / 74px
 }

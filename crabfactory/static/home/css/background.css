@@ -309,11 +309,11 @@ body {
 }
 
 #content_idle {
-    width: 60%;
+    width: 55%;
 }
 
 #photo_container {
-    width: 55%;
+    width: 50%;
     position: absolute;
     left: 8%;
     top: 0%;
