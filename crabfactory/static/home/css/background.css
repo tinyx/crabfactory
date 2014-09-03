@@ -660,6 +660,6 @@ body {
 
 #project_description > p {
     text-align: left;
-    font-size: 1em;
+    font-size: 1vw;
     color: #6db8e5;
 }
