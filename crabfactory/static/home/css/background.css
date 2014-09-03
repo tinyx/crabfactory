@@ -648,7 +648,7 @@ body {
     position: absolute;
     left: 50%;
     width: auto;
-    bottom: 30%;
+    top: 40%;
     height: auto;
     background-color: WHITE;
     border: solid 1px #6db8e5;
@@ -660,6 +660,6 @@ body {
 
 #project_description > p {
     text-align: left;
-    font-size: 1vw;
+    font-size: 1.2vw;
     color: #6db8e5;
 }
