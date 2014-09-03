@@ -648,11 +648,18 @@ body {
     position: absolute;
     right: 25%;
     width: 30%;
-    bottom: 25%;
+    bottom: 30%;
     height: auto;
+    background-color: WHITE;
+    border: solid 1px #6db8e5;
+    padding: 0 15px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
 }
 
 #project_description > p {
     text-align: left;
     font-size: 1em;
+    color: #6db8e5;
 }
