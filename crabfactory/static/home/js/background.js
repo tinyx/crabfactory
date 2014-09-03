@@ -127,7 +127,12 @@ var display_project = function(project_name) {
             project_snap.removeClass('project_animation_standby').addClass('project_snap_slide_in');
             project_snap.one('webkitAnimationEnd mozAnimationEnd animationend', function(e) {
                 project_snap.removeClass('project_snap');
-                project_description.removeClass('project_animation_standby');
+                
+                //display description
+                project_description.removeClass('project_animation_standby').addClass('project_description_flip');
+                project_description.one('webkitAnimationEnd mozAnimationEnd animationend', function(e) {
+                    project_description.removeClass('project_description_flip');
+                });
             });
         });
     });

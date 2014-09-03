@@ -657,6 +657,54 @@ body {
     -moz-border-radius: 8px;
     border-radius: 8px;
 }
+    
+.project_description_flip {
+    -webkit-animation-name: animation_flip;
+    -webkit-animation-duration: .8s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-transform: translateZ(0);
+    -moz-animation-name: animation_flip;
+    -moz-animation-duration: .8s;
+    -moz-animation-iteration-count: 1;
+    -moz-transform: translateZ(0);
+    animation-name: animation_flip;
+    animation-duration: .8s;
+    animation-iteration-count: 1;
+    transform: translateZ(0);
+}
+
+@-webkit-keyframes animation_flip {
+    from {
+        transform: rotateX(-90deg);
+        opacity: 0;
+    }
+    to {
+        right: rotateX(0deg);
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes animation_flip {
+    from {
+        transform: rotateX(-90deg);
+        opacity: 0;
+    }
+    to {
+        right: rotateX(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes animation_flip {
+    from {
+        transform: rotateX(-90deg);
+        opacity: 0;
+    }
+    to {
+        right: rotateX(0deg);
+        opacity: 1;
+    }
+}
 
 #project_description > p {
     text-align: left;
