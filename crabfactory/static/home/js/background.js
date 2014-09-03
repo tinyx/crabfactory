@@ -99,22 +99,39 @@ var display_project = function(project_name) {
     project_locator_background.css({
         'background-position': project_info[0],
     });
-    var project_description = $('#project_description');
-    for(var index in project_info[2]) {
-        project_description.append($('<p/>').text(project_info[2][index]).addClass('animation_stand_by'));
-    }
+    
     var project_snap = $('#project_snap');
     project_snap.css({
         'background-position': project_info[1],
     });
-
-    //display_locator
+    
+    var project_description = $('#project_description');
+    for(var index in project_info[2]) {
+        project_description.append($('<p/>').text(project_info[2][index]));
+    }
     /*
-        The chain 'addClass().delay().queue()' is used because
-        'addClass().delay().removeClass()' is not working
-        In this way, the animation class would be removed after the animation finished
+    To play the animations one by one, the functions need to be nested
     */
-    $('#project_content').addClass('project_animation_play');
+    //display locator
+    var project_locator = $('#project_locator');
+    project_locator.removeClass('project_animation_standby').addClass('project_locator_focus');
+    project_locator.one('webkitAnimationEnd mozAnimationEnd animationend', function(e) {
+        project_locator.removeClass('project_locator_focus');
+        
+        //display locator_background
+        project_locator_background.removeClass('project_animation_standby').addClass('project_fade_in');
+        project_locator_background.one('webkitAnimationEnd mozAnimationEnd animationend', function(e) {
+            project_locator_background.removeClass('project_fade_in');
+            
+            //display snapshot
+            project_snap.removeClass('project_animation_standby').addClass('project_snap_slide_in');
+            project_snap.one('webkitAnimationEnd mozAnimationEnd animationend', function(e) {
+                project_snap.removeClass('project_snap');
+                project_description.removeClass('project_animation_standby');
+            });
+        });
+    });
+    
 }
 
 display_project('2-do_list');
