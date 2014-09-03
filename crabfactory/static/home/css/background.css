@@ -458,8 +458,8 @@ body {
 }
 
 #project_intro {
-    width: 45%;
-    padding-bottom: 45%;
+    width: 40%;
+    padding-bottom: 40%;
     position: absolute;
     left: 0;
 }
@@ -588,8 +588,8 @@ body {
 #project_snap {
     position: absolute;
     right: 15%;
-    width: 30%;
-    padding-bottom: 18.75%;
+    width: 25%;
+    padding-bottom: 15.625%;
     top: 5%;
     background-image: url('../img/project_snap.png');
     background-position: 0 0;
