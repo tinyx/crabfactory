@@ -15,7 +15,8 @@
                     <div id="content_1" class="content invisible"
                         data-bottom-top="opacity: 1; position: fixed; top: 0px;"
                         data--50p-top="opacity: 1; transform: scale(1);"
-                        data--70p-top="opacity: 0; transform: sclae(.9);"
+                        data--70p-top="opacity: 0; transform: sclae(.9); display: block;"
+                        data--71p-top="display: none;"
                         data-anchor-target="#slide-1">
                         <img id="content_idle" src="{% get_static_prefix %}home/img/crabfactory_huge.png"></img>
                     </div>
@@ -66,30 +67,35 @@
                             </div>
                             <div id="html5_container" class="knob_container">
                                 <input type="text" value="0" id="html5" class="knob"
+                                       readOnly="true"
                                        data-width="170"
                                        data-thickness=".18"
                                        data-fgColor="rgba(163, 215, 113, .8)">
                             </div>
                             <div id="css3_container" class="knob_container">
                                 <input type="text" value="0" id="css3" class="knob"
+                                       readOnly="true"
                                        data-width="210"
                                        data-thickness=".15"
                                        data-fgColor="rgba(163, 215, 113, .6)">
                             </div>
                             <div id="javascript_container" class="knob_container">
                                 <input type="text" value="0" id="javascript" class="knob"
+                                       readOnly="true"
                                        data-width="250"
                                        data-thickness=".13"
                                        data-fgColor="rgba(163, 215, 113, .4)">
                             </div>
                             <div id="angularjs_container" class="knob_container">
                                 <input type="text" value="0" id="ui_design"class="knob"
+                                       readOnly="true"
                                        data-width="290"
                                        data-thickness=".11"
                                        data-fgColor="rgba(163, 215, 113, .2)">
                             </div>
                             <div id="ui_design_container" class="knob_container">
                                 <input type="text" value="0" id="angularjs" class="knob"
+                                       readOnly="true"
                                        data-width="330"
                                        data-thickness=".1"
                                        data-fgColor="rgba(163, 215, 113, .1)">
@@ -104,18 +110,21 @@
                             </div>
                             <div id="django_container" class="knob_container">
                                 <input type="text" value="0" id="django" class="knob"
+                                       readOnly="true"
                                        data-width="190"
                                        data-thickness=".25"
                                        data-fgColor="rgba(247, 218, 104, .8)">
                             </div>
                             <div id="postgres_container" class="knob_container">
                                 <input type="text" value="0" id="postgres" class="knob"
+                                       readOnly="true"
                                        data-width="250"
                                        data-thickness=".2"
                                        data-fgColor="rgba(247, 218, 104, .6)">
                             </div>
                             <div id="asp_dot_net_container" class="knob_container">
                                 <input type="text" value="0" id="asp_dot_net" class="knob"
+                                       readOnly="true"
                                        data-width="310"
                                        data-thickness=".16"
                                        data-fgColor="rgba(247, 218, 104, .4)">
@@ -133,26 +142,25 @@
                 <div class="content_container">
                     <div id="content_4" class="content">
                         <div id="project_menu">
-                            <div id="crabfactory_icon">
-                                Crabfactory
+                            <div id="crabfactory_icon" class="circle project_icons" onclick="display_project('crabfactory')">
                             </div>
-                            <div id="todo_list_icon">
-                                2-Do List
+                            <div id="todo_list_icon" class="circle project_icons" onclick="display_project('todo_list')">
                             </div>
-                            <div id="web_resume_icon">
-                                Web Resume
+                            <div id="web_resume_icon" class="circle project_icons" onclick="display_project('web_resume')">
                             </div>
                         </div>
                         <div id="project_content">
                             <div id="project_intro">
                                 <img id="project_locator" class="project_animation_standby"
                                      src="{% get_static_prefix %}home/img/project_locator.png"></img>
-                                <div id="project_logo"></div>
                                 <div id="project_locator_background" class="project_animation_standby"></div>
                             </div>
                             <div id="project_snap" class="project_animation_standby">
                             </div>
                             <div id="project_description" class="project_animation_standby">
+                            </div>
+                            <div id="project_back" class="project_animation_standby" onclick="back_to_project_menu()">
+                                Back
                             </div>
                         </div>
                     </div>

@@ -81,7 +81,7 @@ var circle_chart_content = $('#content_3');
 })(jQuery)
 
 var projects_info = {
-    '2-do_list': ['0 0', //project_info_background position
+    'todo_list': ['0 0', //project_info_background position
                   '0 0', //project_snap position
                   ['A website managing things to do', //project description
                    'Using Django in the backend',
@@ -89,9 +89,39 @@ var projects_info = {
                    'Design and drawing all images by myself',
                   ]
                  ],
+    'crabfactory': ['0 100%',
+                    '0 100%',
+                  ['The website you are currently exporing',
+                   'Mainly focus on front-end',
+                   'Using a lot of CSS3 animations',
+                   'Draw all the icons and images by myself',
+                  ]
+                 ],
+    'web_resume': ['100% 0',
+                   '100% 0',
+                  ['A webpage for quickly creating a personal portfolio',
+                   'A project for trying trying AngularJS',
+                   'Combine AngularJS and Django Restful Framework',
+                  ]
+                 ],
 };
 
 var display_project = function(project_name) {
+    //make content visible
+    $('#project_content').css('display', 'block');
+    
+    //hide other logos
+    $('.project_icons').not('#' + project_name + '_icon').fadeOut();
+
+    //move logo to the correct position
+    $('#' + project_name + '_icon').animate({
+        'left': '23%',
+    }, function() {
+        display_project_details(project_name);
+    });
+}
+
+var display_project_details = function(project_name) {
     var project_info = projects_info[project_name];
 
     //pre-calc
@@ -126,12 +156,19 @@ var display_project = function(project_name) {
             //display snapshot
             project_snap.removeClass('project_animation_standby').addClass('project_snap_slide_in');
             project_snap.one('webkitAnimationEnd mozAnimationEnd animationend', function(e) {
-                project_snap.removeClass('project_snap');
+                project_snap.removeClass('project_snap_slide_in');
                 
                 //display description
                 project_description.removeClass('project_animation_standby').addClass('project_description_flip');
                 project_description.one('webkitAnimationEnd mozAnimationEnd animationend', function(e) {
                     project_description.removeClass('project_description_flip');
+                    
+                    //display back button
+                    var project_back = $('#project_back');
+                    project_back.removeClass('project_animation_standby').addClass('project_fade_in');
+                    project_back.one('webkitAnimationEnd mozAnimationEnd animationend', function(e) {
+                        project_back.removeClass('project_fade_in');
+                    });
                 });
             });
         });
@@ -139,4 +176,26 @@ var display_project = function(project_name) {
     
 }
 
-display_project('2-do_list');
+var back_to_project_menu = function() {
+    //make detail elements invisible
+    $("#project_locator, #project_locator_background, #project_snap, #project_description, #project_back").addClass('project_animation_standby');
+    //clear description node
+    $('#project_description').empty();
+    //remove all the content
+    $('#project_content').css('display', 'none');
+    //reset the position of the icons
+    /*
+    This is really ugly, but so far I have no better ideas
+    */
+    $('#crabfactory_icon').animate({
+        'left': '20%',
+    });
+    $('#todo_list_icon').animate({
+        'left': '44%',
+    });
+    $('#web_resume_icon').animate({
+        'left': '66%',
+    });
+    //show all icons
+    $('.project_icons').fadeIn();
+}

@@ -448,13 +448,43 @@ body {
 }
 
 #project_menu {
-    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
 }
 
+.project_icons {
+    width: 12%;
+    padding-bottom: 12%;
+    background-size: 200%;
+    background-image: url('../img/project_icons.png');
+    display: inline-block;
+    position: absolute;
+    top: 20%;
+}
+
+#crabfactory_icon {
+    background-position: 0 100%;
+    left: 20%;
+}
+
+#todo_list_icon {
+    background-position: 0 0;
+    left: 44%;
+}
+
+#web_resume_icon {
+    background-position: 100% 0;
+    left: 66%;
+}
+    
 #project_content {
     width: 100%;
     height: 100%;
-    position: relative;
+    position: absolute;
+    top: 0;
+    display: none;
 }
 
 #project_intro {
@@ -465,7 +495,7 @@ body {
 }
     
 .project_animation_standby {
-    opacity: 0;
+    display: none;
 }
 
 #project_locator {
@@ -572,17 +602,6 @@ body {
     background-image: url('../img/project_locator_background.png');
     background-size: 200%;
     background-position: 0 0;
-}
-
-#project_logo {
-    position: absolute;
-    width: 30%;
-    padding-bottom: 30%;
-    left: 45%;
-    top: 20%;
-    background-image: url('../img/project_icons.png');
-    background-position: 0 0;
-    background-size: 200%;
 }
     
 #project_snap {
@@ -710,4 +729,20 @@ body {
     text-align: left;
     font-size: 1.2vw;
     color: #6db8e5;
+}
+
+#project_back {
+    position: absolute;
+    left: 80%;
+    width: 150px;
+    top: 65%;
+    height: 50px;
+    line-height: 50px;
+    border: solid 1px #6db8e5;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    color: #6db8e5;
+    font-size: 2vw;
+    cursor: default;
 }
