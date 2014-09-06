@@ -486,13 +486,6 @@ body {
     top: 0;
     display: none;
 }
-
-#project_intro {
-    width: 40%;
-    padding-bottom: 40%;
-    position: absolute;
-    left: 5%;
-}
     
 .project_animation_standby {
     display: none;
@@ -500,9 +493,9 @@ body {
 
 #project_locator {
     position: absolute;
-    left: 45%;
+    left: 23%;
     top: 20%;
-    width: 30%;
+    width: 12%;
 }
 
 .project_locator_focus {
@@ -597,8 +590,9 @@ body {
 
 #project_locator_background {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    left: 5%;
+    width: 40%;
+    padding-bottom: 40%;
     background-image: url('../img/project_locator_background.png');
     background-size: 200%;
     background-position: 0 0;

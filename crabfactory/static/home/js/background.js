@@ -100,7 +100,7 @@ var projects_info = {
     'web_resume': ['100% 0',
                    '100% 0',
                   ['A webpage for quickly creating a personal portfolio',
-                   'A project for trying trying AngularJS',
+                   'A project for learning AngularJS',
                    'Combine AngularJS and Django Restful Framework',
                   ]
                  ],
