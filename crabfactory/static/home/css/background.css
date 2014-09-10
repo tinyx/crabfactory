@@ -326,7 +326,7 @@ body {
     background-color: rgba(255, 255, 255, .9);
 }
     
-#basic_info_title {
+#basic_info_title, #detail_info_title {
     position: absolute;
     top: 0;
     height: 14%;
@@ -334,7 +334,7 @@ body {
     background-color: #69b6e4;
 }
 
-#basic_info_title > p {
+#basic_info_title > p, #detail_info_title > p{
     font-family: Raleway-Semi-Bold;
     font-size: 2vw;
     color: WHITE;
@@ -367,10 +367,10 @@ body {
 }
 
 #photo_of_me {
-    width: 40%;
+    width: 35%;
     position: absolute;
     left: 5%;
-    top: 10%;
+    top: 6%;
 }
 
 #basic_info_name {
@@ -378,8 +378,8 @@ body {
     font-family: Raleway-Semi-Bold;
     color: GREY;
     font-size: 2.1vw;
-    left: 48%;
-    top: 18%;
+    left: 44%;
+    top: 8%;
 }
 
 #basic_info_from {
@@ -387,10 +387,131 @@ body {
     font-family: Raleway-Semi-Bold;
     color: GREY;
     font-size: 1vw;
-    left: 48%;
-    top: 48%;
+    left: 44%;
+    top: 38%;
 }
 
+.basic_info_label {
+    width: calc(100% / 3);
+    height: 16%;
+    display: inline-block;
+    position: absolute;
+    top: 45%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.basic_info_label > p {
+    color: WHITE;
+    font-family: Raleway;
+    font-size: 1.2vw;
+    margin: 0;
+    text-align: center;
+    position: absolute;
+    width: 100%;
+    bottom: 8%;
+}
+    
+#basic_info_label_1 {
+    left: 0;
+    background-color: #ce7c45;
+    background-image: url('../img/basic_info_programmer.png');   
+}
+
+#basic_info_label_2 {
+    left: calc(100% / 3);
+    background-color: #148cd3;
+    background-image: url('../img/basic_info_gamer.png');
+}
+
+#basic_info_label_3 {
+    right: 0;
+    background-color: #5bad37;
+    background-image: url('../img/basic_info_music_lover.png');
+}
+    
+#basic_info_education {
+    margin: 0;
+    padding: 5%;
+    position: absolute;
+    top: 60%;
+}
+
+#basic_info_education > p, #detail_info_description {
+    color: GREY;
+    font-family: Raleway;
+    font-size: 1.2vw;
+    text-align: left;
+}
+
+#detail_info_container {
+    height: 0;
+    width: 40%;
+    height: 60%;
+    position: absolute;
+    right: 16%;
+    top: 10%;
+    background-color: rgba(255, 255, 255, .9);
+}  
+    
+#detail_info_title {
+    background-color: #a751c9;
+}
+    
+#detail_info_description {
+    position: absolute;
+    top: 10%;
+    padding: 5%;
+}
+
+#detail_info_category {
+    position:absolute;
+    width: 100%;
+    height: 0;
+    padding-bottom: 35%;
+    bottom: 0;
+}
+    
+#detail_info_category > div {
+    width: 40%;
+    padding-bottom: 15%;
+    margin: 1% 5%;
+    position: absolute;
+}
+
+#detail_info_basic {
+    left: 0;
+    top: 0;
+}
+
+#detail_info_ui_design {
+    right: 0;
+    top: 0;
+}
+    
+#detail_info_web_development {
+    left: 0;
+    bottom: 0;
+}
+
+#detail_info_linux {
+    right: 0;
+    bottom: 0;
+}
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 .skill_container {
     width: 424px;
     height: 485px;
