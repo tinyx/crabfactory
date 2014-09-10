@@ -475,13 +475,30 @@ body {
 #detail_info_category > div {
     width: 40%;
     padding-bottom: 15%;
+    height: 0;
     margin: 1% 5%;
     position: absolute;
 }
 
+.detail_info_category_bg {
+    width: 30%;
+    padding-bottom: 30%;
+    height: 0;
+    background-image: url('../img/detail_info_category.png');
+    background-size: 200%;
+}
+
+#detail_info_basic_bg {
+    background-position: 0 0;
+}
+    
 #detail_info_basic {
     left: 0;
     top: 0;
+}
+
+#detail_info_ui_design_bg {
+    background-position: 100% 0;
 }
 
 #detail_info_ui_design {
@@ -489,9 +506,17 @@ body {
     top: 0;
 }
     
+#detail_info_web_development_bg {
+    background-position: 0 100%;
+}
+
 #detail_info_web_development {
     left: 0;
     bottom: 0;
+}
+
+#detail_info_linux_bg {
+    background-position: 100% 100%;
 }
 
 #detail_info_linux {
