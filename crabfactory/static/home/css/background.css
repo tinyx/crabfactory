@@ -472,12 +472,32 @@ body {
     bottom: 0;
 }
     
-#detail_info_category > div {
-    width: 40%;
+.detail_info {
+    width: 45%;
     padding-bottom: 15%;
     height: 0;
-    margin: 1% 5%;
+    margin: 1% 3%;
     position: absolute;
+}
+
+.detail_info > h {
+    position: absolute;
+    top: 5%;
+    left: 30%;
+    font-family: Raleway-Semi-Bold;
+    font-size: 1.4vw;
+    color: GREY;
+    text-align: left;
+}
+
+.detail_info > p {
+    position: absolute;
+    top: 16%;
+    left: 30%;
+    font-family: Raleway;
+    font-size: .8vw;
+    color: GREY;
+    text-align: left;
 }
 
 .detail_info_category_bg {
