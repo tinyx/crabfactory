@@ -241,7 +241,9 @@ body {
 }
 
 #slide-2 {
-    background-color: WHITE;
+    background-color: #f5f5f5;
+    background-image: url('../img/slide-1_background.png');
+    background-size: 100% auto;
 }
 
 #slide-3 {
@@ -295,7 +297,11 @@ body {
     display: table-cell;
     vertical-align: middle;
     text-align: center;
-    position: relative;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 #content_1 {
@@ -310,48 +316,38 @@ body {
     width: 55%;
 }
 
-#photo_container {
-    width: 45%;
-    position: absolute;
-    left: 8%;
-    top: 0%;
-}
-
-#photo_of_me {
-    width: 40%;
-}
-
-#intro_tip_container {
+#basic_info_container {
+    height: 0;
     width: 24%;
-    padding-bottom: 30%;
+    height: 60%;
     position: absolute;
-    right: 16%;
-    top: 0%;
-}
-
-#intro_tip_1, #intro_tip_2 {
-    background-color: WHITE;
-    width: 80%;
-    padding: 5%;
-    font-size: 1.1vw;
-    font-family: Raleway-Bold;
-    color: #1274ac;
-    text-align: left;
-    position: relative;
-    -webkit-box-shadow: 2px 2px 6px BLACK;
-    -moz-box-shadow: 2px 2px 6px BLACK;
-    box-shadow: 2px 2px 6px BLACK;
+    left: 16%;
+    top: 10%;
+    background-color: rgba(255, 255, 255, .9);
 }
     
-#intro_tip_1 {
-    -webkit-transform: rotate(7deg);
-    -moz-transform: rotate(7deg);
-    transform: rotate(7deg);
-    top: 30px;
+#basic_info_title {
+    position: absolute;
+    top: 0;
+    height: 14%;
+    width: 100%;
+    background-color: #69b6e4;
 }
 
-#intro_tip_1 > p, #intro_tip_2 > p {
-    margin: 3px;
+#basic_info_title > p {
+    font-family: Raleway-Semi-Bold;
+    font-size: 2vw;
+    color: WHITE;
+    line-height: 14%;
+}
+
+@font-face {
+    font-family: 'Raleway-Semi-Bold';
+    src: url('../font/Raleway-Semi-Bold/raleway-semibold-webfont.eot');
+    src: local('☺'),
+         url('../font/Raleway-Semi-Bold/raleway-semibold-webfont.woff') format('woff'),
+         url('../font/Raleway-Semi-Bold/raleway-semibold-webfont.ttf') format('truetype'),
+         url('../font/Raleway-Semi-Bold/raleway-semibold-webfont.svg#Raleway-Semi-Bold') format('svg');
 }
     
 @font-face {
@@ -360,14 +356,39 @@ body {
     src: local('☺'),
          url('../font/Raleway-Bold/raleway-bold-webfont.woff') format('woff'),
          url('../font/Raleway-Bold/raleway-bold-webfont.ttf') format('truetype'),
-         url('../font/Raleway-Bold/raleway-bold-webfont.svg#Raleway') format('svg');
+         url('../font/Raleway-Bold/raleway-bold-webfont.svg#Raleway-Bold') format('svg');
+}
+    
+#basic_info_photo {
+    position: absolute;
+    top: 14%;
+    height: 40%;
+    width: 100%;
 }
 
-#intro_tip_2 {
-    margin-top: 30%;
-    -webkit-transform: rotate(-4deg);
-    -moz-transform: rotate(-4deg);
-    transform: rotate(-4deg);
+#photo_of_me {
+    width: 40%;
+    position: absolute;
+    left: 5%;
+    top: 10%;
+}
+
+#basic_info_name {
+    position: absolute;
+    font-family: Raleway-Semi-Bold;
+    color: GREY;
+    font-size: 2.1vw;
+    left: 48%;
+    top: 18%;
+}
+
+#basic_info_from {
+    position: absolute;
+    font-family: Raleway-Semi-Bold;
+    color: GREY;
+    font-size: 1vw;
+    left: 48%;
+    top: 48%;
 }
 
 .skill_container {
