@@ -91,8 +91,8 @@ var projects_info = {
                  ],
     'crabfactory': ['0 100%',
                     '0 100%',
-                  ['The website you are currently exporing',
-                   'Mainly focus on front-end',
+                  ['The website you are currently exploring',
+                   'Mainly focus on the front-end',
                    'Using a lot of CSS3 animations',
                    'Draw all the icons and images by myself',
                   ]
