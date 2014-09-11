@@ -210,3 +210,7 @@ var back_to_project_menu = function() {
     //show all icons
     $('.project_icons').fadeIn();
 }
+
+display_all_circle_charts();
+$('#front_end_skill_background').delay(1000).fadeIn('slow');
+$('#back_end_skill_background').delay(2000).fadeIn('slow');
