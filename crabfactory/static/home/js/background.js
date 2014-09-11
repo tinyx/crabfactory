@@ -65,9 +65,19 @@ var display_all_circle_charts = function() {
 
 $('#slide-2').waypoint(function() {
     if(!introduction_displayed) {
+        introduction_displayed = true;
         $('#introduction_title').fadeOut('slow', function() {
             $('#basic_info_container, #detail_info_container').fadeIn('slow');
         });   
+    }
+});
+
+$('#slide-3').waypoint(function() {
+    if(!circle_chart_displayed) {
+        circle_chart_displayed = true;
+        $('#skill_title').fadeOut('slow', function() {
+            $('.skill_container').fadeIn('slow');
+        })
     }
 });
 

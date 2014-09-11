@@ -221,7 +221,7 @@ body {
 }
 
 #about_icon {
-    background-color: rgba(209, 28, 17, 1);
+    background-color: rgba(234, 212, 119, 1);
     left: 79%;
 }
 
@@ -581,6 +581,7 @@ body {
     height: 485px;
     position: absolute;
     bottom: 0%;
+    background-color: WHITE;
     display: none;
 }
 
