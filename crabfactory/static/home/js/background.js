@@ -1,3 +1,4 @@
+var introduction_displayed = false;
 var circle_chart_displayed = false;
 
 //disable css animation before page loaded
@@ -34,7 +35,7 @@ $(document).ready(on_resize);
 $(window).bind('resize', on_resize);
 
 var scroll_to = function(anchor) {
-    $.scrollTo(anchor, 500);
+    $.scrollTo(anchor, 500, {offset: 5});
 };
 
 var display_circle_chart = function(skill_id, skill_value) {
@@ -62,9 +63,18 @@ var display_all_circle_charts = function() {
     }, 1000);
 }
 
+$('#slide-2').waypoint(function() {
+    if(!introduction_displayed) {
+        $('#introduction_title').fadeOut('slow', function() {
+            $('#basic_info_container, #detail_info_container').fadeIn('slow');
+        });   
+    }
+});
+
 //play animation when the page is located in slide-3
 var circle_chart_content = $('#content_3');
 (function($) {
+    /*
     var s = skrollr.init({
         render: function(data) {
             if(!circle_chart_displayed) {
@@ -78,6 +88,7 @@ var circle_chart_content = $('#content_3');
             }
         }
     });
+    */
 })(jQuery)
 
 var projects_info = {
