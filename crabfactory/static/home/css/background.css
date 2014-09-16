@@ -247,7 +247,7 @@ body {
 }
 
 #slide-3 {
-    background-color: WHITESMOKE;
+    background-color: #374479;
     background-image: url('../img/slide-2_background.png');
     background-size: 100% auto;
 }
@@ -581,7 +581,7 @@ body {
     height: 485px;
     position: absolute;
     bottom: 0%;
-    background-color: WHITE;
+    background-color: #4e4e95;
     display: none;
 }
 
