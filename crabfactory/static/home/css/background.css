@@ -339,7 +339,7 @@ body {
     display: none;
 }
     
-#basic_info_title, #detail_info_title {
+#basic_info_title, #detail_info_title, #front_end_info_title, #back_end_info_title {
     position: absolute;
     top: 0;
     height: 14%;
@@ -347,7 +347,7 @@ body {
     background-color: #69b6e4;
 }
 
-#basic_info_title > p, #detail_info_title > p{
+#basic_info_title > p, #detail_info_title > p, #front_end_info_title > p, #back_end_info_title > p{
     font-family: Raleway-Semi-Bold;
     font-size: 2vw;
     color: WHITE;
@@ -574,23 +574,49 @@ body {
     
     
     
-    
-    
-.skill_container {
-    width: 424px;
-    height: 485px;
+.skill_container_wrapper {
     position: absolute;
-    bottom: 0%;
-    background-color: #4e4e95;
+    width: 36%;
+    padding-bottom: 36%;
+    top: 10%;
+}
+
+#skill_wrapper {
+    width: 90%;
+    padding-bottom: 38%;
+    top: 8%;
+    left: 5%;
+    position: absolute;
+    background-color: rgba(40, 49, 88, 0.8);
     display: none;
 }
-
-#front_end_skill {
-    left: 13%;
+    
+#skill_wrapper > h {
+    position: absolute;
+    width: 100%;
+    top: 2%;
+    left: 0;
+    font-family: Raleway-Bold;
+    font-size: 2.4vw;
+    text-align: center;
+    vertical-align: middle;
+    color: #c7c7c7;
 }
 
-#back_end_skill {
-    right: 13%;
+#front_end_skill_wrapper {
+    left: 10%;
+}
+    
+#back_end_skill_wrapper {
+    right: 10%;
+}
+
+.skill_container {
+    width: 440px;
+    height: 440px;
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 .knob_container {
@@ -602,8 +628,9 @@ body {
     width: 130px;
     padding-bottom: 130px;
     position: absolute;
-    top: 110px;
-    left: 147px;
+    top: 140px;
+    left: 155px;
+    display: none;
 }
 
 #front_end_icon > img, #back_end_icon > img {
@@ -611,39 +638,40 @@ body {
 }
 
 .skill_background {
+    padding-top: 7%;
     display: none;
 }
 
 #html5_container {
-    top: 90px;
+    top: 120px;
 }
 
 #css3_container {
-    top: 70px;
+    top: 100px;
 }
 
 #javascript_container {
-    top: 50px;
+    top: 80px;
 }
 
 #angularjs_container {
-    top: 30px;
+    top: 60px;
 }
 
 #ui_design_container {
-    top: 10px;
+    top: 40px;
 }
 
 #django_container {
-    top: 80px;
+    top: 110px;
 }
     
 #postgres_container {
-    top: 50px;
+    top: 80px;
 }
 
 #asp_dot_net_container {
-    top: 20px;
+    top: 50px;
 }
 
 #project_menu {

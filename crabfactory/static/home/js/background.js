@@ -18,9 +18,9 @@ $(function() {
 //resize knob objects while resizing the window
 var on_resize = function() {
     var win_width = $(window).width();
-    var scale_factor = win_width / 1413; //'1213' is the width on my screen
+    var scale_factor = win_width / 1213; //'1213' is the width on my screen
                                          //but the factor seems to be a little to small
-    $('#front_end_skill, #back_end_skill').css({
+    $('.skill_container').css({
         'transform': 'scale(' + scale_factor + ')',
         '-moz-transform': 'scale(' + scale_factor + ')',
         '-webkit-transform': 'scale(' + scale_factor + ')',
@@ -76,7 +76,13 @@ $('#slide-3').waypoint(function() {
     if(!circle_chart_displayed) {
         circle_chart_displayed = true;
         $('#skill_title').fadeOut('slow', function() {
-            $('.skill_container').fadeIn('slow');
+            $('#skill_wrapper').fadeIn('fast', function() {
+                $('#front_end_icon, #back_end_icon').fadeIn('slow', function() {
+                    display_all_circle_charts();
+                    $('#front_end_skill_background').delay(1000).fadeIn('slow');
+                    $('#back_end_skill_background').delay(2000).fadeIn('slow');
+                });
+            });
         })
     }
 });
@@ -220,7 +226,3 @@ var back_to_project_menu = function() {
     //show all icons
     $('.project_icons').fadeIn();
 }
-
-display_all_circle_charts();
-$('#front_end_skill_background').delay(1000).fadeIn('slow');
-$('#back_end_skill_background').delay(2000).fadeIn('slow');

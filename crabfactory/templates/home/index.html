@@ -101,76 +101,83 @@
                 <div class="content_container">
                     <div id="content_3" class="content">
                         <h id="skill_title">Skill</h>
-                        <div id="front_end_skill" class="skill_container">
-                            <div id="front_end_icon" class="circle">
-                                <img src="{% get_static_prefix %}home/img/front_end_icon.png"></img>
+                        <div id="skill_wrapper">
+                            <h>Skills in Web Development</h>
+                            <div id="front_end_skill_wrapper" class="skill_container_wrapper">
+                                <div class="skill_container">
+                                    <div id="front_end_icon" class="circle">
+                                        <img src="{% get_static_prefix %}home/img/front_end_icon.png"></img>
+                                    </div>
+                                    <div id="front_end_skill_background" class="skill_background">
+                                        <img src="{% get_static_prefix %}home/img/front_end_background.png"></img>
+                                    </div>
+                                    <div id="html5_container" class="knob_container">
+                                        <input type="text" value="0" id="html5" class="knob"
+                                               readOnly="true"
+                                               data-width="170"
+                                               data-thickness=".18"
+                                               data-fgColor="rgba(163, 215, 113, .8)">
+                                    </div>
+                                    <div id="css3_container" class="knob_container">
+                                        <input type="text" value="0" id="css3" class="knob"
+                                               readOnly="true"
+                                               data-width="210"
+                                               data-thickness=".15"
+                                               data-fgColor="rgba(163, 215, 113, .6)">
+                                    </div>
+                                    <div id="javascript_container" class="knob_container">
+                                        <input type="text" value="0" id="javascript" class="knob"
+                                               readOnly="true"
+                                               data-width="250"
+                                               data-thickness=".13"
+                                               data-fgColor="rgba(163, 215, 113, .4)">
+                                    </div>
+                                    <div id="angularjs_container" class="knob_container">
+                                        <input type="text" value="0" id="ui_design"class="knob"
+                                               readOnly="true"
+                                               data-width="290"
+                                               data-thickness=".11"
+                                               data-fgColor="rgba(163, 215, 113, .2)">
+                                    </div>
+                                    <div id="ui_design_container" class="knob_container">
+                                        <input type="text" value="0" id="angularjs" class="knob"
+                                               readOnly="true"
+                                               data-width="330"
+                                               data-thickness=".1"
+                                               data-fgColor="rgba(163, 215, 113, .1)">
+                                    </div>
+                                </div>
                             </div>
-                            <div id="front_end_skill_background" class="skill_background">
-                                <img src="{% get_static_prefix %}home/img/front_end_background.png"></img>
-                            </div>
-                            <div id="html5_container" class="knob_container">
-                                <input type="text" value="0" id="html5" class="knob"
-                                       readOnly="true"
-                                       data-width="170"
-                                       data-thickness=".18"
-                                       data-fgColor="rgba(163, 215, 113, .8)">
-                            </div>
-                            <div id="css3_container" class="knob_container">
-                                <input type="text" value="0" id="css3" class="knob"
-                                       readOnly="true"
-                                       data-width="210"
-                                       data-thickness=".15"
-                                       data-fgColor="rgba(163, 215, 113, .6)">
-                            </div>
-                            <div id="javascript_container" class="knob_container">
-                                <input type="text" value="0" id="javascript" class="knob"
-                                       readOnly="true"
-                                       data-width="250"
-                                       data-thickness=".13"
-                                       data-fgColor="rgba(163, 215, 113, .4)">
-                            </div>
-                            <div id="angularjs_container" class="knob_container">
-                                <input type="text" value="0" id="ui_design"class="knob"
-                                       readOnly="true"
-                                       data-width="290"
-                                       data-thickness=".11"
-                                       data-fgColor="rgba(163, 215, 113, .2)">
-                            </div>
-                            <div id="ui_design_container" class="knob_container">
-                                <input type="text" value="0" id="angularjs" class="knob"
-                                       readOnly="true"
-                                       data-width="330"
-                                       data-thickness=".1"
-                                       data-fgColor="rgba(163, 215, 113, .1)">
-                            </div>
-                        </div>
-                        <div id="back_end_skill" class="skill_container">
-                            <div id="back_end_icon" class="circle">
-                                <img src="{% get_static_prefix %}home/img/back_end_icon.png"></img>
-                            </div>
-                            <div id="back_end_skill_background" class="skill_background">
-                                <img src="{% get_static_prefix %}home/img/back_end_background.png"></img>
-                            </div>
-                            <div id="django_container" class="knob_container">
-                                <input type="text" value="0" id="django" class="knob"
-                                       readOnly="true"
-                                       data-width="190"
-                                       data-thickness=".25"
-                                       data-fgColor="rgba(247, 218, 104, .8)">
-                            </div>
-                            <div id="postgres_container" class="knob_container">
-                                <input type="text" value="0" id="postgres" class="knob"
-                                       readOnly="true"
-                                       data-width="250"
-                                       data-thickness=".2"
-                                       data-fgColor="rgba(247, 218, 104, .6)">
-                            </div>
-                            <div id="asp_dot_net_container" class="knob_container">
-                                <input type="text" value="0" id="asp_dot_net" class="knob"
-                                       readOnly="true"
-                                       data-width="310"
-                                       data-thickness=".16"
-                                       data-fgColor="rgba(247, 218, 104, .4)">
+                            <div id="back_end_skill_wrapper" class="skill_container_wrapper">
+                                <div class="skill_container">
+                                    <div id="back_end_icon" class="circle">
+                                        <img src="{% get_static_prefix %}home/img/back_end_icon.png"></img>
+                                    </div>
+                                    <div id="back_end_skill_background" class="skill_background">
+                                        <img src="{% get_static_prefix %}home/img/back_end_background.png"></img>
+                                    </div>
+                                    <div id="django_container" class="knob_container">
+                                        <input type="text" value="0" id="django" class="knob"
+                                               readOnly="true"
+                                               data-width="190"
+                                               data-thickness=".25"
+                                               data-fgColor="rgba(247, 218, 104, .8)">
+                                    </div>
+                                    <div id="postgres_container" class="knob_container">
+                                        <input type="text" value="0" id="postgres" class="knob"
+                                               readOnly="true"
+                                               data-width="250"
+                                               data-thickness=".2"
+                                               data-fgColor="rgba(247, 218, 104, .6)">
+                                    </div>
+                                    <div id="asp_dot_net_container" class="knob_container">
+                                        <input type="text" value="0" id="asp_dot_net" class="knob"
+                                               readOnly="true"
+                                               data-width="310"
+                                               data-thickness=".16"
+                                               data-fgColor="rgba(247, 218, 104, .4)">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
