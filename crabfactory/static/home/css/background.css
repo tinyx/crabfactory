@@ -55,7 +55,6 @@ body {
 
 #center_img {
     width: 100%;
-    height: 100%;
 }
 
 #center_icon_shadow_lalala {
@@ -617,6 +616,9 @@ body {
     position: absolute;
     left: 0;
     top: 0;
+    -webkit-transform-origin: 0 0;
+    -moz-transform-orrigin: 0 0;
+    -transform-origin: 0 0;
 }
 
 .knob_container {

@@ -18,7 +18,7 @@ $(function() {
 //resize knob objects while resizing the window
 var on_resize = function() {
     var win_width = $(window).width();
-    var scale_factor = win_width / 1213; //'1213' is the width on my screen
+    var scale_factor = win_width / 1358.0; //'1358' is the width on my screen
                                          //but the factor seems to be a little to small
     $('.skill_container').css({
         'transform': 'scale(' + scale_factor + ')',
