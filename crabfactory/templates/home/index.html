@@ -29,7 +29,7 @@
                             <div id="basic_info_photo">
                                 <img id="photo_of_me" src="{% get_static_prefix %}home/img/photo_of_me.png"></img>
                                 <p id="basic_info_name">Yitao Xiong</p>
-                                <p id="basic_info_from">Chongqing, China</p>
+                                <p id="basic_info_from">Boston, Massachusetts</p>
                             </div>
                             <div id="basic_info_label">
                                 <div id="basic_info_label_1" class="basic_info_label">
@@ -189,28 +189,40 @@
                 <div class="content_container">
                     <div id="content_4" class="content">
                         <div id="project_menu">
-                            <div id="crabfactory_icon" class="circle project_icons" onclick="display_project('crabfactory')">
+                            <ol id="project_list">
+                                <li id="crabfactory_li" class="selected" onclick="select_project('crabfactory')">Crabfactory</li>
+                                <li id="todo_list_li" onclick="select_project('todo_list')">Todo List</li>
+                                <li id="web_resume_li" onclick="select_project('web_resume')">Web Resume</li>
+                            </ol>
+                        </div>
+                        <!--
+                        <div id="project_snap">
+                            <div id="crabfactory_snap" class="project_snap selected">
+                                Crabfactory
                             </div>
-                            <div id="todo_list_icon" class="circle project_icons" onclick="display_project('todo_list')">
+                            <div id="todo_list_snap" class="project_snap">
+                                <img src="{% get_static_prefix %}home/img/todo_list_snap.png"></img>
                             </div>
-                            <div id="web_resume_icon" class="circle project_icons" onclick="display_project('web_resume')">
+                            <div id="web_resume_snap" class="project_snap">
+                                Web Resume
                             </div>
                         </div>
-                        <div id="project_content">
-                            <div id="project_intro">
-                                <img id="project_locator" class="project_animation_standby"
-                                     src="{% get_static_prefix %}home/img/project_locator.png"></img>
-                                <div id="project_locator_background" class="project_animation_standby"></div>
+                        -->
+                        <div id="project_content_wrapper">
+                            <div id="crabfactory_content" class="project_content selected">
                             </div>
-                            <div id="project_snap" class="project_animation_standby">
+                            <div id="todo_list_content" class="project_content out">
                             </div>
-                            <div id="project_description" class="project_animation_standby">
-                            </div>
-                            <div id="project_back" class="project_animation_standby" onclick="back_to_project_menu()">
-                                Back
+                            <div id="web_resume_content" class="project_content out">
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
+        <section id="slide-5" class="slide">
+            <div class="content_background">
+                <div class="content_container">
                 </div>
             </div>
         </section>

@@ -76,7 +76,7 @@ $('#slide-3').waypoint(function() {
     if(!circle_chart_displayed) {
         circle_chart_displayed = true;
         $('#skill_title').fadeOut('slow', function() {
-            $('#skill_wrapper').fadeIn('fast', function() {
+            $('#skill_wrapper').fadeIn('slow', function() {
                 $('#front_end_icon, #back_end_icon').fadeIn('slow', function() {
                     display_all_circle_charts();
                     $('#front_end_skill_background').delay(1000).fadeIn('slow');
@@ -133,96 +133,59 @@ var projects_info = {
                  ],
 };
 
-var display_project = function(project_name) {
-    //make content visible
-    $('#project_content').css('display', 'block');
-    
-    //hide other logos
-    $('.project_icons').not('#' + project_name + '_icon').fadeOut();
+var transition_locked = false;
 
-    //move logo to the correct position
-    $('#' + project_name + '_icon').animate({
-        'left': '23%',
-    }, function() {
-        display_project_details(project_name);
+var scroll_up_project = function(project_name) {
+        /*
+    Things to do:
+        1. Append all the elements before the selected one to the end of the list
+        2. Move all the items in the list
+        3. Add 'selected' class to the selected element
+    */
+    transition_locked = true;
+    var selected_project = $('#' + project_name + '_li');
+    var projects = $('#project_list li');
+    var last_project = projects.last();
+    var index = selected_project.index();
+    var previous_projects = selected_project.prevAll();
+    previous_projects.each(function(i) {
+        var clone_project = $(this).clone();
+        clone_project.removeClass('selected');
+        clone_project.css('top', 26 * (previous_projects.length - i) + 74 + '%');
+        clone_project.insertAfter(last_project);
+        clone_project.focus();
+    });
+    var started_position = -22 - 26 * index;
+    $('#project_list li').each(function(i) {
+        if (i == 0) {
+            $(this).css('top', started_position + '%');
+        } else if (i < index) {
+            $(this).css('top', 22 + i * 26 + started_position + '%');
+        } else if (i == index) {
+            $(this).css('top', 0 + '%');
+            $(this).addClass('selected');
+        } else {
+            $(this).css('top', 44 + i * 26 + started_position + '%');
+        }
+    });
+    previous_projects.each(function() {
+        $(this).remove();
+        transition_locked = false;
     });
 }
 
-var display_project_details = function(project_name) {
-    var project_info = projects_info[project_name];
-
-    //pre-calc
-    var project_locator_background = $('#project_locator_background');
-    project_locator_background.css({
-        'background-position': project_info[0],
-    });
-    
-    var project_snap = $('#project_snap');
-    project_snap.css({
-        'background-position': project_info[1],
-    });
-    
-    var project_description = $('#project_description');
-    for(var index in project_info[2]) {
-        project_description.append($('<p/>').text(project_info[2][index]));
+var scroll_up_project_thread_protecter = function(project_name) {
+    if (transition_locked) {
+    } else {
+        if ($('#' + project_name + '_li').hasClass('selected')) {
+        } else {
+            scroll_up_project(project_name);
+            $('.project_content.selected').removeClass('selected').addClass('out');
+            $('#' + project_name +'_content').addClass('selected');
+        }
     }
-    /*
-    To play the animations one by one, the functions need to be nested
-    */
-    //display locator
-    var project_locator = $('#project_locator');
-    project_locator.removeClass('project_animation_standby').addClass('project_locator_focus');
-    project_locator.one('webkitAnimationEnd mozAnimationEnd animationend', function(e) {
-        project_locator.removeClass('project_locator_focus');
-        
-        //display locator_background
-        project_locator_background.removeClass('project_animation_standby').addClass('project_fade_in');
-        project_locator_background.one('webkitAnimationEnd mozAnimationEnd animationend', function(e) {
-            project_locator_background.removeClass('project_fade_in');
-            
-            //display snapshot
-            project_snap.removeClass('project_animation_standby').addClass('project_snap_slide_in');
-            project_snap.one('webkitAnimationEnd mozAnimationEnd animationend', function(e) {
-                project_snap.removeClass('project_snap_slide_in');
-                
-                //display description
-                project_description.removeClass('project_animation_standby').addClass('project_description_flip');
-                project_description.one('webkitAnimationEnd mozAnimationEnd animationend', function(e) {
-                    project_description.removeClass('project_description_flip');
-                    
-                    //display back button
-                    var project_back = $('#project_back');
-                    project_back.removeClass('project_animation_standby').addClass('project_fade_in');
-                    project_back.one('webkitAnimationEnd mozAnimationEnd animationend', function(e) {
-                        project_back.removeClass('project_fade_in');
-                    });
-                });
-            });
-        });
-    });
-    
 }
 
-var back_to_project_menu = function() {
-    //make detail elements invisible
-    $("#project_locator, #project_locator_background, #project_snap, #project_description, #project_back").addClass('project_animation_standby');
-    //clear description node
-    $('#project_description').empty();
-    //remove all the content
-    $('#project_content').css('display', 'none');
-    //reset the position of the icons
-    /*
-    This is really ugly, but so far I have no better ideas
-    */
-    $('#crabfactory_icon').animate({
-        'left': '20%',
-    });
-    $('#todo_list_icon').animate({
-        'left': '44%',
-    });
-    $('#web_resume_icon').animate({
-        'left': '66%',
-    });
-    //show all icons
-    $('.project_icons').fadeIn();
+var select_project = function(project_name) {
+    scroll_up_project_thread_protecter(project_name);
 }

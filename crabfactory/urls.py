@@ -21,5 +21,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^todo/', include(todolist_url)),
     url(r'^webresume/', include(webresume_url)),
+    url(r'crabfactory/templates/home/index.html', TemplateView.as_view(template_name='index.html')),
 )
 urlpatterns += staticfiles_urlpatterns()
