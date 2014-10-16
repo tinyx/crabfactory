@@ -843,3 +843,7 @@ body {
     }
 }
 
+#ending_slide {
+    height: 0;
+    padding-bottom: 5%;
+}
