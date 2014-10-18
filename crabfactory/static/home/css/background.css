@@ -873,6 +873,100 @@ body {
     height: 16%;
 }
     
+.project_info {
+    position: absolute;
+    width: 90%;
+    padding-bottom: 25%;
+    left: 4%;
+    bottom: 5%;
+    
+}
+
+.project_status {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 30%;
+    height: 90%;
+}
+
+.project_status > div, .project_keywords > div {
+    position: absolute;
+    width: 70%;
+    height: 0;
+    padding-bottom: 70%;
+    left: 15%;
+    top: 5%;
+    background: url('../img/project_info.png') 0 0;
+    background-size: 400% auto;
+    color: WHITE;
+    font-family: Raleway-Bold;
+    font-size: 2.6vw;
+    line-height: 400%;
+}
+
+#crabfactory_status {
+    background-position: 0 0;
+}
+
+#todo_list_status {
+    background-position: 0 -100%;
+}
+    
+#web_resume_status {
+    background-position: 0 -200%;
+}
+
+.project_keywords {
+    position: absolute;
+    left: 35%;
+    bottom: 0;
+    width: 30%;
+    height: 90%;
+}
+
+.project_keywords > div {
+    width: 95%;
+    padding-bottom: 95%;
+    left: 0;
+    top: 0;
+}
+
+#crabfactory_keywords {
+    background-position: -100% 0;
+}
+
+#todo_list_keywords {
+    background-position: -100% -100%;
+}
+
+#web_resume_keywords {
+    background-position: -100% -200%;
+}
+    
+.project_status > h, .project_keywords >h {
+    font-family: Raleway;
+    font-size: 1.2vw;
+    color: WHITE;
+    bottom: 0;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+    left: 0;
+}
+    
+.project_explore {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 30%;
+    height: 90%;
+    background-color: rgba(0, 0, 0, .5);
+}
+    
+
+    
+    
 #ending_slide {
     height: 0;
     padding-bottom: 5%;
