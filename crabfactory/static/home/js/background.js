@@ -1,5 +1,6 @@
 var introduction_displayed = false;
 var circle_chart_displayed = false;
+var project_displayed = false;
 
 //disable css animation before page loaded
 $(window).load(function() {
@@ -84,6 +85,15 @@ $('#slide-3').waypoint(function() {
                 });
             });
         })
+    }
+});
+
+$('#slide-4').waypoint(function() {
+    if(!project_displayed) {
+        project_displayed = true;
+        $('#project_title').fadeOut('slow', function() {
+            $('#project_menu, #project_content_wrapper').fadeIn('slow');
+        });   
     }
 });
 

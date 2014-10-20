@@ -652,6 +652,11 @@ body {
     
 
 
+#project_title {
+    left: 20%;
+    top: 30%;
+    color: WHITESMOKE;
+}
 
 #project_menu {
     width: 30%;
@@ -662,6 +667,7 @@ body {
     overflow: hidden;
     -webkit-perspective: 1000px;  
     -webkit-perspective-origin: 0 30%;
+    display: none;
 }
 
 #project_list {
@@ -728,6 +734,7 @@ body {
     top: 8%;
     -webkit-perspective-origin: 60% 30%;
     -webkit-perspective: 1000px;
+    display: none;
 }
    
 .project_content {
@@ -770,6 +777,7 @@ body {
     to {
         -webkit-transform: rotateY(90deg);
         opacity: 0;
+        display: none;
     }
 }
 
@@ -781,6 +789,7 @@ body {
     to {
         -moz-transform: rotateY(90deg);
         opacity: 0;
+        display: none;
     }
 }
 
@@ -792,11 +801,13 @@ body {
     to {
         transform: rotateY(90deg);
         opacity: 0;
+        display: none;
     }
 }
 
 .project_content.selected {
     opacity: 1;
+    z-index: 100;
     -webkit-transform: rotateY(-20deg);
     -webkit-animation-name: project_slide_in;
     -webkit-animation-duration: .5s;
@@ -823,7 +834,7 @@ body {
     }
 }
 
-@-moz-keyframes project_slide_out {
+@-moz-keyframes project_slide_in {
     from {
         opacity: 0;
         -moz-transform: rotateY(-90deg);
@@ -834,7 +845,7 @@ body {
     }
 }
 
-@keyframes project_slide_out {
+@keyframes project_slide_in {
     from {
         opacity: 0;
         transform: rotateY(-90deg);
@@ -890,7 +901,7 @@ body {
     height: 90%;
 }
 
-.project_status > div, .project_keywords > div {
+.project_status > div, .project_keywords > div{
     position: absolute;
     width: 70%;
     height: 0;
@@ -961,11 +972,75 @@ body {
     bottom: 0;
     width: 30%;
     height: 90%;
-    background-color: rgba(0, 0, 0, .5);
 }
-    
 
-    
+.project_explore > h {
+    position: absolute;
+    width: 100%;
+    top: 45%;
+    left: 4%;
+    font-family: Raleway-Semi-Bold;
+    font-size: 1.4vw;
+    color: WHITE;
+}
+
+.project_explore a {
+    display: block;
+    position: absolute;
+    top: 30%;
+    left: 5%;
+    height: 30%;
+    width: 90%;
+    background: #70c3e5;
+    color: WHITE;
+    font-family: Raleway;
+    font-size: 1.4vw;
+    line-height: 250%;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: default;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+
+.project_explore p {
+    background: #323232;
+    display: block;
+    height: 24%;
+    width: 70%;
+    left: 15%;
+    text-align: center;
+    font-family: Raleway;
+    font-size: 1.2vw;
+    line-height: 260%;
+    color: WHITE;
+    position: absolute;
+    z-index: -1;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+
+.project_explore .top {
+    top: 20%;
+}
+
+.project_explore a:hover ~ .top {
+    top: 2%;
+}
+
+.project_explore .bottom {
+    bottom: 30%;
+}
+
+.project_explore a:hover ~ .bottom {
+    bottom: 12%;
+}
     
 #ending_slide {
     height: 0;
