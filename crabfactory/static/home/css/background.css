@@ -667,6 +667,10 @@ body {
     overflow: hidden;
     -webkit-perspective: 1000px;  
     -webkit-perspective-origin: 0 30%;
+    -moz-perspective-origin: 0% 30%;
+    -moz-perspective: 1000px;
+    perspective-origin: 0% 30%;
+    perspective: 1000px;
     display: none;
 }
 
@@ -734,6 +738,10 @@ body {
     top: 8%;
     -webkit-perspective-origin: 60% 30%;
     -webkit-perspective: 1000px;
+    -moz-perspective-origin: 60% 30%;
+    -moz-perspective: 1000px;
+    perspective-origin: 60% 30%;
+    perspective: 1000px;
     display: none;
 }
    
@@ -809,6 +817,8 @@ body {
     opacity: 1;
     z-index: 100;
     -webkit-transform: rotateY(-20deg);
+    -moz-transform: rotateY(-20deg);
+    transform: rotateY(-20deg);
     -webkit-animation-name: project_slide_in;
     -webkit-animation-duration: .5s;
     -webkit-animation-iteration-count: 1;
@@ -1003,6 +1013,13 @@ body {
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
+    /*
+    Following transform is to solve the hover issue
+    on 3D transformed elements
+    */
+    -webkit-transform: translateZ(1px);
+    -moz-transform: translateZ(1px);
+    transform: translateZ(1px);
 }
 
 .project_explore p {
@@ -1027,7 +1044,7 @@ body {
 }
 
 .project_explore .top {
-    top: 20%;
+    top: 21%;
 }
 
 .project_explore a:hover ~ .top {
@@ -1035,7 +1052,7 @@ body {
 }
 
 .project_explore .bottom {
-    bottom: 30%;
+    bottom: 31%;
 }
 
 .project_explore a:hover ~ .bottom {
