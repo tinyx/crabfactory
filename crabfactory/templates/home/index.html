@@ -282,6 +282,42 @@
                 </div>
             </div>
         </section>
+        <section id="slide-5" class="slide">
+            <div class="content_background">
+                <div class="content_container">
+                    <div id="content_5" class="content">
+                        <h id="contact_title"></h>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="slide-6" class="slide">
+            <div class="content_background">
+                <div class="content_container">
+                    <div id="content_6" class="content">
+                        <h id="resume_title"></h>
+                        <div id="resume_snap"></div>
+                        <a href="../../static/home/others/YitaoXiongResume.pdf" target="_blank">
+                            <div id="resume_view_online">
+                                <img src="../../static/home/img/magnifier.png"></img>
+                                <p>View Online</p>
+                            </div>
+                        </a>
+                        <div id="resume_download_pdf" class="resume_download">
+                            <a href="../../static/home/others/YitaoXiongResume.pdf" download>PDF version</a>
+                            <p class="top">click to download</p>
+                            <p class="bottom">of the reusme</p>
+                        </div>
+                        <div id="resume_download_docx" class="resume_download">
+                            <a href="../../static/home/others/YitaoXiongResume.docx" download>DOCX version</a>
+                            <p class="top">click to download</p>
+                            <p class="bottom">of the resume</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         <section id="ending_slide"></section>
         <div id="menu_bar">
             <div id="center_icon" class="circle">
@@ -306,13 +342,13 @@
                 <div class="line_in_circle"></div>
                 <div class="en_in_circle">Project</div>
             </div>
-            <div id="contact_icon" class="normal_icon circle">
+            <div id="contact_icon" class="normal_icon circle" onclick="scroll_to('#slide-5')">
                 <img class="img_in_circle" src="{% get_static_prefix %}home/img/contact_icon.png"></img>
                 <div class="cn_in_circle">联系</div>
                 <div class="line_in_circle"></div>
                 <div class="en_in_circle">Contact</div>
             </div>
-            <div id="resume_icon" class="normal_icon circle">
+            <div id="resume_icon" class="normal_icon circle" onclick="scroll_to('#slide-6')">
                 <img class="img_in_circle" src="{% get_static_prefix %}home/img/resume_icon.png"></img>
                 <div class="cn_in_circle">简历</div>
                 <div class="line_in_circle"></div>

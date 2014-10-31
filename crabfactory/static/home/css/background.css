@@ -257,6 +257,16 @@ body {
     background-size: 100% auto;
 }
 
+#slide-5 {
+    background-color: BLACK;
+}
+
+#slide-6 {
+    background-color: WHITESMOKE;
+    background-image: url('../img/slide-1_background.png');
+    background-size: 100% auto;
+}
+
 .content_background {
     background-position: center center;
     background-repeat: no-repeat;
@@ -304,6 +314,7 @@ body {
     font-family: Raleway;
     font-size: 5vw;
     color: GREY;
+    cursor: default;
 }
 
 #introduction_title {
@@ -649,8 +660,6 @@ body {
 #asp_dot_net_container {
     top: 50px;
 }
-    
-
 
 #project_title {
     left: 20%;
@@ -919,7 +928,7 @@ body {
     left: 15%;
     top: 5%;
     background: url('../img/project_info.png') 0 0;
-    background-size: 400% auto;
+    background-size: 200% auto;
     color: WHITE;
     font-family: Raleway-Bold;
     font-size: 2.6vw;
@@ -982,16 +991,6 @@ body {
     bottom: 0;
     width: 30%;
     height: 90%;
-}
-
-.project_explore > h {
-    position: absolute;
-    width: 100%;
-    top: 45%;
-    left: 4%;
-    font-family: Raleway-Semi-Bold;
-    font-size: 1.4vw;
-    color: WHITE;
 }
 
 .project_explore a {
@@ -1059,6 +1058,151 @@ body {
     bottom: 12%;
 }
     
+    
+    
+    
+
+#contact_title {
+    left: 20%;
+    top: 30%;
+    color: WHITESMOKE;
+}
+
+
+
+#resume_snap {
+    position: absolute;
+    background-image: url('../img/YitaoXiongResume.png');
+    background-size: 100% auto;
+    width: 20%;
+    padding-bottom: 27%;
+    left: 20%;
+    top: 15%;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+#resume_view_online {
+    position: absolute;
+    width: 35%;
+    padding-bottom: 10%;
+    height: 0;
+    right: 20%;
+    top: 20%;
+    background: #80b783;
+    background: -moz-linear-gradient(top,  #80b783 0%, #50b755 100%);
+    background: -webkit-linear-gradient(top,  #80b783 0%,#50b755 100%);
+    background: -ms-linear-gradient(top,  #80b783 0%,#50b755 100%);
+    background: linear-gradient(to bottom,  #80b783 0%,#50b755 100%);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+}
+
+#resume_view_online:hover {
+    background: -moz-linear-gradient(bottom,  #80b783 0%, #50b755 100%);
+    background: -webkit-linear-gradient(bottom,  #80b783 0%,#50b755 100%);
+    background: -ms-linear-gradient(bottom,  #80b783 0%,#50b755 100%);
+    background: linear-gradient(to top,  #80b783 0%,#50b755 100%);
+}
+
+#content_6 > a {
+    cursor: default;
+}
+
+#resume_view_online > img {
+    position: absolute;
+    width: 20%;
+    top: 15%;
+    left: 10%;
+}
+
+#resume_view_online > p {
+    position: absolute;
+    font-family: Raleway-Bold;
+    font-size: 3vw;
+    color: WHITE;
+    left: 35%; 
+    cursor: default;
+}
+
+.resume_download {
+    position: absolute;
+    width: 17%;
+    height: 30%;
+    top: 35%;
+    z-index: 1;
+}
+
+#resume_download_pdf {
+    left: 45%;
+}
+
+#resume_download_docx {
+    right: 20%;
+}
+
+.resume_download a {
+    display: block;
+    position: absolute;
+    top: 45%;
+    left: 5%;
+    height: 30%;
+    width: 90%;
+    background: #70c3e5;
+    color: WHITE;
+    font-family: Raleway;
+    font-size: 1.4vw;
+    line-height: 360%;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: default;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+
+.resume_download p {
+    background: #323232;
+    display: block;
+    height: 16%;
+    width: 70%;
+    left: 15%;
+    text-align: center;
+    font-family: Raleway;
+    font-size: 1.2vw;
+    line-height: 240%;
+    color: WHITE;
+    position: absolute;
+    z-index: -1;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+
+.resume_download .top {
+    top: 38%;
+}
+
+.resume_download a:hover ~ .top {
+    top: 24%;
+}
+
+.resume_download .bottom {
+    bottom: 18%;
+}
+
+.resume_download a:hover ~ .bottom {
+    bottom: 4%;
+}
+    
+
+
 #ending_slide {
     height: 0;
     padding-bottom: 5%;
