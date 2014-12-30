@@ -1,6 +1,7 @@
 var introduction_displayed = false;
 var circle_chart_displayed = false;
 var project_displayed = false;
+var contact_displayed = false;
 
 //disable css animation before page loaded
 $(window).load(function() {
@@ -93,6 +94,15 @@ $('#slide-4').waypoint(function() {
         project_displayed = true;
         $('#project_title').fadeOut('slow', function() {
             $('#project_menu, #project_content_wrapper').fadeIn('slow');
+        });   
+    }
+});
+
+$('#slide-5').waypoint(function() {
+    if(!contact_displayed) {
+        contact_displayed = true;
+        $('#contact_title').fadeOut('slow', function() {
+            $('#boston_map, #contact_me, #postscript, #contact_links').fadeIn('slow');
         });   
     }
 });

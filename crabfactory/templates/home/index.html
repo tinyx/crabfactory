@@ -39,7 +39,7 @@
                                     <p>Big Gamer</p>
                                 </div>
                                 <div id="basic_info_label_3" class="basic_info_label">
-                                    <p>Music Lover</p>
+                                    <p>Guitar Player</p>
                                 </div>
                             </div>
                             <div id="basic_info_education">
@@ -58,7 +58,7 @@
                                 Hi there, this is Yitao.<br>
                                 During my 4 years in college, I've done many different kinds of projects, including C, Java, C#, Android programming.<br>
                                 My graduate project was to make an NLP training program called Giza++ able to run a multitask. Hadoop was used in that project.<br>
-                                Now I'm really interested in Web Developping, both the frontend and backend stuff.
+                                Now I'm really interested in Web Developing, both the frontend and backend stuff.
                             </p>
                             <div id="detail_info_category">
                                 <div id="detail_info_basic" class="detail_info">
@@ -259,7 +259,7 @@
                                 <div class="project_description">
                                     <ul>
                                         <li>A portfolio creating helper</li>
-                                        <li>Psroject for learning AngularJS</li>
+                                        <li>Project for learning AngularJS</li>
                                         <li>Using AngularJS and Django Restful Framework together</li>
                                     </ul>
                                 </div>
@@ -286,8 +286,24 @@
             <div class="content_background">
                 <div class="content_container">
                     <div id="content_5" class="content">
-                        <h id="contact_title"></h>
-                        
+                        <h id="contact_title">Contact</h>
+                        <img id="boston_map" src="../../static/home/img/boston_map.png"></img>
+                        <h id="contact_me">Find me</h>
+                        <p id="postscript">By following links</p>
+                        <div id="contact_links">
+                            <div id="contact_link_linkedin" class="contact_link">
+                                <a>LinkedIn</a>
+                            </div>
+                            <div id="contact_link_facebook" class="contact_link">
+                                <a>Facebook</a>
+                            </div>
+                            <div id="contact_link_youtube" class="contact_link">
+                                <a>YouTube</a>
+                            </div>
+                            <div id="contact_link_email" class="contact_link">
+                                <a>Email</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -296,9 +312,9 @@
             <div class="content_background">
                 <div class="content_container">
                     <div id="content_6" class="content">
-                        <h id="resume_title"></h>
+                        <h id="resume_title">Resume</h>
                         <div id="resume_snap"></div>
-                        <a href="../../static/home/others/YitaoXiongResume.pdf" target="_blank">
+                        <a id="resume_view_online_a" href="../../static/home/others/YitaoXiongResume.pdf" target="_blank">
                             <div id="resume_view_online">
                                 <img src="../../static/home/img/magnifier.png"></img>
                                 <p>View Online</p>
@@ -313,6 +329,34 @@
                             <a href="../../static/home/others/YitaoXiongResume.docx" download>DOCX version</a>
                             <p class="top">click to download</p>
                             <p class="bottom">of the resume</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="slide-7" class="slide">
+            <div class="content_background">
+                <div class="content_container">
+                    <div id="content_7" class="content">
+                        <h id="about_title"></h>
+                        <div id="about_content">
+                            <h>About this website</h>
+                            <div class="about_block">
+                                <h>Developmeng process</h>
+                                <p>Finally this website is about to be finished! Cheers!</p>
+                                <p>I started building this website in my summer vacation 2014.</p>
+                                <p>It has been re-designed once during the developing.</p>
+                                <p>Hope you like it :)</p>
+                            </div>
+                            <div class="about_block">
+                                <h>Why "Crabfactory"?</h>
+                                <p>You are definately not the first one asking this question.</p>
+                                <p>Once I thought my site would be somewhere I put all my products.</p>
+                                <p>I was thinking describing it as a factory producing lots of craps would be fun.</p>
+                                <p>But I mis-spell the word "crap" to "crab" and use it unitl it was too late.</p>
+                                <p>However, "crab factory" actually sounds much more fun than "crap factory"</p>
+                                <p>That is why "Crabfactory".</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -354,7 +398,7 @@
                 <div class="line_in_circle"></div>
                 <div class="en_in_circle">Resume</div>
             </div>
-            <div id="about_icon" class="normal_icon circle">
+            <div id="about_icon" class="normal_icon circle" onclick="scroll_to('#slide-7')">
                 <img class="img_in_circle" src="{% get_static_prefix %}home/img/about_icon.png"></img>
                 <div class="cn_in_circle">关于</div>
                 <div class="line_in_circle"></div>

@@ -258,7 +258,7 @@ body {
 }
 
 #slide-5 {
-    background-color: BLACK;
+    background-color: #acacac;
 }
 
 #slide-6 {
@@ -1008,7 +1008,7 @@ body {
     text-decoration: none;
     text-align: center;
     text-transform: uppercase;
-    cursor: default;
+    cursor: pointer;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
@@ -1067,8 +1067,89 @@ body {
     top: 30%;
     color: WHITESMOKE;
 }
+    
+#boston_map {
+    position: absolute;
+    left: 18%;
+    top: 10%;
+    width: 35%;
+    opacity: .5;
+    display: none;
+}
+
+#contact_me {
+    position: absolute;
+    left: 44%;
+    top: 8%;
+    font-family: Raleway-Bold;
+    font-size: 7vw;
+    color: WHITE;
+    display: none;
+}
+
+#postscript {
+    position: absolute;
+    left: 44.4%;
+    top: 17%;
+    font-family: Raleway;
+    font-size: 1.5vw;
+    color: WHITE;
+    display: none;
+}
+
+#contact_links {
+    display: none;
+}
+
+.contact_link {
+    position: absolute;
+    right: 20%;
+    width: 30%;
+    height: 0;
+    padding-bottom: 5%;
+}
+
+.contact_link > a {
+    position: absolute;
+    left: 30%;
+    color: WHITE;
+    font-size: 3vw;
+    font-family: Raleway;
+    cursor: pointer;
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+}
+
+.contact_link > a:hover { 
+    left: 25%;
+}
+
+#contact_link_linkedin {
+    top: 30%;   
+}
+
+#contact_link_facebook {
+    top: 40%;
+}
+
+#contact_link_youtube {
+    top: 50%;
+}
+
+#contact_link_email {
+    top: 60%;
+}
 
 
+
+
+
+#resume_title {
+    left: 20%;
+    top: 30%;
+    color: WHITESMOKE;
+}
 
 #resume_snap {
     position: absolute;
@@ -1083,13 +1164,19 @@ body {
     border-radius: 10px;
 }
 
-#resume_view_online {
+#resume_view_online_a {
     position: absolute;
     width: 35%;
     padding-bottom: 10%;
     height: 0;
     right: 20%;
     top: 20%;
+}
+
+#resume_view_online {
+    position: absolute;
+    width: 100%;
+    height: 100%;
     background: #80b783;
     background: -moz-linear-gradient(top,  #80b783 0%, #50b755 100%);
     background: -webkit-linear-gradient(top,  #80b783 0%,#50b755 100%);
@@ -1108,7 +1195,7 @@ body {
 }
 
 #content_6 > a {
-    cursor: default;
+    cursor: pointer;
 }
 
 #resume_view_online > img {
@@ -1124,7 +1211,7 @@ body {
     font-size: 3vw;
     color: WHITE;
     left: 35%; 
-    cursor: default;
+    cursor: pointer;
 }
 
 .resume_download {
@@ -1158,7 +1245,7 @@ body {
     text-decoration: none;
     text-align: center;
     text-transform: uppercase;
-    cursor: default;
+    cursor: pointer;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
@@ -1200,7 +1287,21 @@ body {
 .resume_download a:hover ~ .bottom {
     bottom: 4%;
 }
-    
+   
+
+
+
+
+
+#about_title {
+    left: 20%;
+    top: 30%;
+    color: WHITESMOKE;
+}
+
+
+
+
 
 
 #ending_slide {
