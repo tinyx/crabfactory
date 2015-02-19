@@ -1,7 +1,8 @@
 crabfactory
 ===========
 
-The whole website is deployed at: crabfactory.net
+The whole website is deployed at: 
+[Crabfactory](http://crabfactory.net "Crabfactory")
 
 ===========
 Crabfactory
