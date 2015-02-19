@@ -1,8 +1,12 @@
 crabfactory
 ===========
+
+The whole website is deployed at: crabfactory.net
+
+===========
 Crabfactory
 
-The portfolio of mine.
+The portfolio of mine, not finished yet, two pages remaining building.
 
 - No back-end stuff, focused on the UX design.
 - Created lots of images.
