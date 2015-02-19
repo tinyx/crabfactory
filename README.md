@@ -4,13 +4,10 @@ Crabfactory
 
 The portfolio of mine.
 
-No back-end stuff, focused on the UX design.
-
-Created lots of images.
-
-Used a lot of pure CSS3 animations.
-
-Being very careful about efficiency.
+- No back-end stuff, focused on the UX design.
+- Created lots of images.
+- Used a lot of pure CSS3 animations.
+- Being very careful about efficiency.
 
 ===========
 
