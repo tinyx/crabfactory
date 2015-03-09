@@ -20,7 +20,6 @@ The portfolio of mine, not finished yet, two pages remaining building.
 Todo-list
 
 I've already done a todo-list app based on ASP.NET, so the first thing is to convert it into Django.
-And I also have some other thoughts to be achieved after that.
 
 The todo-list for this project so far is:
 
