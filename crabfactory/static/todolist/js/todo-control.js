@@ -628,7 +628,7 @@ var deleteEvent = function(id) {
 var drop = function(ev, ui) {
     var dropClass = ui.draggable.attr("class");
     if(dropClass.toString().indexOf("classesli") > -1) {
-        var id = ui.draggable.data("event-li-id");
+        var id = ui.draggable.data("class-li-id");
         var name = ui.draggable.text();
         var r=confirm("You sure you wanna delete the class " + name + "?");
         if (r === true)
@@ -659,7 +659,7 @@ var drop = function(ev, ui) {
         }
     }
     else if(dropClass.toString().indexOf("event-li") > -1) {
-        var id = ui.draggable.data("class-li-id");
+        var id = ui.draggable.data("event-li-id");
         var r=confirm("You sure you wanna delete this event?");
         if (r === true)
         {
