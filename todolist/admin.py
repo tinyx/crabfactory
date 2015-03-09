@@ -4,4 +4,8 @@ from models import Event
 class EventAdmin(admin.ModelAdmin):
     pass
 
+class EventClassAdmin(admin.ModelAdmin):
+    pass
+
 admin.site.register(Event)
+admin.site.register(EventClass)
