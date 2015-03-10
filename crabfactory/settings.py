@@ -140,6 +140,7 @@ INSTALLED_APPS = (
     'webresume',
     'south',
     'rest_framework',
+    'django_extensions',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
