@@ -1,15 +1,16 @@
+import json
+from datetime import date
+
 from django.contrib.auth import authenticate, login, logout
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+
+from todolist.constants import DONE_EVENTS_LIMIT
 from todolist.models import Event, EventClass
 from todolist.forms import TodoUserForm
-from todolist import constants
-from datetime import date
-import json
 
-DONE_EVENTS_LIMIT = 10
 
 def todo_login(request):
     """
