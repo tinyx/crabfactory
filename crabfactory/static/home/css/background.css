@@ -124,11 +124,11 @@ body {
 
 @font-face {
     font-family: 'Mini';
-    src: url('../font/Mini/minijianyaya.eot');
+    src: url('../font/Mini/minijianyaya-webfont.eot');
     src: local('☺'),
-         url('../font/Mini/minijianyaya.woff') format('woff'),
-         url('../font/Mini/minijianyaya.ttf') format('truetype'),
-         url('../font/Mini/minijianyaya.svg#Mini') format('svg');
+         url('../font/Mini/minijianyaya-webfont.woff') format('woff'),
+         url('../font/Mini/minijianyaya-webfont.ttf') format('truetype'),
+         url('../font/Mini/minijianyaya-webfont.svg#Mini') format('svg');
 }
 
 .line_in_circle {
