@@ -258,7 +258,7 @@ body {
 }
 
 #slide-5 {
-    background-color: #acacac;
+    background-color: #939393;
 }
 
 #slide-6 {
@@ -571,7 +571,7 @@ body {
     top: 6%;
     left: 5%;
     position: absolute;
-    background-color: rgba(40, 49, 88, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
     display: none;
 }
     

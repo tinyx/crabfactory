@@ -461,6 +461,34 @@
                 color: @color-text-gray;
             }
         }
+        #done-list {
+            margin: 10px 0;
+            padding: 0 20px;
+            list-style: none;
+
+            li {
+                cursor: default;
+                width: 100%;
+                height: 12px;
+
+                .done-event-text, .done-event-due {
+                    display: inline-block;
+                    font-family: @font-content;
+                    font-size: 70%;
+                    font-color: @color-text-gray;
+                }
+                .done-event-text {
+                    text-decoration: line-through;
+                }
+                .done-event-due {
+                    margin-left: 20px;
+                }
+                &.sortable-placeholder {
+                    border: 1px dashed Black;
+                    background: none;
+                }
+            }
+        }
     }
 }
 
