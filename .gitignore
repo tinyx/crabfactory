@@ -1,4 +1,5 @@
 *.pyc
+*.map
 bin/
 settings.py
 .*
