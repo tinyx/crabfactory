@@ -3,7 +3,7 @@ import os
 
 ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -86,6 +86,9 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
+
+# Enable ManifestStaticFilesStorage
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'd7h7dpioln4faj6t96v&@h20^+jmolk)*zs4tzon-uo%gs+q5u'
