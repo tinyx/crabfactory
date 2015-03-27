@@ -1,10 +1,10 @@
-{% load static %}
+{% load static from staticfiles %}
 {% load url from future %}
 <html>
     <head>
         <title>Crabfactory</title>
-        <link rel="stylesheet" type="text/css" href="{% get_static_prefix %}home/css/background.css">
-        <link rel="shortcut icon" href="{% get_static_prefix %}home/img/crab_logo.ico">
+        <link rel="stylesheet" type="text/css" href="{% static "css/background.css" %}">
+        <link rel="shortcut icon" href="{% static "img/crab_logo.ico" %}">
     </head>
     <body class="preload">
         <div id="skrollr-body"></div>
@@ -12,7 +12,7 @@
             <div class="content_background">
                 <div class="content_container">
                     <div id="content_1" class="content">
-                        <img id="content_idle" src="{% get_static_prefix %}home/img/crabfactory_huge.png"></img>
+                        <img id="content_idle" src="{% static "img/crabfactory_huge.png" %}"></img>
                     </div>
                 </div>
             </div>
@@ -27,7 +27,7 @@
                                 <p>Basic Information</p>
                             </div>
                             <div id="basic_info_photo">
-                                <img id="photo_of_me" src="{% get_static_prefix %}home/img/photo_of_me.png"></img>
+                                <img id="photo_of_me" src="{% static "img/photo_of_me.png" %}"></img>
                                 <p id="basic_info_name">Yitao Xiong</p>
                                 <p id="basic_info_from">Boston, Massachusetts</p>
                             </div>
@@ -106,10 +106,10 @@
                             <div id="front_end_skill_wrapper" class="skill_container_wrapper">
                                 <div class="skill_container">
                                     <div id="front_end_icon" class="circle">
-                                        <img src="{% get_static_prefix %}home/img/front_end_icon.png"></img>
+                                        <img src="{% static "img/front_end_icon.png" %}"></img>
                                     </div>
                                     <div id="front_end_skill_background" class="skill_background">
-                                        <img src="{% get_static_prefix %}home/img/front_end_background.png"></img>
+                                        <img src="{% static "img/front_end_background.png" %}"></img>
                                     </div>
                                     <div id="html5_container" class="knob_container">
                                         <input type="text" value="0" id="html5" class="knob"
@@ -151,10 +151,10 @@
                             <div id="back_end_skill_wrapper" class="skill_container_wrapper">
                                 <div class="skill_container">
                                     <div id="back_end_icon" class="circle">
-                                        <img src="{% get_static_prefix %}home/img/back_end_icon.png"></img>
+                                        <img src="{% static "img/back_end_icon.png" %}"></img>
                                     </div>
                                     <div id="back_end_skill_background" class="skill_background">
-                                        <img src="{% get_static_prefix %}home/img/back_end_background.png"></img>
+                                        <img src="{% static "img/back_end_background.png" %}"></img>
                                     </div>
                                     <div id="django_container" class="knob_container">
                                         <input type="text" value="0" id="django" class="knob"
@@ -199,7 +199,7 @@
                         <div id="project_content_wrapper">
                             <div id="crabfactory_content" class="project_content selected">
                                 <div class="project_snap">
-                                    <img src="{% get_static_prefix %}home/img/crabfactory_snap.png"></img>
+                                    <img src="{% static "img/crabfactory_snap.png" %}"></img>
                                 </div>
                                 <div class="project_description">
                                     <ul>
@@ -227,7 +227,7 @@
                             </div>
                             <div id="todo_list_content" class="project_content out">
                                 <div class="project_snap">
-                                    <img src="{% get_static_prefix %}home/img/todo_list_snap.png"></img>
+                                    <img src="{% static "img/todo_list_snap.png" %}"></img>
                                 </div>
                                 <div class="project_description">
                                     <ul>
@@ -254,7 +254,7 @@
                             </div>
                             <div id="web_resume_content" class="project_content out">
                                 <div class="project_snap">
-                                    <img src="{% get_static_prefix %}home/img/web_resume_snap.png"></img>
+                                    <img src="{% static "img/web_resume_snap.png" %}"></img>
                                 </div>
                                 <div class="project_description">
                                     <ul>
@@ -287,7 +287,7 @@
                 <div class="content_container">
                     <div id="content_5" class="content">
                         <h id="contact_title">Contact</h>
-                        <img id="boston_map" src="../../static/home/img/boston_map.png"></img>
+                        <img id="boston_map" src="{% static "img/boston_map.png" %}"></img>
                         <h id="contact_me">Find me</h>
                         <p id="postscript">By following links</p>
                         <div id="contact_links">
@@ -316,7 +316,7 @@
                         <div id="resume_snap"></div>
                         <a id="resume_view_online_a" href="../../static/home/others/YitaoXiongResume.pdf" target="_blank">
                             <div id="resume_view_online">
-                                <img src="../../static/home/img/magnifier.png"></img>
+                                <img src="{% static "img/magnifier.png" %}"></img>
                                 <p>View Online</p>
                             </div>
                         </a>
@@ -365,50 +365,50 @@
         <section id="ending_slide"></section>
         <div id="menu_bar">
             <div id="center_icon" class="circle">
-                <img id="center_img" src="{% get_static_prefix %}home/img/crab_logo.png"></img>
+                <img id="center_img" src="{% static "img/crab_logo.png" %}"></img>
             </div>
             <div id="center_icon_shadow" class="circle" onclick="scroll_to('#slide-1')"></div>
             <div id="intro_icon" class="normal_icon circle" onclick="scroll_to('#slide-2')">
-                <img class="img_in_circle" src="{% get_static_prefix %}home/img/intro_icon.png"></img>
+                <img class="img_in_circle" src="{% static "img/intro_icon.png" %}"></img>
                 <div class="cn_in_circle">简介</div>
                 <div class="line_in_circle"></div>
                 <div class="en_in_circle">Intro</div>
             </div>
             <div id="skill_icon" class="normal_icon circle" onclick="scroll_to('#slide-3')">
-                <img class="img_in_circle" src="{% get_static_prefix %}home/img/skill_icon.png"></img>
+                <img class="img_in_circle" src="{% static "img/skill_icon.png" %}"></img>
                 <div class="cn_in_circle">技能</div>
                 <div class="line_in_circle"></div>
                 <div class="en_in_circle">Skill</div>
             </div>
             <div id="project_icon" class="normal_icon circle" onclick="scroll_to('#slide-4')">
-                <img class="img_in_circle" src="{% get_static_prefix %}home/img/project_icon.png"></img>
+                <img class="img_in_circle" src="{% static "img/project_icon.png" %}"></img>
                 <div class="cn_in_circle">项目</div>
                 <div class="line_in_circle"></div>
                 <div class="en_in_circle">Project</div>
             </div>
             <div id="contact_icon" class="normal_icon circle" onclick="scroll_to('#slide-5')">
-                <img class="img_in_circle" src="{% get_static_prefix %}home/img/contact_icon.png"></img>
+                <img class="img_in_circle" src="{% static "img/contact_icon.png" %}"></img>
                 <div class="cn_in_circle">联系</div>
                 <div class="line_in_circle"></div>
                 <div class="en_in_circle">Contact</div>
             </div>
             <div id="resume_icon" class="normal_icon circle" onclick="scroll_to('#slide-6')">
-                <img class="img_in_circle" src="{% get_static_prefix %}home/img/resume_icon.png"></img>
+                <img class="img_in_circle" src="{% static "img/resume_icon.png" %}"></img>
                 <div class="cn_in_circle">简历</div>
                 <div class="line_in_circle"></div>
                 <div class="en_in_circle">Resume</div>
             </div>
             <div id="about_icon" class="normal_icon circle" onclick="scroll_to('#slide-7')">
-                <img class="img_in_circle" src="{% get_static_prefix %}home/img/about_icon.png"></img>
+                <img class="img_in_circle" src="{% static "img/about_icon.png" %}"></img>
                 <div class="cn_in_circle">关于</div>
                 <div class="line_in_circle"></div>
                 <div class="en_in_circle">About</div>
             </div>
         </div>
     </body>
-    <script src="{% get_static_prefix %}library/jquery.min.js"></script>
-    <script src="{% get_static_prefix %}library/waypoints.min.js"></script>
-    <script src="{% get_static_prefix %}library/jquery.scrollTo.min.js"></script>
-    <script src="{% get_static_prefix %}library/jquery.knob.min.js"></script>
-    <script src="{% get_static_prefix %}home/js/background.js"></script>
+    <script src="{% static "jquery.min.js" %}"></script>
+    <script src="{% static "waypoints.min.js" %}"></script>
+    <script src="{% static "jquery.scrollTo.min.js" %}"></script>
+    <script src="{% static "jquery.knob.min.js" %}"></script>
+    <script src="{% static "js/background.js" %}"></script>
 </html>

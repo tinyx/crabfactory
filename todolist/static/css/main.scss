@@ -1,17 +1,17 @@
-@import "frame.less";
-@color-panel-gray: #e8e8e8;
-@color-label-gray: #f5f5f5;
-@color-text-gray: #515151;
-@color-overdue: #ff0000;
-@color-due-today: #f4b52e;
-@color-due-shortly: #00b115;
-@color-due-longer: #0065ab;
-@color-due-very-long: #9c9c9c;
-@color-hint-window: #555B63;
-@color-recycle-bin-red: #c50000;
+@import "frame.scss";
+$color-panel-gray: #e8e8e8;
+$color-label-gray: #f5f5f5;
+$color-text-gray: #515151;
+$color-overdue: #ff0000;
+$color-due-today: #f4b52e;
+$color-due-shortly: #00b115;
+$color-due-longer: #0065ab;
+$color-due-very-long: #9c9c9c;
+$color-hint-window: #555B63;
+$color-recycle-bin-red: #c50000;
 
 .content {
-    .centered-container(900px);
+    @include centered-container(900px);
     margin-top: 50px;
 }
 
@@ -20,26 +20,26 @@
     min-height: 400px;
 
     #panel-left {
-        background-color: @color-panel-gray;
+        background-color: $color-panel-gray;
         margin: 0;
         padding: 0;
         width: 30%;
-        border-right: 1px solid @color-panel-gray;
+        border-right: 1px solid $color-panel-gray;
         position: relative;
         z-index: 999;
 
         #class-label, #add-new-class-label, #recycle-bin-label {
-            background-color: @color-label-gray;
+            background-color: $color-label-gray;
             height: 60px;
-            border-bottom: 1px solid @color-panel-gray;
-            border-top: 1px solid @color-panel-gray;
+            border-bottom: 1px solid $color-panel-gray;
+            border-top: 1px solid $color-panel-gray;
 
             p {
                 cursor: default;
             }
         }
         #recycle-bin-label.recycle-on-drop {
-            background-color: @color-recycle-bin-red;
+            background-color: $color-recycle-bin-red;
             background: -webkit-gradient(linear, 0 0, 100% 0, from(#d91414), to(#e47070));
             background: -moz-linear-gradient(left, #d91414, #e47070);
 
@@ -51,7 +51,7 @@
             }
         }
         #class-list {
-            .centered-container(100%);
+            @include centered-container(100%);
             list-style: none;
             cursor: default;
             padding: 0;
@@ -59,16 +59,16 @@
             li {
                 width: 100%;
                 height: 50px;
-                font-family: @font-title;
+                font-family: $font-title;
                 font-weight: 700;
                 overflow: visible;
 
                 .class-name-div {
-                    color: @color-font-blue;
+                    color: $color-font-blue;
                     padding: 0 20px;
                 }
                 table {
-                    .centered-container(90%);
+                    @include centered-container(90%);
                     height: 100%;
                     padding: 0;
 
@@ -117,7 +117,7 @@
             }
             #add-new-class-button {
                 display: inline-block;
-                .button(50px, 20px);
+                @include button(50px, 20px);
                 vertical-align: middle;
                 font-size: 100%;
                 color: #d9eef7;
@@ -158,7 +158,7 @@
         p {
             margin: 0;
             padding-top: 20px;
-            font-family: @font-content;
+            font-family: $font-content;
             font-size: 150%;
             color: #0e93d5;
             text-align: left;
@@ -181,9 +181,9 @@
         #sorted-by {
             width: 100%;
             height: 60px;
-            background-color: @color-label-gray;
-            border-bottom: 1px solid @color-panel-gray;
-            border-top: 1px solid @color-panel-gray;
+            background-color: $color-label-gray;
+            border-bottom: 1px solid $color-panel-gray;
+            border-top: 1px solid $color-panel-gray;
 
             #sorted-by-icons {
                 width: 200px;
@@ -193,9 +193,9 @@
 
                 p {
                     width: 40%;
-                    font-family: @font-content;
+                    font-family: $font-content;
                     font-size: 60%;
-                    color: @color-text-gray;
+                    color: $color-text-gray;
                     display: inline-block;
                     vertical-align: top;
                 }
@@ -245,16 +245,16 @@
             p {
                 height: 30px;
                 margin: auto 30px;
-                font-family: @font-title;
+                font-family: $font-title;
                 font-size: 130%;
                 color: Black;
                 text-align: left;
                 vertical-align: bottom;
-                border-bottom: 1px solid @color-panel-gray;
+                border-bottom: 1px solid $color-panel-gray;
             }
         }
         #event-list {
-            .centered-container(100%);
+            @include centered-container(100%);
             padding: 0;
             list-style: none;
             text-align: center;
@@ -263,7 +263,7 @@
                 height: 35px;
                 margin: 0 15px;
                 padding: 0;
-                border-bottom: 1px solid @color-panel-gray;
+                border-bottom: 1px solid $color-panel-gray;
 
                 table {
                     margin: 0;
@@ -276,7 +276,7 @@
                         width: 5%;
 
                         .event-pri {
-                            .centered-container(30px);
+                            @include centered-container(30px);
                             position: relative;
                             height: 30px;
                             background-image: url("../img/priorities.png");
@@ -307,16 +307,16 @@
                                     width: 50%;
 
                                     &.cell0 {
-                                        background-color: @color-due-longer;
+                                        background-color: $color-due-longer;
                                     }
                                     &.cell1 {
-                                        background-color: @color-due-shortly;
+                                        background-color: $color-due-shortly;
                                     }
                                     &.cell2 {
-                                        background-color: @color-due-today;
+                                        background-color: $color-due-today;
                                     }
                                     &.cell3 {
-                                        background-color: @color-overdue;
+                                        background-color: $color-overdue;
                                     }
                                 }
                             }
@@ -334,7 +334,7 @@
                             width: 100%;
                             height: 100%;
                             vertical-align: bottom;
-                            font-family: @font-content;
+                            font-family: $font-content;
                         }
                     }
                     .event-due-td {
@@ -346,25 +346,25 @@
                             text-align: center;
                             padding-top: 5px;
                             margin-left: 10px;
-                            font-family: @font-content;
+                            font-family: $font-content;
                             font-weight: 700;
                             font-size: 70%;
                             color: White;
 
                             &.event-overdue {
-                                background-color: @color-overdue;
+                                background-color: $color-overdue;
                             }
                             &.event-due-today {
-                                background-color: @color-due-today;
+                                background-color: $color-due-today;
                             }
                             &.event-due-shortly {
-                                background-color: @color-due-shortly;
+                                background-color: $color-due-shortly;
                             }
                             &.event-due-longer {
-                                background-color: @color-due-longer;
+                                background-color: $color-due-longer;
                             }
                             &.event-due-very-long {
-                                background-color: @color-due-very-long;
+                                background-color: $color-due-very-long;
                             }
                         }
                     }
@@ -390,10 +390,10 @@
                 }
             }
             &.undraggable li {
-                background-color: @color-panel-gray;
+                background-color: $color-panel-gray;
             }
             & li:hover {
-                background-color: @color-label-gray;
+                background-color: $color-label-gray;
 
                 .event-del {
                     visibility: visible;
@@ -403,11 +403,11 @@
         .add-new-event {
             width: 100%;
             height: 40px;
-            background-color: @color-label-gray;
+            background-color: $color-label-gray;
 
             &.up {
                 margin-top: 30px;
-                border-top: 1px solid @color-panel-gray;
+                border-top: 1px solid $color-panel-gray;
 
                 div {
                     display: inline-block;
@@ -418,15 +418,15 @@
                 }
                 p {
                     display: inline-block;
-                    font-family: @font-title;
+                    font-family: $font-title;
                     font-weight: 700;
                     font-size: 80%;
-                    color: @color-text-gray;
+                    color: $color-text-gray;
                     vertical-align: top;
                 }
             }
             &.down {
-                border-bottom: 1px solid @color-panel-gray;
+                border-bottom: 1px solid $color-panel-gray;
 
                 #add-event-text {
                     display: inline-block;
@@ -453,12 +453,12 @@
 
             p {
                 margin-left: 15px;
-                font-family: @font-title;
+                font-family: $font-title;
                 font-weight: 700;
                 font-size: 80%;
                 text-decoration: underline;
                 cursor: pointer;
-                color: @color-text-gray;
+                color: $color-text-gray;
             }
         }
         #done-list {
@@ -473,9 +473,9 @@
 
                 .done-event-text, .done-event-due {
                     display: inline-block;
-                    font-family: @font-content;
+                    font-family: $font-content;
                     font-size: 70%;
-                    font-color: @color-text-gray;
+                    font-color: $color-text-gray;
                 }
                 .done-event-text {
                     text-decoration: line-through;
@@ -496,14 +496,14 @@
     position: absolute;
     height: 30px;
     top: 110px;
-    background-color: @color-hint-window;
+    background-color: $color-hint-window;
     cursor: default;
     display: none;
 
     p {
         float: left;
         text-align: left;
-        font-family: @font-title;
+        font-family: $font-title;
         font-weight: 700;
         font-size: 70%;
         color: White;
@@ -513,7 +513,7 @@
 }
 
 #pri-hint-window {
-    .hint-window;
+    @extend .hint-window;
     width: 400px;
 
     div {
@@ -523,22 +523,22 @@
         margin-top: 5px;
 
         &.high {
-            background-color: @color-overdue;
+            background-color: $color-overdue;
         }
         &.medium {
-            background-color: @color-due-today;
+            background-color: $color-due-today;
         }
         &.normal {
-            background-color: @color-due-shortly;
+            background-color: $color-due-shortly;
         }
         &.low {
-            background-color: @color-due-longer;
+            background-color: $color-due-longer;
         }
     }
 }
 
 #general-hint-window {
-    .hint-window;
+    @extend .hint-window;
     width: 600px;
 
     .hint-window-icon {

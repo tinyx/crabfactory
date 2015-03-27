@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
-from todolist.constants import DONE_EVENTS_LIMIT
+from todolist import constants
 from todolist.models import Event, EventClass
 from todolist.forms import TodoUserForm
 
@@ -130,7 +130,7 @@ def get_event(request):
         class_id = request.GET.get('classId', None)
         done = request.GET.get('done', None)
         if done == '1':
-            response['data'] = Event.get_events_dict_by_class(class_id, True)[:DONE_EVENTS_LIMIT]
+            response['data'] = Event.get_events_dict_by_class(class_id, True)[:constants.DONE_EVENTS_LIMIT]
         else:
             response['data'] = Event.get_events_dict_by_class(class_id, False)
         return HttpResponse(json.dumps(response),\

@@ -1,7 +1,7 @@
 # Django settings for crabfactory project.
 import os
 
-ROOT_PATH = os.path.dirname(os.path.dirname(__file__))
+ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -65,7 +65,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = 'static/'
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
@@ -73,8 +73,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    '/home/tinyx/Envs/crabfactory/lib/python2.7/site-packages/django/contrib/admin/static/admin',
-    os.path.join(ROOT_PATH, 'static/')
+    os.path.join(ROOT_PATH, 'library'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -87,6 +86,9 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
+
+# Enable ManifestStaticFilesStorage
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'd7h7dpioln4faj6t96v&@h20^+jmolk)*zs4tzon-uo%gs+q5u'
@@ -108,10 +110,10 @@ MIDDLEWARE_CLASSES = (
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = 'crabfactory.urls'
+ROOT_URLCONF = 'urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = 'crabfactory.wsgi.application'
+WSGI_APPLICATION = 'wsgi.application'
 
 TEMPLATE_DIRS = (
     os.path.join(ROOT_PATH, 'templates'),
@@ -138,7 +140,6 @@ INSTALLED_APPS = (
     'crabfactory',
     'todolist',
     'webresume',
-    'south',
     'rest_framework',
     'django_extensions',
 )
@@ -175,3 +176,5 @@ LOGGING = {
 }
 LOGIN_URL = '/todo/login/'
 #SESSION_COOKIE_AGE = 60 * 60
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

@@ -1,18 +1,18 @@
-@import "frame.less";
+@import "frame.scss";
 
 .content {
-    .centered-container(900px);
+    @include centered-container(900px);
 }
 
 .wizard {
-    .centered-container(500px);
+    @include centered-container(500px);
     background-color: White;
     margin-top: 30px;
     padding-top: 10px;
-    .set-radius(3px);
+    @include set-radius(3px);
 
     .handwritting-logo {
-        .centered-container(320px);
+        @include centered-container(320px);
         padding: 0;
         margin-top: 30px;
         height: 65px;
@@ -28,19 +28,19 @@
 
             p, input {
                 display: inline-block;
-                font-family: @font-title;
+                font-family: $font-title;
                 font-size: 100%;
             }
             input {
                 float: right;
-                font-family: @font-content;
+                font-family: $font-content;
                 width: 60%;
                 margin-top: 15px;
             }
         }
     }
     .create_button {
-        .button(320px, 50px);
+        @include button(320px, 50px);
         margin-left: 90px;
         margin-bottom: 20px;
         color: #d9eef7;

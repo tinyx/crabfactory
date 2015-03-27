@@ -1,9 +1,9 @@
 {% extends "todo_frame.html" %}
-{% load static %}
+{% load static from staticfiles %}
 {% load url from future %}
 {% block title %}2do-List | Register{% endblock %}
 {% block extrastyle %}
-<link rel="stylesheet/less" type="text/css" href="{% get_static_prefix %}todolist/css/reg.less"/>
+<link rel="stylesheet" type="text/css" href="{% static "css/reg.css" %}"/>
 {% endblock %}
 {% block content %}
 <div class="content">
