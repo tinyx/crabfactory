@@ -141,6 +141,7 @@ INSTALLED_APPS = (
     'todolist',
     'webresume',
     'rest_framework',
+    'django_extensions',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
