@@ -17,12 +17,11 @@
                     <a href="{% url 'todo_reg' %}" class="item">REGISTER</a>
                 </div>
                 {% endblock %}
-                <a class="logo" href="{% url 'todo_cover' %}"><img src="{% get_static_prefix %}todolist/img/logo.png" alt="Logo"/></a>
+                <a class="logo" href="{% url 'todo_cover' %}"><img src="{% static "img/logo.png" %}" alt="Logo"/></a>
             </div>
         </div>
         {% block content %}
         {% endblock %}
-        <script src="{% get_static_prefix %}library/less-1.4.1.min.js"></script>
         {% block extrajs %}
         {% endblock %}
     </body>
