@@ -3,3 +3,4 @@
 bin/
 .*
 /static
+settings_production.py

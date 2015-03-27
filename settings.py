@@ -3,7 +3,7 @@ import os
 
 ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -176,9 +176,4 @@ LOGGING = {
 LOGIN_URL = '/todo/login/'
 #SESSION_COOKIE_AGE = 60 * 60
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
-ALLOWED_HOSTS = [
-    'crabfactory.net',
-    '.crabfactory.net',
-    'crabfactory.net.',
-]
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
