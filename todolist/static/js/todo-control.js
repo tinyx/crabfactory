@@ -8,7 +8,7 @@ $(document).ready(function() {
 });
 
 var initial = function() {
-    $.blockUI.defaults.message = "<img src=" + busy_url + "/>";
+    $.blockUI.defaults.message = "<img src=" + busy_url + ">";
     $.blockUI.defaults.css.background = "rgba(0,0,0,0)";
     $.blockUI.defaults.css.border = "rgba(0,0,0,0)";
     $.blockUI.defaults.overlayCSS.opacity = 0;

@@ -177,6 +177,8 @@ LOGIN_URL = '/todo/login/'
 #SESSION_COOKIE_AGE = 60 * 60
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 ALLOWED_HOSTS = [
-    'localhost'
+    'crabfactory.net',
+    '.crabfactory.net',
+    'crabfactory.net.',
 ]
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
