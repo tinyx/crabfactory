@@ -90,9 +90,6 @@ STATICFILES_FINDERS = (
 # Enable ManifestStaticFilesStorage
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
-# Make this unique, and don't share it with anybody.
-SECRET_KEY = 'd7h7dpioln4faj6t96v&@h20^+jmolk)*zs4tzon-uo%gs+q5u'
-
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.Loader',
