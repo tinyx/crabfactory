@@ -253,7 +253,7 @@ body {
 
 #slide-4 {
     background-color: #484848;
-    background-image: url('../img/slide-1_background.png');
+    background-image: url('../img/slide-3_background.png');
     background-size: 100% auto;
 }
 
@@ -263,8 +263,6 @@ body {
 
 #slide-6 {
     background-color: WHITESMOKE;
-    background-image: url('../img/slide-1_background.png');
-    background-size: 100% auto;
 }
 
 .content_background {
@@ -1126,7 +1124,7 @@ body {
 }
 
 #contact_link_linkedin {
-    top: 30%;   
+    top: 30%;
 }
 
 #contact_link_facebook {
