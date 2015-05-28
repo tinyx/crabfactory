@@ -1,16 +1,16 @@
+import json
+from datetime import date
+
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-from django.db.models import F
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.views.generic.base import TemplateView
+
+from todolist import constants
 from todolist.models import Event, EventClass
 from todolist.forms import TodoUserForm
-from todolist import constants
-from datetime import date
-import json
+
 
 def todo_login(request):
     """
@@ -45,7 +45,7 @@ def todo_reg(request):
         if todo_user_form.is_valid():
             new_user = todo_user_form.save()
             # Create the 'Default' Class for the new user
-            default_class = EventClass.objects.create(name='Default', order='0', user=new_user)
+            EventClass.objects.create(name='Default', order='0', user=new_user)
             new_user = authenticate(username=request.POST['username'],\
                                     password=request.POST['password1'])
             login(request, new_user)
@@ -130,7 +130,7 @@ def get_event(request):
         class_id = request.GET.get('classId', None)
         done = request.GET.get('done', None)
         if done == '1':
-            response['data'] = Event.get_events_dict_by_class(class_id, True)
+            response['data'] = Event.get_events_dict_by_class(class_id, True)[:constants.DONE_EVENTS_LIMIT]
         else:
             response['data'] = Event.get_events_dict_by_class(class_id, False)
         return HttpResponse(json.dumps(response),\

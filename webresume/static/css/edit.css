@@ -1,0 +1,125 @@
+body {
+    margin: 0;
+    border-top: 20px solid #2E6EB4;
+}
+
+div#sidebar {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 200px;
+    padding: 10px 0 0 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border-right: 1px solid #bbb;
+    box-shadow: 0 0 20px #ccc;
+    -webkit-box-shadow: 0 0 20px #ccc;
+    -moz-box-shadow: 0 0 20px #ccc;
+}
+
+div#container {
+    width: 700px;
+    margin: 30px 0 0 250px;
+}
+
+a, a:visited{
+    display: block;
+    color: #000;
+}
+
+a:not(.side_title) {
+    text-decoration: none;
+}
+
+a:not(.side_title):hover {
+    text-decoration: underline;
+}
+
+a.side_title {
+    margin-top: 15px;
+    font-family: 'Raleway', 'sans-serif';
+}
+
+p.ctn_title {
+    font-size: 20px;
+    font-family: 'Raleway', 'sans-serif';
+}
+
+ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+input:not(.editing), textarea:not(.editing) {
+    border: none;
+}
+
+.person_name {
+    font-family: 'Oswald', 'sans-serif';
+    font-size: 50px;
+    margin: 0;
+}
+
+input.person_name {
+    width: 200px;
+}
+
+input.person_email {
+    display: block;
+    font-family: 'Raleway', 'sans-serif';
+    font-size: 15px;
+    color: #003086;
+    margin: 5px 0 0 0;
+}
+
+textarea.person_description {
+    display:block;
+    width: 400px;
+    height: 50px;
+    margin: 10px 0 0 0;
+    resize: none;
+}
+
+p#public_label {
+    display: inline;
+    font-size: 12px;
+    font-family: 'Raleway', 'sans-serif';
+}
+
+form.education_form {
+    margin-top: 15px;
+}
+
+input.education_name {
+    width: 200px;
+}
+
+p.education_name {
+    display: inline;
+    font-family: 'Raleway', 'sans-serif';
+    font-size: 15px;
+    margin-right: 20px;
+}
+
+p.education_time, p.education_major, p.education_degree {
+    display: inline;
+    font-family: 'Raleway', 'sans-serif';
+    font-size: 12px;
+    color: white;
+    padding: 3px 5px;
+    margin: 0 5px;
+}
+
+p.education_time {
+    background-color: #2E6EB4;
+}
+
+p.education_major {
+    background-color: #2E6EB4;
+}
+
+p.education_degree {
+    background-color: #2E6EB4;
+}
