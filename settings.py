@@ -178,7 +178,15 @@ LOGGING = {
         },
     }
 }
+THUMBNAIL_PROCESSORS = (
+    'easy_thumbnails.processors.colorspace',
+    'easy_thumbnails.processors.autocrop',
+    #'easy_thumbnails.processors.scale_and_crop',
+    'filer.thumbnail_processors.scale_and_crop_with_subject_location',
+    'easy_thumbnails.processors.filters',
+)
 LOGIN_URL = '/todo/login/'
 #SESSION_COOKIE_AGE = 60 * 60
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+THUMBNAIL_HIGH_RESOLUTION = True
