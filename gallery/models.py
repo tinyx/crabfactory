@@ -10,6 +10,12 @@ class Image(models.Model):
     annotation = models.TextField(null=True, blank=True, help_text='Write something to remind you which image this is')
     image_file = FilerImageField(null=False, blank=False, max_length=5000, help_text='The image file')
 
+    def __unicode__(self):
+        return self.name
+
 class Category(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False, help_text='The name of the category')
     order = models.IntegerField(default=0, null=False, blank=False, help_text='The order of this category')
+
+    def __unicode__(self):
+        return self.name
