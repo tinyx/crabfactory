@@ -23,5 +23,6 @@ urlpatterns = patterns('',
     url(r'^todo/', include(todolist_url)),
     url(r'^webresume/', include(webresume_url)),
     url(r'^filer/', include('filer.urls')),
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT})
 )
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
