@@ -7,7 +7,7 @@ class ImageAdmin(admin.ModelAdmin):
     pass
 
 class ImageInline(admin.StackedInline):
-    extra = 1
+    extra = 0
     model = Image
 
 class CategoryAdmin(admin.ModelAdmin):
