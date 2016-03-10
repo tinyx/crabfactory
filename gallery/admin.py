@@ -8,6 +8,7 @@ class ImageAdmin(admin.ModelAdmin):
 
 class ImageInline(admin.StackedInline):
     extra = 0
+    max_num=0
     model = Image
 
 class CategoryAdmin(admin.ModelAdmin):
