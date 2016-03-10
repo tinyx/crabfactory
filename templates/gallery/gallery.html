@@ -15,7 +15,7 @@
                 <nav id="top_navigation">
                     <ul>
                         {% for category in categories %}
-                          <li class="navigation_link">
+                          <li class="navigation_link {% if category == current_category %}active{% endif %}">
                               <a href="/gallery/{{ category.name }}">{{ category.name }}</a>
                           </li>
                         {% endfor %}
