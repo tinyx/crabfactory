@@ -121,6 +121,7 @@ TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__), 'templates/home').replace('\\', '/'),
     os.path.join(os.path.dirname(__file__), 'templates/todolist').replace('\\', '/'),
     os.path.join(os.path.dirname(__file__), 'templates/webresume').replace('\\', '/'),
+    os.path.join(os.path.dirname(__file__), 'templates/gallery').replace('\\', '/'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.

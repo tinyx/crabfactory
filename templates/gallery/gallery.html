@@ -1,0 +1,8 @@
+{% load static from staticfiles %}
+{% load url from future %}
+<div class="content">
+    {{ category }}
+    {% for image in images %}
+        {{ image.name }}
+    {% endfor %}
+</div>

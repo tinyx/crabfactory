@@ -4,6 +4,7 @@ from django.conf.urls.static import static
 from django.views.generic import TemplateView
 from todolist.urls import urlpatterns as todolist_url
 from webresume.urls import urlpatterns as webresume_url
+from gallery.urls import urlpatterns as gallery_url
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -22,6 +23,7 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^todo/', include(todolist_url)),
     url(r'^webresume/', include(webresume_url)),
+    url(r'gallery/', include(gallery_url)),
     url(r'^filer/', include('filer.urls')),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT})
 )
