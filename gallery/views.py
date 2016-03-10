@@ -11,10 +11,11 @@ class GalleryView(TemplateView):
 
     def get_context_data(self, **kwargs):
         category_name = kwargs.get('category')
-        category = Category.objects.filter(name=category_name).first()
+        category = Category.objects.filter(name__iexact=category_name).first()
         if not category:
-            raise Http404
+            category = Category.objects.all().order_by('order').first()
         context = super(GalleryView, self).get_context_data(**kwargs)
-        context['category'] = category
-        context['images'] = category.image_set.all()
+        context['current_category'] = category
+        context['categories'] = Category.objects.all().order_by('order')
+        context['images'] = category.image_set.all().order_by('order')
         return context

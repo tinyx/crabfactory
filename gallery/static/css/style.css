@@ -1,0 +1,148 @@
+body {
+    margin: 10px 0;
+}
+
+body>div {
+    margin: auto;
+    width: 90%;
+}
+
+footer {
+    margin: auto;
+    text-align: center;
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+footer a {
+  color: #888;
+}
+
+#top_navigation_holder {
+    height: 88px;
+    padding: 10px 0 10px 0;
+}
+
+#top_navigation_wrapper {
+    width: 960px;
+    height: 88px;
+    margin: auto;
+}
+
+#logo {
+    display: block;
+    height: 88px;
+    width: 252px;
+    margin: auto;
+}
+
+#logo img {
+    height: 100%;
+}
+
+#top_navigation {
+    width: 100%;
+    height: 44px;
+    text-align: center;
+    display: inline-block;
+    border-bottom: 1px solid #ddd;
+    margin: auto;
+}
+
+#top_navigation ul {
+    margin: 0;
+    padding: 0;
+}
+
+.navigation_link {
+    display: inline-block;
+    width: auto;
+    height: 100%;
+    padding: 0 12px;
+    transition: all 0.12s ease-out;
+}
+
+.navigation_link a {
+    display: block;
+    font-family: 'Populaire';
+    font-size: 24px;
+    line-height: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: 100%;
+    vertical-align: middle;
+    padding: 14px 0;
+    margin: 0;
+    text-decoration: none;
+    color: GREY;
+}
+
+.navigation_link.active a {
+    color: BLACK;
+}
+
+.navigation_link:hover {
+    background-color: whitesmoke;
+}
+
+#content {
+    margin: 50px auto 1% auto;
+}
+
+.carousel-stage {
+    width: 100%;
+}
+
+.carousel-stage li {
+    width: 960px;
+    height: 600px;
+}
+
+.carousel-stage li img {
+    width: auto;
+    height: 600px;
+    display: block;
+    margin: auto;
+    max-width: 100%;
+}
+
+.photo-title {
+    position: absolute;
+    top: 5px;
+    font-size: 30px;
+    font-family: 'Bosque';
+    color: BLACK;
+    text-shadow: 0 0 1px rgba(0, 0, 0, 0.85);
+    opacity: .66;
+    width: 980px;
+    margin: auto;
+    text-align: center;
+}
+
+.photo-description {
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    right: -120px;
+    font-size: 12px;
+    width: 180px;
+    height: 60px;
+    opacity: .66;
+    border: 1px solid #ccc;
+    background-color: #eee;
+    z-index: 10;
+    padding: 10px;
+    margin: 0;
+}
+
+@font-face {
+    font-family: 'Bosque';
+    src: url('../font/Bosque.otf');
+}
+
+@font-face {
+    font-family: 'Populaire';
+    src: url('../font/Populaire.otf');
+}
+

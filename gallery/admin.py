@@ -6,11 +6,12 @@ from gallery.models import Image, Category
 class ImageAdmin(admin.ModelAdmin):
     pass
 
-class ImageInline(admin.TabularInline):
+class ImageInline(admin.StackedInline):
+    extra = 1
     model = Image
 
 class CategoryAdmin(admin.ModelAdmin):
-    inlines = [ImageInline]
+    inlines = [ImageInline,]
 
 admin.site.register(Image)
-admin.site.register(Category)
+admin.site.register(Category, CategoryAdmin)
