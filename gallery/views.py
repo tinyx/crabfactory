@@ -14,6 +14,8 @@ class GalleryView(TemplateView):
         category = Category.objects.filter(name__iexact=category_name).first()
         if not category:
             category = Category.objects.all().order_by('order').first()
+        if not category:
+            raise Http404
         context = super(GalleryView, self).get_context_data(**kwargs)
         context['current_category'] = category
         context['categories'] = Category.objects.all().order_by('order')
