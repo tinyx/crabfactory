@@ -25,6 +25,7 @@ urlpatterns = patterns('',
     url(r'^webresume/', include(webresume_url)),
     url(r'gallery/', include(gallery_url)),
     url(r'^filer/', include('filer.urls')),
-    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT})
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
+    url(r'^api-token-auth/', 'rest_framework_jwt.views.obtain_jwt_token'),
 )
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
