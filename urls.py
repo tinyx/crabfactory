@@ -3,6 +3,7 @@ from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
 from todolist.urls import urlpatterns as todolist_url
+from todo_service.urls import urlpatterns as todo_service_url
 from webresume.urls import urlpatterns as webresume_url
 from gallery.urls import urlpatterns as gallery_url
 
@@ -22,6 +23,7 @@ urlpatterns = patterns('',
     url(r'^$', TemplateView.as_view(template_name='index.html'), name='home'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^todo/', include(todolist_url)),
+    url(r'^todo-api/', include(todo_service_url)),
     url(r'^webresume/', include(webresume_url)),
     url(r'gallery/', include(gallery_url)),
     url(r'^filer/', include('filer.urls')),

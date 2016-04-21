@@ -215,7 +215,3 @@ def remove_event(request):
                               {'error_info': constants.SESSION_EXPIRED_MSG, },\
                               RequestContext(request))
 
-
-# Class based views:
-
-

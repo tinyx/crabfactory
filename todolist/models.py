@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class EventClass(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, related_name='todolist_eventclass_user')
     name = models.CharField(max_length = 20)
     order = models.IntegerField()
 

@@ -147,6 +147,7 @@ INSTALLED_APPS = (
     'gallery',
     'rest_framework',
     'django_extensions',
+    'todo_service',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
