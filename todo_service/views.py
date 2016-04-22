@@ -26,7 +26,7 @@ class EventList(generics.ListCreateAPIView):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
     permission_classes = (IsAuthenticated, IsOwner)
-    
+
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
