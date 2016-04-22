@@ -101,6 +101,7 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -148,6 +149,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'django_extensions',
     'todo_service',
+    'corsheaders',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
@@ -225,3 +227,4 @@ LOGIN_URL = '/todo/login/'
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 THUMBNAIL_HIGH_RESOLUTION = True
+CORS_ORIGIN_ALLOW_ALL = True
