@@ -2,7 +2,7 @@
 {% load url from future %}
 <html>
     <head>
-        <title>Gallery</title>
+        <title>画廊</title>
         <link rel="stylesheet" href="{% static "css/style.css" %}">
         <link rel="shortcut icon" href="{% static "favicon.ico" %}"/>
     </head>
@@ -16,14 +16,14 @@
                     <ul>
                         {% for category in categories %}
                           <li class="navigation_link">
-                              <a href="/gallery/{{ category.name }}">{{ category.name }}</a>
+                              <a href="/gallery/cn/{{ category.name }}">{{ category.name_cn }}</a>
                           </li>
                         {% endfor %}
                         <li class="navigation_link active">
-                            <a href="/gallery/motion">Motion</a>
+                            <a href="/gallery/cn/motion">动画</a>
                         </li>
                         <li class="navigation_link">
-                            <a href="/gallery/cn/">中文版</a>
+                            <a href="/gallery/">English</a>
                         </li>
                     </ul>
                 </nav>

@@ -2,7 +2,7 @@
 {% load url from future %}
 <html>
     <head>
-        <title>Gallery</title>
+        <title>画廊</title>
         <link rel="stylesheet" href="{% static "css/style.css" %}">
         <link rel="stylesheet" type="text/css" href="{% static "css/jcarousel.connected-carousels.css" %}">
         <link rel="shortcut icon" href="{% static "favicon.ico" %}"/>
@@ -17,14 +17,14 @@
                     <ul>
                         {% for category in categories %}
                           <li class="navigation_link {% if category == current_category %}active{% endif %}">
-                              <a href="/gallery/{{ category.name }}">{{ category.name }}</a>
+                              <a href="/gallery/cn/{{ category.name }}">{{ category.name_cn }}</a>
                           </li>
                         {% endfor %}
                         <li class="navigation_link">
-                            <a href="/gallery/motion">Motion</a>
+                            <a href="/gallery/cn/motion">动画</a>
                         </li>
                         <li class="navigation_link">
-                            <a href="/gallery/cn/">中文版</a>
+                            <a href="/gallery/">English</a>
                         </li>
                     </ul>
                 </nav>
@@ -36,7 +36,7 @@
                     <div class="carousel carousel-stage">
                         <ul>
                             {% for image in images %}
-                              <li><img src="{{ image.image_file.url }}" alt=""><p></p><p>{{ image.description|safe }}</p></li>
+                              <li><img src="{{ image.image_file.url }}" alt=""><p></p><p>{{ image.description_cn|safe }}</p></li>
                             {% endfor %}
                         </ul>
                     </div>
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                     <p class="photo-description">
-                        {{ images.0.description|safe }}
+                        {{ images.0.description_cn|safe }}
                     </p>
                 </div>
             </div>
