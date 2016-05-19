@@ -12,10 +12,10 @@ class EventClass(models.Model):
         verbose_name = 'Event Class'
         verbose_name_plural = 'Event Classes'
 
-        
+
 class Event(models.Model):
     owner = models.ForeignKey(User)
-    eventclass = models.ForeignKey(EventClass)
+    eventclass = models.ForeignKey(EventClass, on_delete=models.CASCADE)
     priority = models.IntegerField(default = 0)
     content = models.TextField()
     duedate = models.DateField()
