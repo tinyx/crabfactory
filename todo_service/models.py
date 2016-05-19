@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 class EventClass(models.Model):
     owner = models.ForeignKey(User, related_name='todo_service_eventclass_user')
-    name = models.CharField(max_length = 20)
+    name = models.CharField(max_length=20)
 
     def __unicode__(self):
         return '%s:%s' % (self.owner, self.name)
@@ -16,10 +16,10 @@ class EventClass(models.Model):
 class Event(models.Model):
     owner = models.ForeignKey(User)
     eventclass = models.ForeignKey(EventClass, on_delete=models.CASCADE)
-    priority = models.IntegerField(default = 0)
+    priority = models.IntegerField(default=0)
     content = models.TextField()
     duedate = models.DateField()
-    done = models.BooleanField(default = False)
+    done = models.BooleanField(default=False)
 
     def __unicode__(self):
         return '%s' % (self.content)
