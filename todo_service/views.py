@@ -22,6 +22,9 @@ class EventClassDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = EventClassSerializer
     permission_classes = (IsAuthenticated, IsOwner)
 
+    def get_queryset(self):
+        return EventClass.objects.filter(owner=self.request.user)
+
 
 class EventList(generics.ListCreateAPIView):
     queryset = Event.objects.all()
@@ -38,3 +41,6 @@ class EventList(generics.ListCreateAPIView):
 class EventDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = EventSerializer
     permission_classes = (IsAuthenticated, IsOwner)
+
+    def get_queryset(self):
+        return Event.objects.filter(owner=self.request.user)
