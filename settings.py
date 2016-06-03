@@ -147,6 +147,7 @@ INSTALLED_APPS = (
     'webresume',
     'gallery',
     'rest_framework',
+    'rest_framework_swagger',
     'django_extensions',
     'todo_service',
     'corsheaders',

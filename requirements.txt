@@ -4,6 +4,7 @@ django-extensions==1.5.2
 django-filer==1.1.1
 django-mptt==0.7.0
 django-polymorphic==0.8.1
+django-rest-swagger==0.3.7
 djangorestframework==3.3.2
 djangorestframework-jwt==1.7.2
 easy-thumbnails==2.3
