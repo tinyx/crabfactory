@@ -34,6 +34,9 @@ $(document).ready(function () {
     }
   });
 
+  // Init skill page
+  initSkill();
+
   // Init scroll animations
   $('.content_wrapper').on('scroll', $.throttle(25, function () {
     $('.life_event_block').each(function () {
@@ -57,9 +60,6 @@ $(document).ready(function () {
       }
     });
   }));
-
-  // Init skill page
-  initSkill();
 });
 
 /*
@@ -176,8 +176,70 @@ var CoverCanvasHandler = function() {
 }
 
 var initSkill = function() {
-  // Init background
+  // Init timeline
+  (function() {
+    var skillData = {
+      'timeline': [
+        {'title': 'Northeastern University', 'date': new Date(2012, 9, 1)},
+        {'title': 'BitSight Coop', 'date': new Date(2013, 6, 1)},
+        {'title': 'BitSight Software Engineer', 'date': new Date(2015, 2, 1)},
+        {'title': 'Now', 'date': new Date()}
+      ],
+      'skills': {
+        'Web Dev': [
+          {'name': 'HTML + CSS + JavaScript', 'startDate': new Date(2012, 9, 1)},
+          {'name': 'Django (1.6 & 1.8)', 'startDate': new Date(2013, 6, 1)},
+          {'name': 'SASS', 'startDate': new Date(2013, 8, 1)},
+          {'name': 'ES6 + React + Redux', 'startDate': new Date(2016, 2, 1)}
+        ],
+        'Others': [
+          {'name': 'Linux', 'startDate': new Date(2012, 9, 1)},
+          {'name': 'Git', 'startDate': new Date(2012, 9, 1)},
+          {'name': 'Database (MySQL & PostgreSQL)', 'startDate': new Date(2012, 9, 1)}
+        ]
+      }
+    };
+    var startTime = skillData['timeline'][0]['date'];
+    var totalTime = new Date() - startTime;
+    var getPointEvent = function(title, date) {
+      var eventHtml = '<div class="skill_point_event">' +
+            '<p class="skill_point_event_date">' + date.getFullYear() + '</p>' +
+            '<p class="skill_point_event_title">' + title + '</p>' +
+            '<div class="skill_point_event_circle"></div>' +
+          '</div>';
+      var percentage = (date - startTime) / totalTime;
+      var pointEvent = $(eventHtml);
+      pointEvent.css('left', 'calc(' + percentage * 100 + '% - 55px)');
+      pointEvent.data('fade-in-delay', percentage * 1000);
+      return pointEvent;
+    }
+    for(var i=0; i<skillData['timeline'].length; i++) {
+      var pointEvent = skillData['timeline'][i];
+      $('.skill_timeline_container').append(getPointEvent(pointEvent.title, pointEvent.date));
+    }
 
+    var getSkillTimebar = function(name, date) {
+      var skillTimebarHTML = '<div class="skill_timebar">' +
+            '<div class="skill_timebar_bar"></div>' +
+            '<p class="skill_timebar_name">' + name + '</p>' +
+          '</div>';
+      var percentage = (new Date() - date) / totalTime;
+      var skillTimebar = $(skillTimebarHTML);
+      skillTimebar.find('.skill_timebar_bar').css('width', percentage * 100 + '%');
+      return skillTimebar;
+    }
+    for(var skillCategory in skillData['skills']) {
+      var skills = skillData['skills'][skillCategory];
+      var skillCategoryContainer = $('<div class="skill_timebar_category"/>');
+      skillCategoryContainer.append($('<p class="skill_timebar_category_label">' + skillCategory + '</p>'))
+      for(var i=0; i<skills.length; i++) {
+        skillCategoryContainer.append(getSkillTimebar(skills[i].name, skills[i].startDate));
+      }
+      $('.skill_timebar_container').append(skillCategoryContainer);
+    }
+  })();
+
+  // Init background
   (function(){
     particlesJS("skill-particles", {
       "particles": {
@@ -256,68 +318,5 @@ var initSkill = function() {
       },
       "retina_detect": true
     });
-  })();
-  
-  // Init timeline
-  (function() {
-    var skillData = {
-      'timeline': [
-        {'title': 'Northeastern University', 'date': new Date(2012, 9, 1)},
-        {'title': 'BitSight Coop', 'date': new Date(2013, 6, 1)},
-        {'title': 'BitSight Software Engineer', 'date': new Date(2015, 2, 1)},
-        {'title': 'Now', 'date': new Date()}
-      ],
-      'skills': {
-        'Web Dev': [
-          {'name': 'HTML + CSS + JavaScript', 'startDate': new Date(2012, 9, 1)},
-          {'name': 'Django (1.6 & 1.8)', 'startDate': new Date(2013, 6, 1)},
-          {'name': 'SASS', 'startDate': new Date(2013, 8, 1)},
-          {'name': 'ES6 + React + Redux', 'startDate': new Date(2015, 4, 1)}
-        ],
-        'Others': [
-          {'name': 'Linux', 'startDate': new Date(2012, 9, 1)},
-          {'name': 'Git', 'startDate': new Date(2012, 9, 1)},
-          {'name': 'Database (MySQL & PostgreSQL)', 'startDate': new Date(2012, 9, 1)}
-        ]
-      }
-    };
-    var startTime = skillData['timeline'][0]['date'];
-    var totalTime = new Date() - startTime;
-    var getPointEvent = function(title, date) {
-      var eventHtml = '<div class="skill_point_event">' +
-            '<p class="skill_point_event_date">' + date.getFullYear() + '</p>' +
-            '<p class="skill_point_event_title">' + title + '</p>' +
-            '<div class="skill_point_event_circle"></div>' +
-          '</div>';
-      var percentage = (date - startTime) / totalTime;
-      var pointEvent = $(eventHtml);
-      pointEvent.css('left', 'calc(' + percentage * 100 + '% - 55px)');
-      pointEvent.data('fade-in-delay', percentage * 1000);
-      return pointEvent;
-    }
-    for(var i=0; i<skillData['timeline'].length; i++) {
-      var pointEvent = skillData['timeline'][i];
-      $('.skill_timeline_container').append(getPointEvent(pointEvent.title, pointEvent.date));
-    }
-    
-    var getSkillTimebar = function(name, date) {
-      var skillTimebarHTML = '<div class="skill_timebar">' +
-            '<div class="skill_timebar_bar"></div>' +
-            '<p class="skill_timebar_name">' + name + '</p>' +
-          '</div>';
-      var percentage = (new Date() - date) / totalTime;
-      var skillTimebar = $(skillTimebarHTML);
-      skillTimebar.find('.skill_timebar_bar').css('width', percentage * 100 + '%');
-      return skillTimebar;
-    }
-    for(var skillCategory in skillData['skills']) {
-      var skills = skillData['skills'][skillCategory];
-      var skillCategoryContainer = $('<div class="skill_timebar_category"/>');
-      skillCategoryContainer.append($('<p class="skill_timebar_category_label">' + skillCategory + '</p>'))
-      for(var i=0; i<skills.length; i++) {
-        skillCategoryContainer.append(getSkillTimebar(skills[i].name, skills[i].startDate));
-      }
-      $('.skill_timebar_container').append(skillCategoryContainer);
-    }
   })();
 }

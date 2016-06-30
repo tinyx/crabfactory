@@ -348,8 +348,7 @@ div.life_event {
         opacity: 1; }
 
 div.skill {
-  position: relative;
-  min-height: 600px; }
+  position: relative; }
   div.skill .particles-js-canvas-el {
     position: absolute;
     top: 0;
