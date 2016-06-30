@@ -1,0 +1,333 @@
+@import 'mixin';
+@import 'color';
+@import 'animation';
+@import 'font-face';
+$title-font: 'Audiowide',
+cursive;
+$content-font: 'Open Sans',
+sans-serif;
+div.content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 100%;
+  background-color: WHITE;
+  @include transform_translateY(-55px);
+  @include transition_all(1.25s, cubic-bezier(0.19, 1, 0.22, 1));
+  &.display {
+    @include transform_translateY(-100%);
+  }
+}
+
+div.content_wrapper {
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+}
+
+nav.nav-collapse {
+  background-color: $nav-background-grey;
+  width: 100%;
+  height: 60px;
+  padding-right: 100px;
+  ul {
+    text-align: right;
+    margin: auto;
+    width: 960px;
+    height: 100%;
+  }
+  li {
+    display: inline-block;
+    width: auto;
+    height: calc(100% - 18px);
+    margin: 0;
+    padding: 18px 14px 0 14px;
+    cursor: pointer;
+    @include transition_attribute(background-color, .5s, ease);
+    div {
+      color: WHITE;
+      text-decoration: none;
+      font-family: 'Audiowide', cursive;
+      font-size: 1em;
+      @include transition_attribute(color, .5s, ease);
+    }
+    &.active {
+      height: calc(100% - 23px);
+      border-bottom: 5px solid lightblue;
+      background-color: $nav-active-background-color;
+      div {
+        color: BLACK;
+      }
+    }
+    &:hover {
+      background-color: $nav-hover-background-color;
+      div {
+        color: BLACK;
+      }
+    }
+  }
+}
+
+div.section_label {
+  font-family: 'Distant Galaxy';
+  font-size: 2em;
+  width: 300px;
+  margin: 35px auto;
+  text-align: center;
+  &::before,
+  &::after {
+    font-family: sans-serif;
+    font-size: 1.2em;
+    font-weight: 100;
+  }
+  &::before {
+    content: '— ';
+  }
+  &::after {
+    content: ' —';
+  }
+}
+
+div.section {
+  margin-bottom: 5em;
+}
+
+div.about {
+  div.info_block {
+    margin: 2em;
+    padding: 1em 1.5em .2em 1.5em;
+    position: relative;
+    height: 100%;
+    &:after,
+    &:before {
+      border: .15em solid BLACK;
+      bottom: 0;
+      content: '';
+      position: absolute;
+      top: 0;
+      width: 5%;
+    }
+    &:after {
+      border-left: none;
+      right: 0;
+    }
+    &:before {
+      border-right: none;
+      left: 0;
+    }
+    h {
+      font-family: $content-font;
+      font-size: 1.3em;
+      font-weight: 800;
+    }
+    p {
+      font-family: $content-font;
+    }
+  }
+}
+
+div.life_event {
+  background-image: url(../img/macbook.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  .life_event_cover {
+    background-color: rgba(0, 0, 0, .8);
+  }
+  .container {
+    padding-top: 1em;
+  }
+  div.section_label {
+    color: WHITE;
+  }
+  #life_events {
+    position: relative;
+    margin-bottom: 2em;
+    padding-top: 1em;
+    color: WHITE;
+    font-family: $content-font;
+    h {
+      font-size: 1.3em;
+      font-weight: bold;
+      line-height: 2em;
+    }
+    p {
+      font-size: .9em;
+      margin: 0;
+    }
+  }
+  #life_events::before {
+    /* this is the vertical line */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc(50% - 1px);
+    height: 100%;
+    width: 2px;
+    background: WHITE;
+  }
+  .is_hidden {
+    visibility: hidden;
+  }
+  .life_event_block {
+    position: relative;
+    margin: 50px auto;
+    &:nth-child(even) .life_event_content {
+      float: right;
+    }
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .life_event_icon {
+      width: 50px;
+      height: 50px;
+      left: calc(50% - 25px);
+      position: absolute;
+      top: 1.5em;
+      &:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-color: WHITE;
+        outline-color: white;
+        outline-style: solid;
+        outline-offset: 3px;
+        opacity: 0;
+        @include transform_rotate(0);
+        @include transition_all(1.5s, cubic-bezier(0.19, 1, 0.22, 1));
+      }
+      span {
+        position: absolute;
+        color: black;
+        font-size: 2.2em;
+        width: 50px;
+        text-align: center;
+        padding-top: 8px;
+      }
+      &.bounce_in {
+        &:before {
+          opacity: 1;
+          @include transform_rotate(45deg);
+        }
+      }
+    }
+    .life_event_content {
+      opacity: 0;
+      @include transition_all(1.5s, cubic-bezier(0.19, 1, 0.22, 1));
+      &.bounce_in {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+div.skill {
+  position: relative;
+  min-height: 600px;
+  
+  .particles-js-canvas-el {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+  }
+  .skill_timeline {
+    border-bottom: solid 3px;
+    position: relative;
+    margin-top: 20px;
+    margin-bottom: -23px;
+    width: 0;
+    @include transition_attribute(width, 1.5s, ease);
+    &.expand-in {
+      width: 100%;
+    }
+  }
+  .skill_timeline_container {
+    position: relative;
+    margin-top: 20px;
+    .skill_point_event {
+      display: inline-block;
+      position: absolute;
+      top: -45px;
+      left: -30px;
+      display: none;
+      p {
+        margin-bottom: 0;
+        text-align: center;
+      }
+      .skill_point_event_date {}
+      .skill_point_event_title {
+        font-weight: bold;
+        margin-top: -10px;
+        margin-bottom: -5px;
+      }
+      .skill_point_event_circle {
+        border-radius: 50%;
+        width: 10px;
+        height: 10px;
+        background: WHITE;
+        border: 3px solid BLACK;
+        margin-left: calc(50% - 5px);
+        margin-top: 6px;
+      }
+    }
+  }
+  .skill_timebar_container {
+    padding: 25px 35px;
+    
+    .skill_timebar_category {
+      margin: 40px 0;
+      position: relative;
+      
+      &:before {
+        left: -35px;
+        border: 1px solid #CECECE;
+        bottom: 0;
+        content: '';
+        position: absolute;
+        top: 0;
+        margin: 10px 0;
+        width: 2%;
+        border-right: none;
+      }
+      .skill_timebar_category_label {
+        position: absolute;
+        left: -110px;
+        color: #303030;
+        font-weight: bold;
+        top: calc(50% - 14px);
+      }
+      .skill_timebar {
+        margin: 15px 0;
+        width: 100%;
+        height: 35px;
+        background-color: #ececec;
+        border: solid 1px #aaa;
+        padding: 5px;
+        position: relative;
+        box-sizing: border-box;
+
+        .skill_timebar_bar {
+          float: right;
+          width: 100%;
+          height: 100%;
+          margin: auto;
+          background-color: #303030;
+          text-align: center;
+        }
+        .skill_timebar_name {
+          text-align: center;
+          color: WHITE;
+          margin: 0;
+          padding: 0;
+          position: absolute;
+          width: calc(100% - 10px);
+          height: calc(100% - 10px);
+          font-weight: bold;
+          mix-blend-mode: difference;
+        }
+      }
+    }
+  }
+}
