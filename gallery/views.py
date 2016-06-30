@@ -21,3 +21,12 @@ class GalleryView(TemplateView):
         context['categories'] = Category.objects.all().order_by('order')
         context['images'] = category.image_set.all().order_by('order')
         return context
+
+class MotionView(TemplateView):
+    template_name = 'motion.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(MotionView, self).get_context_data(**kwargs)
+        context['categories'] = Category.objects.all().order_by('order')
+        context['current_category'] = 'motion'
+        return context

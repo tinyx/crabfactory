@@ -136,6 +136,11 @@ footer a {
     margin: 0;
 }
 
+iframe {
+    display: block;
+    margin: 150px auto;
+}
+
 @font-face {
     font-family: 'Bosque';
     src: url('../font/Bosque.otf');

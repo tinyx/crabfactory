@@ -101,6 +101,7 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -146,7 +147,10 @@ INSTALLED_APPS = (
     'webresume',
     'gallery',
     'rest_framework',
+    'rest_framework_swagger',
     'django_extensions',
+    'todo_service',
+    'corsheaders',
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
@@ -209,8 +213,19 @@ FILER_STORAGES = {
         },
     },
 }
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ),
+}
 LOGIN_URL = '/todo/login/'
 #SESSION_COOKIE_AGE = 60 * 60
 TEST_RUNNER = 'django.test.runner.DiscoverRunner'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 THUMBNAIL_HIGH_RESOLUTION = True
+CORS_ORIGIN_ALLOW_ALL = True

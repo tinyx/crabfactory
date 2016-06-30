@@ -1,0 +1,38 @@
+{% load static from staticfiles %}
+{% load url from future %}
+<html>
+    <head>
+        <title>Gallery</title>
+        <link rel="stylesheet" href="{% static "css/style.css" %}">
+        <link rel="shortcut icon" href="{% static "favicon.ico" %}"/>
+    </head>
+    <body>
+        <div id="top_navigation_holder">
+            <div id="top_navigation_wrapper">
+                <div id="logo">
+                    <img src="{% static "img/logo.jpg" %}">
+                </div>
+                <nav id="top_navigation">
+                    <ul>
+                        {% for category in categories %}
+                          <li class="navigation_link">
+                              <a href="/gallery/{{ category.name }}">{{ category.name }}</a>
+                          </li>
+                        {% endfor %}
+                        <li class="navigation_link active">
+                            <a href="/gallery/motion">Motion</a>
+                        </li>
+                        <li class="navigation_link">
+                            <a href="/gallery/cn/">中文版</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <div id="content">
+            <iframe width="600" height="400" src="https://www.youtube.com/embed/sbRJEpQj0gU" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <script src="{% static "js/jquery-1.11.3.min.js" %}"></script>
+    </body>
+    <footer>Contact: <a href="mailto:ssui@inside.artcenter.edu">ssui@inside.artcenter.edu</a><br>Sicong Sui illustration 2016</footer>
+</html>
