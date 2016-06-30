@@ -225,8 +225,6 @@ div.life_event {
 
 div.skill {
   position: relative;
-  min-height: 600px;
-  
   .particles-js-canvas-el {
     position: absolute;
     top: 0;
@@ -275,11 +273,9 @@ div.skill {
   }
   .skill_timebar_container {
     padding: 25px 35px;
-    
     .skill_timebar_category {
       margin: 40px 0;
       position: relative;
-      
       &:before {
         left: -35px;
         border: 1px solid #CECECE;
@@ -307,7 +303,6 @@ div.skill {
         padding: 5px;
         position: relative;
         box-sizing: border-box;
-
         .skill_timebar_bar {
           float: right;
           width: 100%;
