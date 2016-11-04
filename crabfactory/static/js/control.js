@@ -1,5 +1,3 @@
-var camera, scene, renderer;
-
 $(document).ready(function () {
   // Init the cover background
   var cover_canvas_handler = new CoverCanvasHandler();
