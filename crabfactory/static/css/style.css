@@ -437,7 +437,7 @@ div.skill {
           mix-blend-mode: difference; }
 
 div.project {
-  height: 600px;
+  height: 700px;
   margin-bottom: 0;
   position: relative;
   overflow-y: hidden; }
@@ -451,20 +451,21 @@ div.project {
     z-index: -1; }
   div.project .project_cover {
     background-color: rgba(0, 0, 0, 0.8);
-    height: 600px;
+    height: 700px;
     padding-top: 1em; }
   div.project div.section_label {
     color: WHITE; }
   div.project .row.projects {
     display: flex;
     justify-content: space-between;
-    margin-top: 40px; }
+    flex-wrap: wrap; }
     div.project .row.projects .project_block {
       background-size: cover;
       width: 280px;
       height: 200px;
       position: relative;
-      overflow-y: hidden; }
+      overflow-y: hidden;
+      margin: 20px 0; }
       div.project .row.projects .project_block .project_detail {
         position: absolute;
         width: 280px;

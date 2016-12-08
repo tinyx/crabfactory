@@ -347,6 +347,13 @@ var initProject = function() {
                     Also built a micro service to support the client.',
       url: 'http://todov2.crabfactory.net',
       img: './static/img/todo_v2_demo.png',
+    },
+    {
+      name: 'Gallery',
+      techstack: 'Django JavaScript CSS',
+      description: 'A gallery website for my artist friend',
+      url: 'http://gallery.crabfactory.net',
+      img: './static/img/gallery_demo.png',
     }
   ];
   for(var i=0; i<projects.length; i++) {
