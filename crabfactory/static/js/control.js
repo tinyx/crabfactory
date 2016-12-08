@@ -35,6 +35,9 @@ $(document).ready(function () {
   // Init skill page
   initSkill();
 
+  // Init project page
+  initProject();
+
   // Init scroll animations
   $('.content_wrapper').on('scroll', $.throttle(25, function () {
     $('.life_event_block').each(function () {
@@ -317,4 +320,47 @@ var initSkill = function() {
       "retina_detect": true
     });
   })();
+}
+
+var initProject = function() {
+  var projects = [
+    {
+      name: '2-do list',
+      techstack: 'Django HTML jQuery SCSS',
+      description: 'My first website/single-page-app, originally built with ASP.NET, \
+                    rewrote with Django.',
+      url: 'http://todo.crabfactory.net',
+      img: './static/img/todo_list_demo.png',
+    },
+    {
+      name: 'Crabfactory',
+      techstack: 'HTML JavaScript SCSS',
+      description: 'The website you are browsing right now. \
+                    Personal portfolio website, purely focused on frontend.',
+      url: 'http://crabfactory.net',
+      img: './static/img/crabfactory_demo.png',
+    },
+    {
+      name: 'Todo list v2',
+      techstack: 'Django React Redux Material-UI',
+      description: 'Experimental project for learning React + Redux techstack. \
+                    Also built a micro service to support the client.',
+      url: 'http://todov2.crabfactory.net',
+      img: './static/img/todo_v2_demo.png',
+    }
+  ];
+  for(var i=0; i<projects.length; i++) {
+    var project =
+      '<div class="project_block">' +
+        '<div class="project_detail">' +
+          '<h4>' + projects[i].name + '</h4>' +
+          '<p>Built with ' + projects[i].techstack + '</p>' +
+          '<p>' + projects[i].description + '</p>' +
+          '<a href=' + projects[i].url + ' target="_blank">View</p>' +
+        '</div>' +
+      '</div>';
+    var projectHtml = $(project);
+    projectHtml.css('background-image', 'url(' + projects[i].img + ')');
+    $('.row.projects').append(projectHtml);
+  }
 }

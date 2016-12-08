@@ -436,6 +436,71 @@ div.skill {
           font-weight: bold;
           mix-blend-mode: difference; }
 
+div.project {
+  height: 600px;
+  margin-bottom: 0;
+  position: relative;
+  overflow-y: hidden; }
+  div.project #project-background {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: -1; }
+  div.project .project_cover {
+    background-color: rgba(0, 0, 0, 0.8);
+    height: 600px;
+    padding-top: 1em; }
+  div.project div.section_label {
+    color: WHITE; }
+  div.project .row.projects {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px; }
+    div.project .row.projects .project_block {
+      background-size: cover;
+      width: 280px;
+      height: 200px;
+      position: relative;
+      overflow-y: hidden; }
+      div.project .row.projects .project_block .project_detail {
+        position: absolute;
+        width: 280px;
+        height: 170px;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        top: 170px;
+        -webkit-transition: top 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        -moz-transition: top 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+        transition: top 0.5s cubic-bezier(0.19, 1, 0.22, 1); }
+        div.project .row.projects .project_block .project_detail h4 {
+          text-align: center;
+          margin-bottom: .1em;
+          font-size: 1.5em;
+          font-weight: bold; }
+        div.project .row.projects .project_block .project_detail p {
+          margin: 0 10px 5px;
+          font-size: .9em; }
+        div.project .row.projects .project_block .project_detail a {
+          text-decoration: none;
+          font-size: 1em;
+          text-align: center;
+          position: absolute;
+          bottom: 10px;
+          width: 100px;
+          margin: 0 90px;
+          color: WHITE;
+          font-weight: BOLD;
+          -webkit-transition: background-color 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+          -moz-transition: background-color 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+          transition: background-color 0.5s cubic-bezier(0.19, 1, 0.22, 1); }
+          div.project .row.projects .project_block .project_detail a:hover {
+            background-color: rgba(211, 211, 211, 0.5); }
+      div.project .row.projects .project_block:hover .project_detail {
+        top: 30px; }
+
 body {
   margin: 0;
   width: 100%;
