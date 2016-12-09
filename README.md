@@ -6,22 +6,16 @@ The whole website is deployed at:
 [Crabfactory](http://crabfactory.net "Crabfactory")
 
 ===========
-Crabfactory
+Homepage
 
-The portfolio of mine, not finished yet, two pages remaining building.
-
-- No back-end stuff, focused on the UX design.
-- Created lots of images.
-- Used a lot of pure CSS3 animations.
-- Being very careful about efficiency.
+The portfolio of mine, also as entrance for my other websites.
 
 ===========
+Todo-list(http://todo.crabfactory.net "2-do list")
 
-Todo-list
+I did a todo-list app based on ASP.NET, and converted it to Django at some point.
 
-I've already done a todo-list app based on ASP.NET, so the first thing is to convert it into Django.
-
-The todo-list for this project so far is:
+Rewriting progress:
 
 - [x] Create initial files for the project.
 - [x] Configure Apache2 to make the project reachable through the Internet
@@ -30,6 +24,15 @@ The todo-list for this project so far is:
 - [x] Re-write all the CSS codes with LESS
 
 ===========
-Web resume
+Todo v2(http://todov2.crabfactory.net "Todo v2")
 
-Still working on
+An experimental project for learning React, Redux tech stack.
+
+Took advantages of Material-UI so I can focus on the structure of the project.
+
+===========
+Gallery(http://gallery.crabfactory.net "Gallery")
+
+Portfolio website for one of my artist friend. 
+
+Old school jQuery page, nothing fancy on the tech perspective.
