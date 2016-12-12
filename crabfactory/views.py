@@ -15,9 +15,9 @@ def create_user(request):
     serialized = UserSerializer(data=request.data)
     if serialized.is_valid():
         user = User.objects.create_user(
+            serialized.initial_data['email'],
             serialized.initial_data['username'],
-            serialized.initial_data['password'],
-            serialized.initial_data['email']
+            serialized.initial_data['password']
         )
 
         jwt_payload_handler = api_settings.JWT_PAYLOAD_HANDLER
