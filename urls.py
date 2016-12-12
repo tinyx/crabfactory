@@ -2,6 +2,8 @@ from django.conf import settings
 from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
 from django.views.generic import TemplateView
+
+from crabfactory.views import create_user
 from todolist.urls import urlpatterns as todolist_url
 from todo_service.urls import urlpatterns as todo_service_url
 from webresume.urls import urlpatterns as webresume_url
@@ -29,6 +31,7 @@ urlpatterns = patterns('',
     url(r'^filer/', include('filer.urls')),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     url(r'^api-token-auth/', 'rest_framework_jwt.views.obtain_jwt_token'),
+    url(r'^api-token-register/', create_user),
     url(r'^docs/', include('rest_framework_swagger.urls'))
 )
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
