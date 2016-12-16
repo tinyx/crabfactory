@@ -1,3 +1,8 @@
 from django.contrib import admin
 
-# Register your models here.
+from models import Character
+
+class CharacterAdmin(admin.ModelAdmin):
+    pass
+
+admin.site.register(Character)
