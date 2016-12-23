@@ -12,8 +12,9 @@ class Command(BaseCommand):
             for key in old_c_dict:
                 if new_c_dict[key] != old_c_dict[key]:
                     updated = True
-                    print 'Difference found for character {}'.format(c.name)
                     # Run simc here
             if not updated:
                 print 'Nothing changed for character {}'.format(c.name)
+            else:
+                print 'Difference found for character {}'.format(c.name)
         return
