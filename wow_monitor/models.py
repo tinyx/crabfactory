@@ -25,6 +25,12 @@ class Character(models.Model):
     mainHand = models.TextField(blank=True, null=True)
     artifactTraits = models.TextField(blank=True, null=True)
 
+    def __unicode__(self):
+        return '{server_name} - {name}'.format(
+            server_name=self.server_name,
+            name=self.name
+        )
+
     def fetch_from_battlenet(self):
         api_key = settings.BN_APIKEY
         url = 'https://us.api.battle.net/wow/character/{server_name}/{char_name}?'\
