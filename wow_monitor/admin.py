@@ -6,7 +6,7 @@ class CharacterAdmin(admin.ModelAdmin):
     pass
 
 class SimcRankAdmin(admin.ModelAdmin):
-    pass
+    readonly_fields = ('rating_time')
 
 admin.site.register(Character)
 admin.site.register(SimcRank)

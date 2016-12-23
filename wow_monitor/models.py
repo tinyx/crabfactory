@@ -62,3 +62,9 @@ class SimcRank(models.Model):
     character = models.ForeignKey(Character)
     dps_rank = models.IntegerField()
     rating_time = models.DateTimeField(auto_now_add=True)
+
+    def __unicode__(self):
+        return '{name} - {dps_rank}'.format(
+            name=self.character.name,
+            dps_rank=self.dps_rank
+        )
