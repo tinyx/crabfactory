@@ -49,6 +49,7 @@ class Character(models.Model):
             map(lambda x: str(x['id']) + str(x['rank']), data['items']['mainHand']['artifactTraits'])
         )
         self.save()
+        return self
 
     def to_dict(self):
         return model_to_dict(self)
