@@ -229,3 +229,4 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 THUMBNAIL_HIGH_RESOLUTION = True
 CORS_ORIGIN_ALLOW_ALL = True
 BN_APIKEY = os.environ.get('BN_APIKEY', '')
+SIMC = os.path.join(ROOT_PATH, 'simc')
