@@ -45,9 +45,6 @@ class Character(models.Model):
                 position,
                 str(data['items'][position]['id']) + str(data['items'][position]['itemLevel'])
             )
-        self.artifactTraits = ','.join(
-            map(lambda x: str(x['id']) + str(x['rank']), data['items']['mainHand']['artifactTraits'])
-        )
         self.save()
         return self
 
