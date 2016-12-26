@@ -1,8 +1,17 @@
 <script>
   var simcRanks = {{ simc_ranks|safe }};
 </script>
+<style>
+  #rankChart {
+    margin: auto;
+  }
+</style>
 
-<canvas id="rankChart" width="400" height="400"></canvas>
+<body>
+  <div>
+    <canvas id="rankChart" width="800" height="600"></canvas>
+  </div>
+</body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
@@ -16,7 +25,7 @@
     type: 'line',
     data: {
       datasets: [{
-        label: 'Dps Rank Tracking for Seraphpal',
+        label: 'Dps Rank Tracking for {{ name }}',
         fill: false,
         lineTension: 0.1,
         backgroundColor: "rgba(75,192,192,0.4)",
@@ -48,7 +57,8 @@
             }
           }
         }]
-      }
+      },
+      responsive: false
     },
   });
 </script>

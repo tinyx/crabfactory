@@ -37,6 +37,7 @@ class WowMonitorView(TemplateView):
                 })
             context = super(WowMonitorView, self).get_context_data(**kwargs)
             context['simc_ranks'] = json.dumps(result)
+            context['char_name'] = name
             return context
         else:
           raise Http404
