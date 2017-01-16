@@ -32,3 +32,12 @@ Took advantages of Material-UI so I can focus on the structure of the project.
 Portfolio website for one of my artist friend. 
 
 Old school jQuery page, nothing fancy on the tech perspective.
+
+===========
+[WoW Monitor](http://crabfactory.net/wow-monitor/Illidan/Seraphpal/)
+
+A fun project associated with the game World of Warcraft.
+
+What it does is that it'll fetch the latest data of my character from Bllizard's API, then based on wheter it's updated or not, it'll run a DPS simulation using the famous tool SimulationCraft(AKA SimC), then push the data to the frontend and generate a graph for it.
+
+It helps me track how I did within a longer time scope.
