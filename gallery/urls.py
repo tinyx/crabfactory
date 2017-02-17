@@ -1,8 +1,10 @@
 from django.conf.urls import patterns, url
 from django.contrib.auth.decorators import login_required
-from gallery.views import GalleryView, MotionView
+from gallery.views import GalleryView, MotionView, CategoryListView, ImageListView
 
 urlpatterns = patterns('',
+    url(r'^categories/$', CategoryListView.as_view(), name='gallery_categories'),
+    url(r'^images/$', ImageListView.as_view(), name='gallery_imgaes'),
     url(r'^cn/$', GalleryView.as_view(template_name='gallery_cn.html'), name='gallery_view'),
     url(r'^cn/motion/$', MotionView.as_view(template_name='motion_cn.html'), name='gallery_view'),
     url(r'^cn/(?P<category>[\w ]+)/$', GalleryView.as_view(template_name='gallery_cn.html'), name='gallery_view'),

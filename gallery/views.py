@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from django.http import Http404
 from django.views.generic import TemplateView
+from rest_framework import generics
 
-from gallery.models import Category
+from gallery.models import Category, Image
+from gallery.serializers import CategorySerializer, ImageSerializer
 
 # Create your views here.
 
@@ -30,3 +32,17 @@ class MotionView(TemplateView):
         context['categories'] = Category.objects.all().order_by('order')
         context['current_category'] = 'motion'
         return context
+
+class CategoryListView(generics.ListAPIView):
+    permission_classes = ()
+    serializer_class = CategorySerializer
+
+    def get_queryset(self):
+        return Category.objects.all().order_by('order')
+
+class ImageListView(generics.ListAPIView):
+    permission_classes = ()
+    serializer_class = ImageSerializer
+
+    def get_queryset(self):
+        return Image.objects.all().order_by('order')

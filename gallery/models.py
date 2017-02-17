@@ -18,6 +18,7 @@ class Category(models.Model):
     name = models.CharField(max_length=255, null=False, blank=False, help_text='The name of the category')
     name_cn = models.CharField(max_length=255, null=False, blank=False, help_text='The name of the category')
     order = models.IntegerField(default=0, null=False, blank=False, help_text='The order of this category')
+    is_full_size = models.BooleanField(null=False, blank=False, default=False, help_text='Should this category be rendered full zied.')
 
     def __unicode__(self):
         return self.name
