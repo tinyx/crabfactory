@@ -317,9 +317,23 @@ div.life_event {
         width: 100%;
         height: 100%;
         background-color: WHITE;
-        outline-color: white;
+        outline-color: WHITE;
         outline-style: solid;
         outline-offset: 3px;
+        opacity: 0;
+        transform: rotate(0);
+        -moz-transform: rotate(0);
+        -webkit-transform: rotate(0);
+        -webkit-transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+        -moz-transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+        transition: all 1.5s cubic-bezier(0.19, 1, 0.22, 1); }
+      div.life_event .life_event_block .life_event_icon:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        outline-color: BLACK;
+        outline-style: solid;
         opacity: 0;
         transform: rotate(0);
         -moz-transform: rotate(0);
@@ -334,7 +348,7 @@ div.life_event {
         width: 50px;
         text-align: center;
         padding-top: 8px; }
-      div.life_event .life_event_block .life_event_icon.bounce_in:before {
+      div.life_event .life_event_block .life_event_icon.bounce_in:before, div.life_event .life_event_block .life_event_icon.bounce_in:after {
         opacity: 1;
         transform: rotate(45deg);
         -moz-transform: rotate(45deg);
@@ -372,7 +386,17 @@ div.skill {
       position: absolute;
       top: -45px;
       left: -30px;
-      display: none; }
+      opacity: 0;
+      display: flex;
+      flex-flow: column;
+      -webkit-transition: opacity 1.5s ease;
+      -moz-transition: opacity 1.5s ease;
+      transition: opacity 1.5s ease; }
+      div.skill .skill_timeline_container .skill_point_event.visible {
+        opacity: 1; }
+      div.skill .skill_timeline_container .skill_point_event:nth-child(even) {
+        top: -13px;
+        flex-direction: column-reverse; }
       div.skill .skill_timeline_container .skill_point_event p {
         margin-bottom: 0;
         text-align: center; }
@@ -387,7 +411,8 @@ div.skill {
         background: WHITE;
         border: 3px solid BLACK;
         margin-left: calc(50% - 5px);
-        margin-top: 6px; }
+        margin-top: 6px;
+        margin-bottom: 6px; }
   div.skill .skill_timebar_container {
     padding: 25px 35px; }
     div.skill .skill_timebar_container .skill_timebar_category {

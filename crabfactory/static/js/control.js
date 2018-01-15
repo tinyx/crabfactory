@@ -55,7 +55,7 @@ $(document).ready(function () {
           var fadeInDelay = $(this).data('fade-in-delay');
           var pointEvent = $(this);
           setTimeout(function () {
-            pointEvent.fadeIn();
+            pointEvent.addClass('visible');
           }, fadeInDelay);
         });
       }
