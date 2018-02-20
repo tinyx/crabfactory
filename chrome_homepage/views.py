@@ -18,6 +18,7 @@ class ChromeHomepage(TemplateView):
             if profile.life_partner_name and profile.anniversary_date:
                 context['life_partner_name'] = profile.life_partner_name
                 context['days_since'] = (date.today() - profile.anniversary_date).days
+            context['websites'] = profile.user.website_set.all()
             return context
         except Profile.DoesNotExist:
             raise Http404
