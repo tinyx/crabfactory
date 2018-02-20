@@ -4,9 +4,10 @@ from django.conf.urls.static import static
 from django.views.generic import TemplateView
 
 from crabfactory.views import create_user
+from chrome_homepage.urls import urlpatterns as chrome_homepage_url
+from gallery.urls import urlpatterns as gallery_url
 from todolist.urls import urlpatterns as todolist_url
 from todo_service.urls import urlpatterns as todo_service_url
-from gallery.urls import urlpatterns as gallery_url
 from wow_monitor.urls import urlpatterns as wow_monitor_url
 
 # Uncomment the next two lines to enable the admin:
@@ -27,6 +28,7 @@ urlpatterns = patterns('',
     url(r'^todo/', include(todolist_url)),
     url(r'^todo-api/', include(todo_service_url)),
     url(r'^wow-monitor/', include(wow_monitor_url)),
+    url(r'^chrome-homepage/', include(chrome_homepage_url)),
     url(r'gallery/', include(gallery_url)),
     url(r'^filer/', include('filer.urls')),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),

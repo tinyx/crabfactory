@@ -123,6 +123,7 @@ TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__), 'templates/todolist').replace('\\', '/'),
     os.path.join(os.path.dirname(__file__), 'templates/gallery').replace('\\', '/'),
     os.path.join(os.path.dirname(__file__), 'templates/wow_monitor').replace('\\', '/'),
+    os.path.join(os.path.dirname(__file__), 'templates/chrome_homepage').replace('\\', '/'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -150,6 +151,7 @@ INSTALLED_APPS = (
     'rest_framework_swagger',
     'django_extensions',
     'todo_service',
+    'chrome_homepage',
     'corsheaders',
 )
 
