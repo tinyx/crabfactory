@@ -220,9 +220,14 @@ span.days-counter:after {
 }
 
 .websites-container {
-  width: 80%;
-  max-width: 1200px;
-  padding: 50px 10%;
+  width: 100%;
+  padding: 50px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.websites-inner-container {
+  max-width: 976px;
   display: flex;
   justify-content: space-between;
   flex-flow: row wrap;
@@ -241,7 +246,7 @@ span.days-counter:after {
   text-decoration: none;
   color: BLACK;
   background: rgb(250,250,250);
-  margin: 10px 5px;
+  margin: 20px;
 }
 
 .websites-item p {
@@ -294,12 +299,14 @@ span.days-counter:after {
 </div>
 
 <div class="websites-container">
-  {% for website in websites %}
-    <a class="websites-item" href="{{ website.url }}">
-      <p>{{ website.name }}</p>
-      <img src="{{ website.thumbnail.url }}" />
-    </a>
-  {% endfor %}
+  <div class="websites-inner-container">
+    {% for website in websites %}
+      <a class="websites-item" href="{{ website.url }}">
+        <p>{{ website.name }}</p>
+        <img src="{{ website.thumbnail.url }}" />
+      </a>
+    {% endfor %}
+  </div>
 </div>
 
 <script type="text/javascript">
