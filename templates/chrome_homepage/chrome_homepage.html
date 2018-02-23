@@ -1,3 +1,4 @@
+{% load static from staticfiles %}
 <style>
 html {
   background: url('/static/img/cat-wall-paper.jpg');
@@ -269,6 +270,7 @@ span.days-counter:after {
     你跟{{ life_partner_name }}认识已经<span class="days-counter">{{ days_since }}</span>天啦
   </h1>
 {% endif %}
+<link rel="stylesheet" href="{% static "live2d/css/live2d.css" %}" />
 
 <svg xmlns="http://www.w3.org/2000/svg" style="display:none">
   <symbol xmlns="http://www.w3.org/2000/svg" id="sbx-icon-search-13" viewBox="0 0 40 40">
@@ -309,8 +311,24 @@ span.days-counter:after {
   </div>
 </div>
 
+<div id="landlord">
+    <div class="message" style="opacity:0"></div>
+    <canvas id="live2d" width="280" height="400" class="live2d"></canvas>
+    <div class="hide-button">隐藏</div>
+</div>
+
+<script src="{% static "js/jquery-1.11.3.min.js" %}"></script>
 <script type="text/javascript">
   document.querySelector('.searchbox [type="reset"]').addEventListener('click', function() {
     this.parentNode.querySelector('input').focus();
   });
+</script>
+
+<script type="text/javascript">
+  var message_Path = '{% static "live2d/" %}';
+</script>
+<script type="text/javascript" src="{% static "live2d/js/live2d.js" %}"></script>
+<script type="text/javascript" src="{% static "live2d/js/message.js" %}"></script>
+<script type="text/javascript">
+  loadlive2d("live2d", "{% static "live2d/model/miku/miku.model.json" %}");
 </script>
