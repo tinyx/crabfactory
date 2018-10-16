@@ -4,7 +4,6 @@ import os
 ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
     ('TinyX', 'hb1412@gmail.com'),
