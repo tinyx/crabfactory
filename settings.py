@@ -72,20 +72,20 @@ STATIC_ROOT = 'static/'
 STATIC_URL = '/static/'
 
 # Additional locations of static files
-STATICFILES_DIRS = (
+STATICFILES_DIRS = [
     os.path.join(ROOT_PATH, 'library'),
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-)
+]
 
 # List of finder classes that know how to find static files in
 # various locations.
-STATICFILES_FINDERS = (
+STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
-)
+    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
+]
 
 # Enable ManifestStaticFilesStorage
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
@@ -93,14 +93,37 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesSto
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = 'd7h7dpioln4faj6t96v&@h20^+jmolk)*zs4tzon-uo%gs+q5u'
 
-# List of callables that know how to import templates from various sources.
-TEMPLATE_LOADERS = (
-    'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader',
-#     'django.template.loaders.eggs.Loader',
-)
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            os.path.join(ROOT_PATH, 'templates'),
+            os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/'),
+            os.path.join(os.path.dirname(__file__), 'templates/home').replace('\\', '/'),
+            os.path.join(os.path.dirname(__file__), 'templates/todolist').replace('\\', '/'),
+            os.path.join(os.path.dirname(__file__), 'templates/gallery').replace('\\', '/'),
+            os.path.join(os.path.dirname(__file__), 'templates/wow_monitor').replace('\\', '/'),
+            os.path.join(os.path.dirname(__file__), 'templates/chrome_homepage').replace('\\', '/'),
+            # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+            # Always use forward slashes, even on Windows.
+            # Don't forget to use absolute paths, not relative paths.
+        ],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.debug',
+                'django.template.context_processors.i18n',
+                'django.template.context_processors.media',
+                'django.template.context_processors.static',
+                'django.template.context_processors.tz',
+                'django.contrib.messages.context_processors.messages',
+            ]
+        },
+    },
+]
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE_CLASSES = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -109,27 +132,14 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
-)
+]
 
 ROOT_URLCONF = 'urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'wsgi.application'
 
-TEMPLATE_DIRS = (
-    os.path.join(ROOT_PATH, 'templates'),
-    os.path.join(os.path.dirname(__file__), 'templates').replace('\\', '/'),
-    os.path.join(os.path.dirname(__file__), 'templates/home').replace('\\', '/'),
-    os.path.join(os.path.dirname(__file__), 'templates/todolist').replace('\\', '/'),
-    os.path.join(os.path.dirname(__file__), 'templates/gallery').replace('\\', '/'),
-    os.path.join(os.path.dirname(__file__), 'templates/wow_monitor').replace('\\', '/'),
-    os.path.join(os.path.dirname(__file__), 'templates/chrome_homepage').replace('\\', '/'),
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
-)
-
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -148,12 +158,11 @@ INSTALLED_APPS = (
     'wow_monitor',
     'gallery',
     'rest_framework',
-    'rest_framework_swagger',
     'django_extensions',
     'todo_service',
     'chrome_homepage',
     'corsheaders',
-)
+]
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.JSONSerializer'
 
@@ -185,13 +194,13 @@ LOGGING = {
         },
     }
 }
-THUMBNAIL_PROCESSORS = (
+THUMBNAIL_PROCESSORS = [
     'easy_thumbnails.processors.colorspace',
     'easy_thumbnails.processors.autocrop',
     #'easy_thumbnails.processors.scale_and_crop',
     'filer.thumbnail_processors.scale_and_crop_with_subject_location',
     'easy_thumbnails.processors.filters',
-)
+]
 # django-filer storage settings
 # django-filer storage settings
 FILER_STORAGES = {
