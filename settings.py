@@ -6,7 +6,6 @@ ROOT_PATH = os.path.dirname(os.path.abspath(__file__))
 DEBUG = True
 
 ADMINS = (
-    ('TinyX', 'hb1412@gmail.com'),
     # ('Your Name', 'your_email@example.com'),
 )
 
